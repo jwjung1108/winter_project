@@ -124,7 +124,7 @@ session_start();
                 <span class="logout-button" onclick="logout()">로그아웃</span>
             <?php } else { ?>
                 <button onclick="goToLoginPage()">로그인</button>
-                <button onclick="goToSignupPage()">회원가cccccc입</button>
+                <button onclick="goToSignupPage()">회원가ddddd입</button>
             <?php } ?>
         </div>
         <h1>홈페이지</h1>
