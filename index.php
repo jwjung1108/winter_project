@@ -193,9 +193,7 @@ session_start();
             <?php } else { ?>
                 <button class="btn btn-outline-light" onclick="goToLoginPage()">로그인</button>
                 <button class="btn btn-outline-light" onclick="goToSignupPage()">회원가입</button>
-                <div style="float:right;">
-                    <button class="btn btn-outline-light" onclick="goToadminPage()">관리자페이지</button>
-                </div>
+                <button class="btn btn-outline-light" onclick="goToadminPage()">관리자페이지</button>
             <?php } ?>
         </div>
     </div>
