@@ -74,10 +74,12 @@ body {
 /* 반응형 디자인 */
 @media screen and (max-width: 768px) {
     .table .title-cell {
-        max-width: 50%; /* 모바일 화면에서 셀의 최대 너비를 부모 요소의 50%로 설정 */
-        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        max-width: 100px; /* 적절한 최대 너비 설정 */
         overflow: hidden; /* 넘치는 내용 숨김 */
         text-overflow: ellipsis; /* 넘치는 텍스트를 ...으로 표시 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        display: flex; /* Flexbox를 사용 */
+        align-items: center; /* 세로 중앙 정렬 */
     }
     .container {
         padding: 10px;
