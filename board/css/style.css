@@ -96,6 +96,16 @@ body {
         width: 100%; /* 버튼 전체 너비로 확장 */
         padding: 12px 20px; /* 패딩 증가 */
     }
+    .text-end {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* 버튼들을 고르게 분포시키기 */
+    }
+
+    .text-end a {
+        flex-basis: 30%; /* 버튼의 기본 크기를 설정 */
+        text-align: center;
+    }
 }
 /* 기타 스타일 */
 .sortable:hover {
