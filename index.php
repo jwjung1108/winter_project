@@ -197,8 +197,8 @@ session_start();
         </div>
     </div>
 </nav>
-<div>
-    <button class="btn btn-outline-light" onclick="goToadminPage()">관리자페이지</button>
+<div style="float:right;">
+    <button class onclick="goToadminPage()">관리자페이지</button>
 </div>
 
 <!-- Main Content -->
