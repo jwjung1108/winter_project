@@ -171,6 +171,9 @@ session_start();
                 location.href = "/join/logoutProcess.php";
             }
         }
+        function goToadminPage() {
+            window.location.href = "/adminpage.php";
+        }
     </script>
 </head>
 
@@ -195,7 +198,7 @@ session_start();
     </div>
 </nav>
 <div>
-                test
+    <button onclick="goToadminPage()"></button>
 </div>
 
 <!-- Main Content -->
