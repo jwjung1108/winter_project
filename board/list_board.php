@@ -137,16 +137,16 @@ $result = mysqli_query($conn, $sql);
                         </th>
                         <td class="title-cell"><a href="readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
                         </td>
-                        <td>
+                        <td class="title-cell">
                             <?php echo $row['username']; ?>
                         </td>
-                        <td>
+                        <td class="title-cell">
                             <?php echo $row['created']; ?>
                         </td>
-                        <td>
+                        <td class="title-cell">
                             <?php echo $row['views']; ?>
                         </td>
-                        <td>
+                        <td class="title-cell">
                             <?php echo $row['likes']; ?>
                         </td>
                     </tr>
