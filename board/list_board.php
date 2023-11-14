@@ -114,7 +114,7 @@ $result = mysqli_query($conn, $sql);
                 return true;
             }
         </script>
-
+<div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
@@ -143,16 +143,17 @@ $result = mysqli_query($conn, $sql);
                         <td class="title-cell">
                             <?php echo $row['created']; ?>
                         </td>
-                        <td class="title-cell">
+                        <td>
                             <?php echo $row['views']; ?>
                         </td>
-                        <td class="title-cell">
+                        <td>
                             <?php echo $row['likes']; ?>
                         </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
+                </div>
         <div class="text-center">
             <a href="writeForm.php" class="btn btn-primary">작성</a>
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
