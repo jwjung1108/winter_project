@@ -183,7 +183,7 @@ session_start();
 
 <nav class="navbar navbar-custom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">학습  bbbbbbbbbbbbbbbbb커뮤니티</a>
+        <a class="navbar-brand" href="#">학습  커뮤니티</a>
         <div class="d-flex align-items-center">
             <?php if (isset($_SESSION['userId'])) { ?>
                 <span class="navbar-text mr-3">
