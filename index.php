@@ -190,10 +190,12 @@ session_start();
                     <?php echo $_SESSION['userId']; ?> 님 환영합니다
                 </span>
                 <button class="btn btn-outline-light" onclick="logout()">로그아웃</button>
+            
+                <button class="btn btn-outline-light" onclick="goToadminPage()">관리자페이지</button>
             <?php } else { ?>
                 <button class="btn btn-outline-light" onclick="goToLoginPage()">로그인</button>
                 <button class="btn btn-outline-light" onclick="goToSignupPage()">회원가입</button>
-                <button class="btn btn-outline-light" onclick="goToadminPage()">관리자페이지</button>
+
             <?php } ?>
         </div>
     </div>
