@@ -163,7 +163,7 @@ session_start();
             window.location.href = "/board/list_board.php";
         }
         function goTonotificationBoardPage() {
-            window.location.href = "/board/list_nboard.php";
+            window.location.href = "/board/notification/list_nboard.php";
         }
         function logout() {
             const data = confirm("로그아웃 하시겠습니까?");
@@ -214,7 +214,7 @@ session_start();
                     <h5 class="card-title">자유게시판</h5>
                     <p class="card-text">강의에 대한 리뷰와 평점을 남기고 공유할 수 있습니다.</p>
                     <?php if (isset($_SESSION['userId'])) { ?>
-                <button onclick="goTocommonBoardPage()">자유계시판</button>
+                <button onclick="goTocommonBoardPage()">자유게시판</button>
             <?php } ?>
                 </div>
             </div>
