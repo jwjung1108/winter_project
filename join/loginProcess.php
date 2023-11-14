@@ -33,7 +33,9 @@ if ($id == null) {
         session_start();
         $_SESSION['userId'] = $row['id'];
         $_SESSION['userName'] = $row['nickname'];
-
+        if($row['authority'] == 2){
+            $_SESSION['authority'] = 'admin';
+        }
         ?>
         <script>
             alert("로그인에 성공하였습니다.")
