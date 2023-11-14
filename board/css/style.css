@@ -73,8 +73,15 @@ body {
 
 /* 반응형 디자인 */
 @media screen and (max-width: 768px) {
+    .table .title-cell {
+        max-width: 100px; /* 모바일 화면에서 셀의 최대 너비를 부모 요소의 50%로 설정 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        overflow: hidden; /* 넘치는 내용 숨김 */
+        text-overflow: ellipsis; /* 넘치는 텍스트를 ...으로 표시 */
+    }
     .container {
-        padding: 10px;
+        max-width: 100%;
+        padding: 0 15px;
     }
 
     .navbar {
@@ -95,6 +102,16 @@ body {
     .btn {
         width: 100%; /* 버튼 전체 너비로 확장 */
         padding: 12px 20px; /* 패딩 증가 */
+    }
+    .text-end {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* 버튼들을 고르게 분포시키기 */
+    }
+
+    .text-end a {
+        flex-basis: 30%; /* 버튼의 기본 크기를 설정 */
+        text-align: center;
     }
 }
 /* 기타 스타일 */

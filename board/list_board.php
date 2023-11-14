@@ -114,7 +114,7 @@ $result = mysqli_query($conn, $sql);
                 return true;
             }
         </script>
-
+<div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
@@ -135,12 +135,12 @@ $result = mysqli_query($conn, $sql);
                         <th scope="row">
                             <?php echo $i++; ?>
                         </th>
-                        <td><a href="readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
+                        <td class="title-cell"><a href="readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
                         </td>
-                        <td>
+                        <td class="title-cell">
                             <?php echo $row['username']; ?>
                         </td>
-                        <td>
+                        <td class="title-cell">
                             <?php echo $row['created']; ?>
                         </td>
                         <td>
@@ -153,6 +153,7 @@ $result = mysqli_query($conn, $sql);
                 <?php } ?>
             </tbody>
         </table>
+                </div>
         <div class="text-center">
             <a href="writeForm.php" class="btn btn-primary">작성</a>
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
