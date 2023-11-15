@@ -66,6 +66,12 @@
             </tbody>
         </table>
     </div>
+
+    <div>
+        <a href='adminpage.php'>
+            이전
+        </a>
+    </div>
 </body>
 
 </html>
