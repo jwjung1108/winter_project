@@ -38,26 +38,39 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
         ?>
         <?php
     }
-
-    $sql = "update comment set visible = 0 where number = '$number'";
-
+    $sql = "select visible from board where number = '$number' and visible = 1";
     $result = mysqli_query($conn, $sql);
-    if ($result === false) {
+
+    if($result === true){
+        $sql = "update comment set visible = 0 where number = '$number'";
+        $result = mysqli_query($conn, $sql);
+        if ($result === false) {
+            ?>
+            <script>
+                alert(""삭제에 문제가 생겼습니다.관리자에게 문의해주세요.";");
+                location.href = "list_board.php";
+            </script>
+            <?php
+        } else {
+            ?>
+            <script>
+                alert("댓글이 삭제되었습니다.");
+                location.href = "list_board.php?=<?php ?>";
+            </script>
+            <?php
+        }
+    }
+    else {
         ?>
         <script>
-            alert(""삭제에 문제가 생겼습니다.관리자에게 문의해주세요.";");
-            location.href = "list_board.php";
-        </script>
-        <?php
-    } else {
-        ?>
-        <script>
-            alert("댓글이 삭제되었습니다.");
-            location.href = "list_board.php?=<?php ?>";
+            alert("이미 삭제된 댓글입니다.");
         </script>
         <?php
     }
-    ?>
+        ?>
+
+    
+    
 </body>
 
 </html>
