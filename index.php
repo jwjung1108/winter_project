@@ -287,12 +287,12 @@ session_start();
             </thead>
             <tbody>
                 <?php
-                include '../../connect.php'; // 데이터베이스 연결 정보 포함
+                include '../connect.php'; // 데이터베이스 연결 정보 포함
 
                 // 최신 게시글 3개를 가져오는 쿼리
                 $sql = 'SELECT * FROM board ORDER BY created DESC LIMIT 3';
                 $result = mysqli_query($conn, $sql);?>
-                
+
                 <?php
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
