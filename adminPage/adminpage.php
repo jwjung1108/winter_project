@@ -37,7 +37,8 @@ include '../board/check_authority.php';
             // 예를 들어, switch 문을 사용하여 각 버튼별로 다른 동작을 수행하도록 구현할 수 있습니다.
             switch (buttonNumber) {
                 case 1:
-                    goManagerBoardPage()
+                
+                    goManagerBoardPage();
                     break;
                 case 2:
                     // 버튼 2를 클릭했을 때 수행할 작업
