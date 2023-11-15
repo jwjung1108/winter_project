@@ -70,7 +70,7 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
         ?>
         <script>
             alert("게시글이 작성되었습니다.");
-            location.href = "./list_nboard.php";
+            location.href = "list_nboard.php";
         </script>
         <?php
     }
@@ -78,7 +78,7 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     ?>
     <script>
         alert("파일 업로드에 실패하였습니다.");
-        location.href = "./list_board.php";
+        location.href = "list_board.php";
     </script>
 <?php
 }

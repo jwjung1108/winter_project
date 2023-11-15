@@ -23,7 +23,7 @@ if($row['authority'] != 2){
 </head>
 
 <body>
-    <form action="./n_saveBoard.php" method="POST" enctype="multipart/form-data">
+    <form action="n_saveBoard.php" method="POST" enctype="multipart/form-data">
         <p><input type="title" name="title" placeholder="제목"></p>
         <p><textarea name="board" placeholder="본문"></textarea></p>
         <input type="file" name="file" >
