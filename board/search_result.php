@@ -20,6 +20,24 @@ switch ($sort) {
 }
 
 // SQL 쿼리문 수정
+$search_con = isset($_GET['search']) ? $_GET['search'] : '';
+$category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
+
+// 선택한 카테고리 체크박스 값 가져오기
+$selectedCategories = isset($_GET['category']) ? $_GET['category'] : array();
+
+// 카테고리를 OR 연산으로 조합
+$categoryCondition = '';
+if (!empty($selectedCategories)) {
+    $categoryCondition = "AND (";
+    foreach ($selectedCategories as $selectedCategory) {
+        $categoryCondition .= "$selectedCategory = 1 OR ";
+    }
+    $categoryCondition = rtrim($categoryCondition, " OR ") . ")";
+}
+
+$sql = "SELECT * FROM board WHERE $category LIKE '%$search_con%' $categoryCondition AND isSecret = 0 $orderBy";
+$result = mysqli_query($conn, $sql);
 ?>
 
 <!doctype html>
@@ -37,97 +55,37 @@ switch ($sort) {
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-
-    <title>게시판</title>
+    <title>노하우 전수 블로그</title>
     <style>
-        body {
-            padding-top: 50px;
-        }
+        /* 추가한 스타일은 여기에 넣어주세요 */
 
-        .container {
-            max-width: 960px;
-        }
-
-        .table {
-            margin-bottom: 1rem;
-            color: #212529;
-        }
-
-        .sortable {
-            cursor: pointer;
-        }
-
-        h1 {
-            margin-top: 30px;
-        }
-
-        .text-end {
-            margin-bottom: 20px;
-        }
-
-        #search_box {
-            margin: 20px 0;
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            /* 스타일 추가 */
         }
     </style>
 </head>
 
 <body>
-    <?php
-
-    $search_con = isset($_GET['search']) ? $_GET['search'] : '';
-    $category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
-
-    // 선택한 카테고리 체크박스 값 가져오기
-    $selectedCategories = isset($_GET['category']) ? $_GET['category'] : array();
-
-    // 카테고리를 OR 연산으로 조합
-    $categoryCondition = '';
-    if (!empty($selectedCategories)) {
-        $categoryCondition = "AND (";
-        foreach ($selectedCategories as $selectedCategory) {
-            $categoryCondition .= "$selectedCategory = 1 OR ";
-        }
-        $categoryCondition = rtrim($categoryCondition, " OR ") . ")";
-    }
-
-
-    // $boardNames = array(
-    //     'freeboard' => '자유게시판',
-    //     'notification' => '공지사항',
-    //     'QandA' => 'Q&A'
-    // );
-
-    // SQL 쿼리문 수정
-    $sql = "SELECT * FROM board WHERE $category LIKE '%$search_con%' $categoryCondition AND isSecret = 0 $orderBy";
-    $result = mysqli_query($conn, $sql);
-
-
-
-    if ($category == 'title') {
-        $catname = '제목';
-    } else if ($category == 'username') {
-        $catname = '작성자';
-    } else if ($category == 'board') {
-        $catname = '내용';
-    }
-
-    ?>
-    <h1>
-        <?php echo $catname; ?>:
-        <?php echo $search_con; ?> 검색결과
-    </h1>
-
-
-    <h4 style="margin-top:30px;"><a href="../index.php">홈으로</a></h4>
-
-    <?php
-
-    ?>
-
-
     <div class="container">
-        <h1 class="text-center">게시판</h1>
+        <h1 class="text-center">노하우 전수 블로그</h1>
 
+        <div id="search_box">
+            <form action="./search_result.php" method="get" onsubmit="return validateForm()">
+                <select name="catgo">
+                    <option value="title">제목</option>
+                    <option value="username">글쓴이</option>
+                    <option value="board">내용</option>
+                </select>
+                <input type="text" name="search" size="40" required="required" />
+
+                <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
+                <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
+                <label><input type="checkbox" name="category[]" value="QandA"> Q&A</label>
+
+                <button>검색</button>
+            </form>
+        </div>
 
         <table class="table">
             <thead>
@@ -167,49 +125,31 @@ switch ($sort) {
                 <?php } ?>
             </tbody>
         </table>
-        <div id="search_box">
-            <form action="./search_result.php" method="get" onsubmit="return validateForm()">
-                <select name="catgo">
-                    <option value="title">제목</option>
-                    <option value="username">글쓴이</option>
-                    <option value="board">내용</option>
-                </select>
-                <input type="text" name="search" size="40" required="required" />
+    </div>
 
-                <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
-                <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
-                <label><input type="checkbox" name="category[]" value="QandA"> QandA</label>
+    <script>
+        function validateForm() {
+            // 체크박스들을 선택
+            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
+            var isChecked = false;
 
-                <button>검색</button>
-            </form>
-        </div>
-
-        <script>
-            function validateForm() {
-                // 체크박스들을 선택
-                var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
-                var isChecked = false;
-
-                // 하나라도 체크되었는지 확인
-                checkboxes.forEach(function (checkbox) {
-                    if (checkbox.checked) {
-                        isChecked = true;
-                    }
-                });
-
-                // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
-                if (!isChecked) {
-                    alert("하나 이상의 카테고리를 선택해주세요.");
-                    return false;
+            // 하나라도 체크되었는지 확인
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    isChecked = true;
                 }
+            });
 
-                // 체크가 되었을 때 폼 제출
-                return true;
+            // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
+            if (!isChecked) {
+                alert("하나 이상의 카테고리를 선택해주세요.");
+                return false;
             }
-        </script>
 
-
-
+            // 체크가 되었을 때 폼 제출
+            return true;
+        }
+    </script>
 </body>
 
 </html>
