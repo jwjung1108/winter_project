@@ -38,7 +38,7 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
         ?>
         <?php
     }
-    $sql = "select visible from board where number = '$number' and visible = 1";
+    $sql = "select visible from comment where number = '$number' and visible = 1";
     $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
     if($row['visible'] == 1){
