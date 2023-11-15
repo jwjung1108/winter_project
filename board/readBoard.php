@@ -185,31 +185,30 @@ if ($v_check['verify'] == 0) {
     ?>
     <!-- 글 불러오기 -->
     <div id="board_read">
-        <h2>
-            <?php echo $board['title']; ?>
-        </h2>
-        <div id="user_info">
-            <?php echo $board['title']; ?>
-            <?php echo $board['created']; ?> 조회:
-            <?php echo $view; ?> 추천:
-            <?php echo $board['likes']; ?>
-            <div id="bo_line"></div>
-        </div>
-        <div id="bo_content">
-            <?php echo nl2br($board['board']); ?>
-        </div>
-        <!-- 목록, 수정, 삭제 -->
-        <div id="bo_ser">
-            <ul>
-                <li><a href="/">[목록으로]</a></li>
-                <li><a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
-                <li><a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
-                <li><a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
-                <li><a href="download.php?number=<?php echo $board['number']; ?>">[다운로드]</a></li>
-            </ul>
-        </div>
+    <h2>
+        <?php echo $board['title']; ?>
+    </h2>
+    <div id="user_info">
+        <?php echo $board['title']; ?>
+        <?php echo $board['created']; ?> 조회:
+        <?php echo $view; ?> 추천:
+        <?php echo $board['likes']; ?>
+        <div id="bo_line"></div>
     </div>
-
+    <div id="bo_content">
+        <?php echo nl2br($board['board']); ?>
+    </div>
+    <!-- 목록, 수정, 삭제 -->
+    <div id="bo_ser">
+        <ul>
+            <li><a href="/">[목록으로]</a></li>
+            <li><a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
+            <li><a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
+            <li><a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
+            <li><a href="download.php?number=<?php echo $board['number']; ?>">[다운로드]</a></li>
+        </ul>
+    </div>
+    
     <!-- 댓글 -->
     <?php
     $sql = "select * from comment where boardNumber = '$number'";
@@ -266,6 +265,7 @@ if ($v_check['verify'] == 0) {
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
         </div>
     </div>
+</div>
 </body>
 
 </html>
