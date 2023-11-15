@@ -149,7 +149,7 @@ if ($userId == '') {
 
         /* 목록으로 돌아가기 버튼 스타일 */
         .text-center .btn {
-            margin-top: 20px;
+            margin-top: 5px;
         }
     </style>
 </head>
