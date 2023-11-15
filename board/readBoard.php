@@ -25,7 +25,6 @@ if ($v_check['verify'] == 0) {
     exit();
 }
 ?>
-
 <!doctype html>
 <html lang="ko">
 
@@ -217,7 +216,7 @@ if ($v_check['verify'] == 0) {
     $result = mysqli_query($conn, $sql);
     ?>
     <div class="container">
-        <h1 class="text-center">게시판</h1>
+        <h1 class="text-center">댓글</h1>
         <table class="table">
             <thead>
                 <tr>
