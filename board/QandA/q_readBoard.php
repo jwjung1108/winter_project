@@ -183,7 +183,7 @@ session_start();
                     <li><a href="q_download.php?number=<?php echo $board['number']; ?>">[다운로드]</a></li>
             </ul>
         </div>
-    </div>
+    
 
     <!-- 답변 -->
     <?php
@@ -243,7 +243,7 @@ session_start();
         </div>
 
 
-
+        </div>
     </div>
 </body>
 
