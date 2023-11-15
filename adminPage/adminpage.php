@@ -13,19 +13,19 @@ include '../board/check_authority.php';
 
 <body>
     <div>
-        <button class="custom-button" onclick="executeCommnad(1)">버튼 1</button>
+        <button class="custom-button" onclick="goManagerBoardPage()">버튼 1</button>
         <button class="custom-button" onclick="executeCommand(2)">버튼 2</button>
         <button class="custom-button" onclick="executeCommand(3)">버튼 3</button>
         <button class="custom-button" onclick="executeCommand(4)">버튼 4</button>
         <button class="custom-button" onclick="executeCommand(5)">버튼 5</button>
     </div>
     <?php
-    $sql = ''
-        ?>
+        $sql = ''    
+    ?>
 
     <script>
         // 클릭 시 실행될 명령
-        function goManagerBoardPage() {
+        function goManagerBoardPage(){
             window.location.href = "/adminPage/manageBoard/managerBoard.php";
         }
 
@@ -37,8 +37,6 @@ include '../board/check_authority.php';
             // 예를 들어, switch 문을 사용하여 각 버튼별로 다른 동작을 수행하도록 구현할 수 있습니다.
             switch (buttonNumber) {
                 case 1:
-                
-                    goManagerBoardPage();
                     break;
                 case 2:
                     // 버튼 2를 클릭했을 때 수행할 작업
