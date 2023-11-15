@@ -26,6 +26,7 @@
                     <th scope="col">등록일</th>
                     <th scope="col">조회수</th>
                     <th scope="col">추천수</th>
+                    <th scope="col">등록</th>
                     <th scope="col">삭제</th>
                 </tr>
             </thead>
@@ -53,7 +54,10 @@
                         <td>
                             <?php echo $row['likes']; ?>
                         </td>
-                        <td><a href="deleteBoard.php?number=<?php echo $row['number']; ?>">
+                        <td>
+                            <?php echo $row['visible']; ?>
+                        </td>
+                        <td><a href="delete.php?number=<?php echo $row['number']; ?>">
                                 <?php echo '삭제'; ?>
                             </a>
                         </td>
