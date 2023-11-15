@@ -24,11 +24,24 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
     $check_user = "SELECT username FROM board WHERE username = '$userId' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
+    $sql = "select visible from board where number = '$number'";
+    $row = mysqli_fetch_array(mysqli_query($conn, $sql));
+
+    if ($row['visible'] == 0) {
+        ?>
+        <script>
+            alert('이미 삭제된 게시물입니다.');
+            location.href = "managerBoard.php";
+        </script>
+        <?php
+    }
+
+
     if ($userId != $result['username']) {
         if ($row['authority'] != 2) {
             ?>
             <script>
-                alert("'접근 권한이 없습니다.';");
+                alert("접근 권한이 없습니다.");
                 location.href = "managerBoard.php";
             </script>
             <?php
@@ -37,13 +50,13 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
         $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
-    <script>
-        alert("게시글이 삭제되었습니다.");
-        location.href = "managerBoard.php";
-    </script>
-    <?php
-    ?>
-    <?php
+        <script>
+            alert("게시글이 삭제되었습니다.");
+            location.href = "managerBoard.php";
+        </script>
+        <?php
+        ?>
+        <?php
     } else {
         $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
         mysqli_query($conn, $sql);
