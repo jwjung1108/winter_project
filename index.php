@@ -279,7 +279,7 @@ session_start();
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">번호</th>
+                    <th scope="col">게시판 종류</th>
                     <th scope="col">제목</th>
                     <th scope="col">작성자</th>
                     <th scope="col">등록일</th>
@@ -289,18 +289,25 @@ session_start();
                 <?php
                 include './connect.php'; // 데이터베이스 연결 정보 포함
 
-                // 최신 게시글 3개를 가져오는 쿼리
+                // 최신 게시글 5개를 가져오는 쿼리
                 $sql = 'SELECT * FROM board ORDER BY created DESC LIMIT 5';
                 $result = mysqli_query($conn, $sql);?>
 
                 <?php
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
-                    ?>
-                    <tr>
-                        <th scope="row">
-                            <?php echo $i++; ?>
-                        </th>
+                          $boardType = '';
+                      if ($row['freeboard'] == 1) {
+                          $boardType = '자유게시판';
+                       } elseif ($row['notification'] == 1) {
+                           $boardType = '공지사항';
+                        } elseif ($row['QandA'] == 1) {
+                           $boardType = 'Q&A';
+                       } elseif ($row['reference'] == 1) {
+                           $boardType = '자료실';
+                }
+                ?>
+                        <td><?php echo $boardType; ?></td>
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['created']; ?></td>
