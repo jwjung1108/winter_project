@@ -38,21 +38,32 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
     ?>
     <?php
 
-    $sql = "update q_comment set visible = 0 where number = '$number'";
+    $sql = "select visible from comment where number = '$number' and visible = 1";
+    $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-    $result = mysqli_query($conn, $sql);
-    if ($result === false) {
-        ?>
-        <script>
-            alert(""삭제에 문제가 생겼습니다.관리자에게 문의해주세요.";");
-            location.href = "./list_qboard.php";
-        </script>
-        <?php
+    if ($row['visible'] == 1) {
+        $sql = "update comment set visible = 0 where number = '$number'";
+        $result = mysqli_query($conn, $sql);
+        if ($result === false) {
+            ?>
+            <script>
+                alert(""삭제에 문제가 생겼습니다.관리자에게 문의해주세요.";");
+                location.href = "list_board.php";
+            </script>
+            <?php
+        } else {
+            ?>
+            <script>
+                alert("댓글이 삭제되었습니다.");
+                location.href = "list_board.php?=<?php ?>";
+            </script>
+            <?php
+        }
     } else {
         ?>
         <script>
-            alert("답변이 삭제되었습니다.");
-            location.href = "./list_qboard.php?=<?php ?>";
+            alert("이미 삭제된 댓글입니다.");
+            location.href = "list_board.php?=<?php ?>";
         </script>
         <?php
     }
