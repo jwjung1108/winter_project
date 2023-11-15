@@ -144,7 +144,7 @@ $result = mysqli_query($conn, $sql);
                 $sql = "select authority from users where id='$userId'";
                 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
                 if ($row['authority'] == 2) {
-                    ?><a href="./n_writeForm.php" class="btn btn-primary">작성</a>
+                    ?><a href="n_writeForm.php" class="btn btn-primary">작성</a>
                     <?php
                 }
             }
