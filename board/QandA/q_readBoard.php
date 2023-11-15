@@ -202,6 +202,7 @@ session_start();
                     <th scope="col"></th>
                 </tr>
             </thead>
+            <p></p>
             <tbody>
                 <?php
                 $i = 1;
