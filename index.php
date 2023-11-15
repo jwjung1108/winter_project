@@ -165,6 +165,9 @@ session_start();
         function goTonotificationBoardPage() {
             window.location.href = "/board/notification/list_nboard.php";
         }
+        function goToQandABoardPage(){
+            window.location.href = "/board/QandA/list_qboard.php";
+        }
         function logout() {
             const data = confirm("로그아웃 하시겠습니까?");
             if (data) {
@@ -258,7 +261,7 @@ session_start();
                 <div class="card-body card-body-custom">
                     <h5 class="card-title">Q&A</h5>
                     <p class="card-text">묻고 답하라.</p>
-                    
+                    <button onclick="goToQandABoardPage()">QandA</button>
                 </div>
             </div>
         </div>
