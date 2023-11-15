@@ -64,6 +64,7 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
         ?>
         <script>
             alert("이미 삭제된 댓글입니다.");
+            location.href = "list_board.php?=<?php ?>";
         </script>
         <?php
     }
