@@ -1,7 +1,7 @@
 <?php
 session_start();
 $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-include '../connect.php';
+include '../../connect.php';
 
 $number = $_GET['number'];
 $sql = "

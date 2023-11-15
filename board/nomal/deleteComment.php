@@ -1,5 +1,5 @@
 <?php
-include '../connect.php';
+include '../../connect.php';
 $number = $_GET['Number'];
 $sql = "select userID from comment where Number= '$number'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../connect.php';
+include '../../connect.php';
 
 
 // 연결 성공 시, 여기에 작업을 수행할 수 있습니다.

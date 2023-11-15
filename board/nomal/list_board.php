@@ -1,5 +1,5 @@
 <?php
-include '../connect.php';
+include '../../connect.php';
 
 require "./check_authority.php";
 

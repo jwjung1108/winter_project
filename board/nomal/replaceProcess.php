@@ -1,7 +1,7 @@
 <?php
 session_start();
 $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-include '../connect.php';
+include '../../connect.php';
 
 $sql = "update board set title ='{$_POST['title']}', board='{$_POST['board']}' where number = '{$_GET['number']}'";
 

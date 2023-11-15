@@ -160,7 +160,7 @@ session_start();
             window.location.href = "/join/signup.php";
         }
         function goTocommonBoardPage() {
-            window.location.href = "/board/list_board.php";
+            window.location.href = "/board/nomal/list_board.php";
         }
         function goTonotificationBoardPage() {
             window.location.href = "/board/notification/list_nboard.php";

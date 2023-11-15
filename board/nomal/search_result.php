@@ -1,5 +1,5 @@
 <?php
-include '../connect.php';
+include '../../connect.php';
 
 // 정렬 방식 설정
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
