@@ -202,7 +202,7 @@ session_start();
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <p></p>
+            
             <tbody>
                 <?php
                 $i = 1;
@@ -238,6 +238,7 @@ session_start();
                 <?php } ?>
 
         </table>
+        <p></p>
         <div class="text-center">
             <a href="q_writeComment.php?number=<?php echo $board['number']; ?>">[답변작성]</a>
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
