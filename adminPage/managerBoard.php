@@ -53,7 +53,7 @@
                         <td>
                             <?php echo $row['likes']; ?>
                         </td>
-                        <td><a href="../deleteBoard.php?number=<?php echo $row['number']; ?>">
+                        <td><a href="../board/deleteBoard.php?number=<?php echo $row['number']; ?>">
                                 <?php echo '삭제'; ?>
                             </a>
                         </td>
