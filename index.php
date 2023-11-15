@@ -271,8 +271,42 @@ session_start();
         
         
     </div>
+    
 </div>
 
+<div class="container mt-4">
+        <h2>최신 게시글</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">등록일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include '../../connect.php'; // 데이터베이스 연결 정보 포함
+
+                // 최신 게시글 3개를 가져오는 쿼리
+                $sql = 'SELECT * FROM board ORDER BY created DESC LIMIT 3';
+                $result = mysqli_query($conn, $sql);
+
+                while ($row = mysqli_fetch_array($result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $row['number']; ?></td>
+                        <td><?php echo $row['title']; ?></td>
+                        <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['created']; ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 
 
