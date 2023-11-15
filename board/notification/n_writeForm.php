@@ -2,8 +2,7 @@
 session_start();
 $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
 
-// 이전에 DB 연결을 정의한 부분이 필요합니다.
-// $conn = mysqli_connect("호스트", "사용자이름", "비밀번호", "데이터베이스이름");
+include '../../connect.php';
 
 // 2. SQL Injection 방지를 위해 Prepared Statements 사용
 $stmt = mysqli_prepare($conn, "SELECT authority FROM users WHERE id = ?");
