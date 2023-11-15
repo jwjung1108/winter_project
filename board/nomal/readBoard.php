@@ -149,7 +149,7 @@ if ($userId == '') {
 
         /* 목록으로 돌아가기 버튼 스타일 */
         .text-center .btn {
-            margin-top: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -206,7 +206,6 @@ if ($userId == '') {
         <!-- 목록, 수정, 삭제 -->
         <div id="bo_ser">
             <ul>
-                <li><a href="/">[목록으로]</a></li>
                 <li><a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
                 <li><a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
                 <li><a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
