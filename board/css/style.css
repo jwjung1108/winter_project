@@ -135,7 +135,7 @@ body {
     width: 100px;
     background-color: var(--primary-color);
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
 }
