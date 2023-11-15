@@ -2,12 +2,14 @@
 <html lang="ko">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>학업 노하우 공유 게시판</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f8ff;
-            padding: 40px;
+            padding: 20px;
+            margin: 0;
         }
         form {
             background-color: white;
@@ -17,7 +19,7 @@
             max-width: 500px;
             margin: 0 auto;
         }
-        input[type="title"], textarea, input[type="file"] {
+        input[type="text"], textarea, input[type="file"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
