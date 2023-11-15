@@ -168,6 +168,9 @@ session_start();
         function goToQandABoardPage(){
             window.location.href = "/board/QandA/list_qboard.php";
         }
+        function goToReferencePage(){
+            window.location.href = "/board/reference/list_reference.php";
+        }
         function logout() {
             const data = confirm("로그아웃 하시겠습니까?");
             if (data) {
@@ -249,7 +252,7 @@ session_start();
                 <div class="card-body card-body-custom">
                     <h5 class="card-title">자료실</h5>
                     <p class="card-text">좋은 자료가 많다.</p>
-                    
+                    <button onclick="goToReferencePage()">자료실</button>
                 </div>
             </div>
         </div>
