@@ -208,18 +208,30 @@ session_start();
 
     <!-- Section Title -->
     <div class="section-title">
-        주요 기능
+        메뉴
     </div>
     
     <!-- Features -->
     <div class="row">
-        <!-- 강의 평가 -->
+        <!-- 공지 사항 -->
         <div class="col-md-3">
             <div class="card card-custom">
-                <img src="/image/1.webp" alt="자유게시판">
+                <img src="/image/notice.png" alt="공지 사항">
+                <div class="card-body card-body-custom ">
+                    <h5 class="card-title">공지사항</h5>
+                    <p class="card-text">공지사항 읽어라.</p>
+                    <button onclick="goTonotificationBoardPage()">공지사항</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 자유 게시판 -->
+        <div class="col-md-3">
+            <div class="card card-custom">
+                <img src="/image/tip.png" alt="자유게시판">
                 <div class="card-body card-body-custom">
                     <h5 class="card-title">자유게시판</h5>
-                    <p class="card-text">강의에 대한 리뷰와 평점을 남기고 공유할 수 있습니다.</p>
+                    <p class="card-text">자유게시판 사용해라.</p>
                     <?php if (isset($_SESSION['userId'])) { ?>
                 <button onclick="goTocommonBoardPage()">자유게시판</button>
             <?php } ?>
@@ -227,41 +239,31 @@ session_start();
             </div>
         </div>
         
-        <!-- 과제 공유 -->
+        <!-- 자료실 -->
         <div class="col-md-3">
             <div class="card card-custom">
-                <img src="/image/1.webp" alt="과제 공유">
+                <img src="/image/resource.png" alt="resouce">
                 <div class="card-body card-body-custom">
-                    <h5 class="card-title">과제 공유</h5>
-                    <p class="card-text">과제 자료를 업로드하고 다른 사용자와 아이디어를 공유하세요.</p>
+                    <h5 class="card-title">자료실</h5>
+                    <p class="card-text">좋은 자료가 많다.</p>
                     
                 </div>
             </div>
         </div>
         
-        <!-- 학습 자료실 -->
+        <!-- Q&A -->
         <div class="col-md-3">
             <div class="card card-custom">
-                <img src="/image/1.webp" alt="학습 자료실">
+                <img src="/image/Q&A.png" alt="Q&A">
                 <div class="card-body card-body-custom">
-                    <h5 class="card-title">학습 자료실</h5>
-                    <p class="card-text">다양한 학습 자료를 다운로드 받고, 자신만의 자료도 공유해보세요.</p>
+                    <h5 class="card-title">Q&A</h5>
+                    <p class="card-text">묻고 답하라.</p>
                     
                 </div>
             </div>
         </div>
         
-        <!-- 토론 포럼 -->
-        <div class="col-md-3">
-            <div class="card card-custom">
-                <img src="/image/1.webp" alt="공지 사항">
-                <div class="card-body card-body-custom ">
-                    <h5 class="card-title">공지사항</h5>
-                    <p class="card-text">학업 관련 토론에 참여하고 지식을 공유하세요.</p>
-                    <button onclick="goTonotificationBoardPage()">공지사항</button>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 
