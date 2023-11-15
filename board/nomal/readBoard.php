@@ -36,7 +36,7 @@ if ($userId == '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>게시판</title>
-    <link rel="stylesheet" type="text/css" href="/BBS/css/style.css" />
+   
     <style>
         /* 반응형 디자인 */
         @media (max-width: 768px) {
