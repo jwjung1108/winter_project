@@ -11,21 +11,26 @@
             padding: 20px;
             margin: 0;
         }
+
         form {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
+            max-width: 800px;
             margin: 0 auto;
         }
-        input[type="text"], textarea, input[type="file"] {
+
+        input[type="text"],
+        textarea,
+        input[type="file"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
         input[type="submit"] {
             width: 100%;
             padding: 10px;
@@ -35,8 +40,16 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            form {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
