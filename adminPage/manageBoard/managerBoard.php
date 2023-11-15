@@ -62,17 +62,18 @@
                             </a>
                         </td>
                     </tr>
-                <?php } 
-                if($i == 1){
-                    echo '게시글이 존재하지 않습니다.';
-                }
-                
-                
-                ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
 
+    <div>
+        <?php
+        if ($i == 1) {
+            echo '게시글이 존재하지 않습니다.';
+        }
+        ?>
+    </div>
     <div>
         <a href='../adminpage.php'>
             이전
