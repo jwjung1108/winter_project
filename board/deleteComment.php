@@ -39,9 +39,9 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
         <?php
     }
     $sql = "select visible from board where number = '$number' and visible = 1";
-    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-    if($result == true){
+    if($row['visible'] == 1){
         $sql = "update comment set visible = 0 where number = '$number'";
         $result = mysqli_query($conn, $sql);
         if ($result === false) {
