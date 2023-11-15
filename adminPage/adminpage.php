@@ -2,44 +2,6 @@ This is admin Page test!!!!
 
 <?php
 include '../connect.php';
-
-// 정렬 방식 설정
-$sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
-$sortIcon = ($sort == 'number') ? '▲' : '▼';
-
-// 정렬 기준 설정
-$orderBy = '';
-switch ($sort) {
-    case 'views':
-        $orderBy = 'ORDER BY views';
-        break;
-    case 'likes':
-        $orderBy = 'ORDER BY likes';
-        break;
-    default:
-        $orderBy = 'ORDER BY number';
-        break;
-}
-
-// SQL 쿼리문 수정
-$search_con = isset($_GET['search']) ? $_GET['search'] : '';
-$category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
-
-// 선택한 카테고리 체크박스 값 가져오기
-$selectedCategories = isset($_GET['category']) ? $_GET['category'] : array();
-
-// 카테고리를 OR 연산으로 조합
-$categoryCondition = '';
-if (!empty($selectedCategories)) {
-    $categoryCondition = "AND (";
-    foreach ($selectedCategories as $selectedCategory) {
-        $categoryCondition .= "$selectedCategory = 1 OR ";
-    }
-    $categoryCondition = rtrim($categoryCondition, " OR ") . ")";
-}
-
-$sql = "SELECT * FROM board WHERE $category LIKE '%$search_con%' $categoryCondition AND isSecret = 0 $orderBy";
-$result = mysqli_query($conn, $sql);
 ?>
 
 <!doctype html>

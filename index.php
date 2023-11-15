@@ -172,7 +172,7 @@ session_start();
             }
         }
         function goToadminPage() {
-            window.location.href = "/adminpage.php";
+            window.location.href = "/adminPage/adminpage.php";
         }
     </script>
 </head>
