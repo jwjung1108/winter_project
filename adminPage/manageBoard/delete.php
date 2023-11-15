@@ -22,7 +22,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
             ?>
             <script>
                 alert("'접근 권한이 없습니다.';");
-                location.href = "list_board.php";
+                location.href = "managerBoard.php";
             </script>
             <?php
             exit();
