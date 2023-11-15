@@ -26,7 +26,7 @@ include '../board/check_authority.php';
     <script>
         // 클릭 시 실행될 명령
         function goManagerBoardPage(){
-            window.location.href = "/adminPage/managerBoard.php";
+            window.location.href = "/adminPage/manageBoard/managerBoard.php";
         }
 
 

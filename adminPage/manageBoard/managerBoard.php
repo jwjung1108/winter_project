@@ -10,8 +10,8 @@
 <body>
     this is Managerboard Page!!
     <?php
-    include '../connect.php';
-    include '../board/check_authority.php';
+    include '../../connect.php';
+    include '../../board/check_authority.php';
 
     $sql = 'select * from board';
     $result = mysqli_query($conn, $sql)
@@ -53,7 +53,7 @@
                         <td>
                             <?php echo $row['likes']; ?>
                         </td>
-                        <td><a href="../board/deleteBoard.php?number=<?php echo $row['number']; ?>">
+                        <td><a href="deleteBoard.php?number=<?php echo $row['number']; ?>">
                                 <?php echo '삭제'; ?>
                             </a>
                         </td>
