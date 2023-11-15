@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+include '../connect.php';
+
+// 정렬 방식 설정
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
+$sortIcon = ($sort == 'number') ? '▲' : '▼';
+
+// 정렬 기준 설정
+$orderBy = '';
+switch ($sort) {
+    case 'views':
+        $orderBy = 'ORDER BY views';
+        break;
+    case 'likes':
+        $orderBy = 'ORDER BY likes';
+        break;
+    default:
+        $orderBy = 'ORDER BY number';
+        break;
+}
+
+// SQL 쿼리문 수정
+?>
+
+<!doctype html>
 <html lang="ko">
 
 <head>
@@ -16,8 +40,9 @@
 
     <title>게시판</title>
     <style>
-        body {
+         body {
             padding-top: 50px;
+            background-color: #f4f4f4;
         }
 
         .container {
@@ -35,29 +60,60 @@
 
         h1 {
             margin-top: 30px;
+            font-size: 24px;
+            text-align: center;
         }
 
-        .text-end {
-            margin-bottom: 20px;
+        h4 {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
         }
 
         #search_box {
             margin: 20px 0;
+            text-align: center;
         }
 
-        /* 추가한 스타일 */
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        #search_box select,
+        #search_box input[type="text"],
+        #search_box button {
+            margin-right: 10px;
         }
 
-        /* 반응형 스타일 */
-        @media (max-width: 768px) {
-            .container {
-                max-width: 90%;
-            }
+        #search_box button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #search_box button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f5f5f5;
+        }
+
+        .text-center {
+            text-align: center;
         }
     </style>
+
 </head>
 
 <body>
@@ -79,6 +135,19 @@
         $categoryCondition = rtrim($categoryCondition, " OR ") . ")";
     }
 
+
+    // $boardNames = array(
+    //     'freeboard' => '자유게시판',
+    //     'notification' => '공지사항',
+    //     'QandA' => 'Q&A'
+    // );
+
+    // SQL 쿼리문 수정
+    $sql = "SELECT * FROM board WHERE $category LIKE '%$search_con%' $categoryCondition AND isSecret = 0 $orderBy";
+    $result = mysqli_query($conn, $sql);
+
+
+
     if ($category == 'title') {
         $catname = '제목';
     } else if ($category == 'username') {
@@ -88,15 +157,22 @@
     }
 
     ?>
+    <h1>
+        <?php echo $catname; ?>:
+        <?php echo $search_con; ?> 검색결과
+    </h1>
+
+
+    <h4 style="margin-top:30px;"><a href="../index.php">홈으로</a></h4>
+
+    <?php
+
+    ?>
+
+
     <div class="container">
         <h1 class="text-center">게시판</h1>
 
-        <h2>
-            <?php echo $catname; ?>:
-            <?php echo $search_con; ?> 검색결과
-        </h2>
-
-        <h4 style="margin-top:30px;"><a href="../index.php">홈으로</a></h4>
 
         <table class="table">
             <thead>
@@ -152,31 +228,33 @@
                 <button>검색</button>
             </form>
         </div>
-    </div>
 
-    <script>
-        function validateForm() {
-            // 체크박스들을 선택
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
-            var isChecked = false;
+        <script>
+            function validateForm() {
+                // 체크박스들을 선택
+                var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
+                var isChecked = false;
 
-            // 하나라도 체크되었는지 확인
-            checkboxes.forEach(function (checkbox) {
-                if (checkbox.checked) {
-                    isChecked = true;
+                // 하나라도 체크되었는지 확인
+                checkboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        isChecked = true;
+                    }
+                });
+
+                // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
+                if (!isChecked) {
+                    alert("하나 이상의 카테고리를 선택해주세요.");
+                    return false;
                 }
-            });
 
-            // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
-            if (!isChecked) {
-                alert("하나 이상의 카테고리를 선택해주세요.");
-                return false;
+                // 체크가 되었을 때 폼 제출
+                return true;
             }
+        </script>
 
-            // 체크가 되었을 때 폼 제출
-            return true;
-        }
-    </script>
+
+
 </body>
 
 </html>
