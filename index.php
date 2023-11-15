@@ -291,7 +291,9 @@ session_start();
 
                 // 최신 게시글 3개를 가져오는 쿼리
                 $sql = 'SELECT * FROM board ORDER BY created DESC LIMIT 3';
-                $result = mysqli_query($conn, $sql);
+                $result = mysqli_query($conn, $sql);?>
+                
+                <?php
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
                     ?>
