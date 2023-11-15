@@ -149,7 +149,7 @@ if ($userId == '') {
 
         /* 목록으로 돌아가기 버튼 스타일 */
         .text-center .btn {
-            margin-top: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -266,6 +266,7 @@ if ($userId == '') {
                     ?>
                 </tbody>
             </table>
+            <p></p>
             <div class="text-center">
                 <a href="writeComment.php?number=<?php echo $board['number']; ?>">[댓글작성]</a>
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
