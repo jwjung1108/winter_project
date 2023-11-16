@@ -58,12 +58,11 @@ $result = mysqli_query($conn, $sql);
             color: #212529;
         }
         .important{
-            background-color: #ffc107; /* 중요 공지사항 배경색 */
-  color: #333; /* 텍스트 색상 */
-  font-weight: bold; /* 글꼴 두껍게 */
-  border: 2px solid #ffab00; /* 테두리 스타일과 색상 */
-  padding: 10px; /* 안쪽 여백 */
-  border-radius: 5px; /* 둥근 테두리 */
+            background-color: #00000026; /* 중요 공지사항 배경색 */
+            color: #000; /* 텍스트 색상 */
+            font-weight: bold; /* 글꼴 두껍게 */
+            border: 2px solid #00000026; /* 테두리 스타일과 색상 */
+            border-radius: 5px; /* 둥근 테두리 */
         }
         .generic{
 
