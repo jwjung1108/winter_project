@@ -89,7 +89,7 @@ if ($row['authority'] != 2) {
 </head>
 
 <body>
-    <form action="saveBoard.php" method="POST" enctype="multipart/form-data">
+    <form action="n_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 공지사항)"></p>
         <p><textarea name="board" placeholder="본문 (경고메세지)" rows="8"></textarea></p>

@@ -78,7 +78,7 @@
 </head>
 
 <body>
-    <form action="saveBoard.php" method="POST" enctype="multipart/form-data">
+    <form action="q_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
         <p><textarea name="board" placeholder="본문 (질문해주세요.)" rows="8"></textarea></p>
