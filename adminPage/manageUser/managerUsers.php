@@ -73,6 +73,7 @@
                     <th scope="col">이름</th>
                     <th scope="col">아이디</th>
                     <th scope="col">이메일</th>
+                    <th scope="col">등급</th>
                     
                 </tr>
             </thead>
@@ -85,6 +86,7 @@
                         <td><?php echo $row['nickname']; ?></td>
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['user_rank']; ?> </td>
                         <td><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></td>
                     </tr>
                 <?php } ?>
