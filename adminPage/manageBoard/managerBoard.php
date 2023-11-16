@@ -11,7 +11,7 @@
     this is Managerboard Page!!
     <?php
     include '../../connect.php';
-    include '../../board/check_authority.php';
+    include '../check_admin.php';
 
     $sql = 'select * from board';
     $result = mysqli_query($conn, $sql)
