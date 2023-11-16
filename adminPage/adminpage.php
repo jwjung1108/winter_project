@@ -80,7 +80,7 @@ include '../board/check_authority.php';
 
     <div class="button-container">
         <button class="custom-button" onclick="goManagerBoardPage()">페이지 관리</button>
-        <button class="custom-button" onclick="executeCommand(2)">버튼 2</button>
+        <button class="custom-button" onclick="executeCommand(2)">유저 관리</button>
         <button class="custom-button" onclick="executeCommand(3)">버튼 3</button>
         <button class="custom-button" onclick="executeCommand(4)">버튼 4</button>
         <button class="custom-button" onclick="executeCommand(5)">버튼 5</button>
