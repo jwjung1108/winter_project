@@ -149,7 +149,7 @@
 
 
     </div>
-    <div>
+    <div class="container">
         <a href='../adminpage.php'>
             이전
         </a>
