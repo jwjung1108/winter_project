@@ -112,7 +112,7 @@
                         <td>
                             <?php echo $row['user_rank']; ?>
                         </td>
-                        <td><button onclick="check()"><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></button>
+                        <td><button onclick="check()">삭제</button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -121,9 +121,9 @@
         <script>
             const data = confirm("삭제 하시겠습니까?");
             if (data) {
-                return true
+                location.href = 'delete_user.php?id=<?php echo $row['id']; ?>'
             }
-            else false
+            else location.href = 'managerUsers.php'
         </script>
         <?php
         if ($i == 1) {
