@@ -23,6 +23,7 @@ $like = 0;
 
 $title = $_POST['title'];
 $board = $_POST['board'];
+$important = $_POST['important'];
 
 $fileDestination = '';
 
@@ -59,7 +60,7 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     $sql = "
         INSERT INTO board
         (title, board, username, views, likes, created, visible, freeboard, notification, QandA, isSecret, filepath, filename)
-        VALUES ('$title', '$board', '$userId', '$view', '$like', NOW(), 1, 0, 1, 0, 0, '$fileDestination', '$fileName')
+        VALUES ('$title', '$board', '$userId', '$view', '$like', NOW(), 1, 0, 1, 0, 0, '$fileDestination', '$fileName', '$important')
     ";
 
     $result = mysqli_query($conn, $sql);
