@@ -101,7 +101,7 @@
                         <td>
                             <?php echo $row['user_rank']; ?>
                         </td>
-                        <td><a href='delete_user?id=<?php echo $row['id']?>'>삭제<a>
+                        <td><a href='delete_user.php?id=<?php echo $row['id']?>'>삭제<a>
                         </td>
                     </tr>
                 <?php } ?>
