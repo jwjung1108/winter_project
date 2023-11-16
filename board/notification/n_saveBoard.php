@@ -23,7 +23,7 @@ $like = 0;
 
 $title = $_POST['title'];
 $board = $_POST['board'];
-$important = isset($_POST['important']) ? $_POST['important'] : 0;
+$important = isset($_POST['important']) ? 1 : 0;
 
 
 $fileDestination = '';
