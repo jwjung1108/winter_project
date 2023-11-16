@@ -81,13 +81,41 @@
 <body> 
 <div class="container">
     <h2>게시판관리</h2>
+    <form action="" method="get">
+        <select name="board_type">
+            <option value="all">모든 게시판</option>
+            <option value="nofi">공지사항</option>
+            <option value="free">자유게시판</option>
+            <option value="refe">자료실</option>
+            <option value="qna">Q&A</option>
+        </select>
+        <input type="submit" value="검색" />
+    </form>
+
     <?php
     include '../../connect.php';
     include '../check_admin.php';
 
-    $sql = 'select * from board';
-    $result = mysqli_query($conn, $sql)
-        ?>
+    $board_type = $_GET['board_type'] ?? 'all';
+    switch ($board_type) {
+        case 'nofi':
+            $sql = "SELECT * FROM board WHERE nofi = 1";
+            break;
+        case 'free':
+            $sql = "SELECT * FROM board WHERE free = 1";
+            break;
+        case 'refe':
+            $sql = "SELECT * FROM board WHERE refe = 1";
+            break;
+        case 'qna':
+            $sql = "SELECT * FROM board WHERE qna = 1";
+            break;
+        default:
+            $sql = "SELECT * FROM board";
+            break;
+    }
+    $result = mysqli_query($conn, $sql);
+    ?>
 
         
     <div>
