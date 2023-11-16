@@ -327,7 +327,7 @@ session_start();
                            $class = 'reference';
                 }
                 ?>
-                        <td class='{$class}'><?php echo $boardType; ?></td>
+                        <td class='<?php echo $class; ?>'><?php echo $boardType; ?></td>
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['created']; ?></td>
