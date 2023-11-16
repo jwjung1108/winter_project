@@ -25,6 +25,11 @@ $title = $_POST['title'];
 $board = $_POST['board'];
 $important = $_POST['important'];
 
+if($important == ""){
+    $important = 1;
+}
+
+
 $fileDestination = '';
 
 $file = $_FILES['file'];
