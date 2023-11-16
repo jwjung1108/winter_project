@@ -98,17 +98,17 @@
 
     $board_type = $_GET['board_type'] ?? 'all';
     switch ($board_type) {
-        case 'nofi':
-            $sql = "SELECT * FROM board WHERE nofi = 1";
+        case 'notification':
+            $sql = "SELECT * FROM board WHERE notification = 1";
             break;
-        case 'free':
-            $sql = "SELECT * FROM board WHERE free = 1";
+        case 'freeboard':
+            $sql = "SELECT * FROM board WHERE freeboard = 1";
             break;
-        case 'refe':
-            $sql = "SELECT * FROM board WHERE refe = 1";
+        case 'reference':
+            $sql = "SELECT * FROM board WHERE reference = 1";
             break;
-        case 'qna':
-            $sql = "SELECT * FROM board WHERE qna = 1";
+        case 'qanda':
+            $sql = "SELECT * FROM board WHERE qanda = 1";
             break;
         default:
             $sql = "SELECT * FROM board";
