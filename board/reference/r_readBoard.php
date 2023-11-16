@@ -206,7 +206,7 @@ if ($userId == '') {
         <!-- 목록, 수정, 삭제 -->
         <div id="bo_ser">
             <ul>
-                <li><a href="/">[목록으로]</a></li>
+                
                 <li><a href="r_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
                 <li><a href="r_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
                 <li><a href="r_boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
@@ -267,6 +267,7 @@ if ($userId == '') {
                     ?>
                 </tbody>
             </table>
+            <p></p>
             <div class="text-center">
                 <a href="r_writeComment.php?number=<?php echo $board['number']; ?>">[댓글작성]</a>
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
