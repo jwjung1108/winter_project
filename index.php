@@ -290,7 +290,7 @@ session_start();
 </div>
 
 <div class="container mt-4">
-        <h2>최신 게시글</h2>
+        <h2>공지사항</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -305,7 +305,7 @@ session_start();
                 include './connect.php'; // 데이터베이스 연결 정보 포함
 
                 // 최신 게시글 5개를 가져오는 쿼리
-                $sql = 'SELECT * FROM board ORDER BY created DESC LIMIT 5';
+                $sql = 'SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY created DESC LIMIT 5';
                 $result = mysqli_query($conn, $sql);?>
 
                 <?php
