@@ -112,12 +112,19 @@
                         <td>
                             <?php echo $row['user_rank']; ?>
                         </td>
-                        <td><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></td>
+                        <td><button onclick="check()"><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></button>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
-
+        <script>
+            const data = confirm("삭제 하시겠습니까?");
+            if (data) {
+                return true
+            }
+            else false
+        </script>
         <?php
         if ($i == 1) {
             echo '사용자가 존재하지 않습니다.';
