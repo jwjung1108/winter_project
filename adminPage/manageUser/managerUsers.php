@@ -5,6 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>유저 관리</title>
+    <!-- script -->
+    <script>
+        function chekc() {
+            const data = confirm("삭제 하시겠습니까?");
+            if (data) {
+                location.href = "delete_user.php?id=<?php echo $row['id']; ?>";
+            }
+        }
+    </script>
+
+
+    <!-- css -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,11 +42,14 @@
             margin: 20px 0;
         }
 
-        .table, .table th, .table td {
+        .table,
+        .table th,
+        .table td {
             border: 1px solid #ddd;
         }
 
-        .table th, .table td {
+        .table th,
+        .table td {
             padding: 10px;
             text-align: left;
         }
@@ -61,7 +76,7 @@
         <?php
         include '../../connect.php';  // 데이터베이스 연결 정보 포함
         include '../check_admin.php';  // 권한 확인
-
+        
         $sql = 'SELECT * FROM users';  // users 테이블 조회
         $result = mysqli_query($conn, $sql);
         ?>
@@ -74,7 +89,7 @@
                     <th scope="col">아이디</th>
                     <th scope="col">이메일</th>
                     <th scope="col">등급</th>
-                    
+
                 </tr>
             </thead>
             <tbody>
@@ -82,12 +97,22 @@
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) { ?>
                     <tr>
-                        <th scope="row"><?php echo $i++; ?></th>
-                        <td><?php echo $row['nickname']; ?></td>
-                        <td><?php echo $row['id']; ?></td>
-                        <td><?php echo $row['email']; ?></td>
-                        <td><?php echo $row['user_rank']; ?> </td>
-                        <td><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></td>
+                        <th scope="row">
+                            <?php echo $i++; ?>
+                        </th>
+                        <td>
+                            <?php echo $row['nickname']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['id']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['email']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['user_rank']; ?>
+                        </td>
+                        <td><button onclick="check()">삭제</button></td>
                     </tr>
                 <?php } ?>
             </tbody>
