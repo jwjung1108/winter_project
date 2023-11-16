@@ -107,7 +107,7 @@ $result = mysqli_query($conn, $sql);
                         <th scope="row">
                             <?php echo $i++; ?>
                         </th>
-                        <td><a href="readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
+                        <td><a href="/nomal/readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
                         </td>
                         <td>
                             <?php echo $row['username']; ?>
