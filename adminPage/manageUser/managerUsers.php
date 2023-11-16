@@ -82,8 +82,8 @@
                 while ($row = mysqli_fetch_array($result)) { ?>
                     <tr>
                         <th scope="row"><?php echo $i++; ?></th>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['userId']; ?></td>
+                        <td><?php echo $row['nickname']; ?></td>
+                        <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></td>
                     </tr>
