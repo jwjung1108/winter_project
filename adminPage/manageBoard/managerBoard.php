@@ -105,7 +105,7 @@
             $sql = "SELECT * FROM board WHERE freeboard = 1";
             break;
         case 'reference':
-            $sql = "SELECT * FROM board WHERE reference = 1";
+            $sql = "SELECT * FROM reference = 1";
             break;
         case 'qanda':
             $sql = "SELECT * FROM board WHERE qanda = 1";
