@@ -6,58 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판 관리</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+       body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
+            background-color: #e9ecef;
+            color: #495057;
         }
 
         .container {
-            width: 80%;
-            margin: auto;
+            max-width: 95%;
+            margin: 30px auto;
             padding: 20px;
             background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         .table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        .table, .table th, .table td {
-            border: 1px solid #ddd;
+            margin-top: 20px;
         }
 
         .table th, .table td {
-            padding: 10px;
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
             text-align: left;
         }
 
         .table th {
             background-color: #007bff;
             color: white;
+            font-weight: normal;
         }
 
-        a {
+        .table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a, .button-link {
             color: #007bff;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover, .button-link:hover {
+            background-color: #007bff;
+            color: white;
             text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .footer {
+            margin-top: 20px;
+            text-align: center;
         }
+
     </style>
 </head>
 
 <body> 
 <div class="container">
-    <h1>게시판관리</h1>
+    <h2>게시판관리</h2>
     <?php
     include '../../connect.php';
     include '../check_admin.php';
