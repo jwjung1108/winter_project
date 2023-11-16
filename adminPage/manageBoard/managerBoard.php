@@ -4,11 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Managerboard Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #017572;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px 0;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .button-link:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 
 <body>
-    this is Managerboard Page!!
+    <h1>게시판관리</h1>
     <?php
     include '../../connect.php';
     include '../check_admin.php';
