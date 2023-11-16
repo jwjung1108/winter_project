@@ -9,7 +9,7 @@ if(isset($_GET['id'])) {
 <script>
     const confirmed = confirm('사용자를 삭제하시겠습니까?');
     if (confirmed) {
-        window.location.href = 'delete_user.php?id=<?php echo $userid; ?>';
+        window.location.href = 'delete_user_process.php?id=<?php echo $userid; ?>';
     } else {
         window.location.href = 'managerUsers.php';
     }
