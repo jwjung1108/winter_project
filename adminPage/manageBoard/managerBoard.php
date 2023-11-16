@@ -55,7 +55,8 @@
     </style>
 </head>
 
-<body>
+<body> 
+<div class="container">
     <h1>게시판관리</h1>
     <?php
     include '../../connect.php';
@@ -121,6 +122,9 @@
             echo '게시글이 존재하지 않습니다.';
         }
         ?>
+    </div>
+
+
     </div>
     <div>
         <a href='../adminpage.php'>
