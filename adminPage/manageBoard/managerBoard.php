@@ -85,9 +85,20 @@
     include '../../connect.php';
     include '../check_admin.php';
 
-    $sql = 'select * from board';
-    $result = mysqli_query($conn, $sql)
-        ?>
+    $categories = ['공지', '자유게시판', '자료실', 'Q&A'];
+    $currentCategory = $_GET['category'] ?? '공지'; // Default to '공지' or use a selected category
+
+    echo "<div>";
+    foreach ($categories as $category) {
+        echo "<a href='?category=$category' class='button-link'>$category</a> ";
+    }
+    echo "</div>";
+
+    $sql = "SELECT * FROM board WHERE category = '$currentCategory'";
+    $result = mysqli_query($conn, $sql);
+    ?>
+
+
     <div>
         <table class="table">
             <thead>
@@ -149,7 +160,7 @@
 
 
     </div>
-    <div>
+    <div class="container">
         <a href='../adminpage.php'>
             이전
         </a>
