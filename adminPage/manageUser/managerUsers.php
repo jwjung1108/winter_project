@@ -101,7 +101,7 @@
                         <td>
                             <?php echo $row['user_rank']; ?>
                         </td>
-                        <td><button onclick="DoCheck(<?php echo $row['id']; ?>)">삭제</button>
+                        <td><a href='delete_user?id=<?php echo $row['id']?>'>삭제<a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -118,16 +118,6 @@
     <div class="container">
         <a href='../adminpage.php'>이전</a>
     </div>
-
-    <script>
-        function DoCheck(id) {
-            const data = confirm("삭제 하시겠습니까?");
-            if (data) {
-                location.href = 'delete_user.php?id=' + id;
-            }
-            else location.href = 'managerUsers.php'
-        }
-    </script>
 </body>
 
 </html>
