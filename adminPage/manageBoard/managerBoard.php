@@ -4,11 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>게시판 관리</title>
+    <style>
+       body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: #495057;
+        }
+
+        .container {
+            max-width: 95%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: normal;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a, .button-link {
+            color: #007bff;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover, .button-link:hover {
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
 </head>
 
-<body>
-    this is Managerboard Page!!
+<body> 
+<div class="container">
+    <h2>게시판관리</h2>
     <?php
     include '../../connect.php';
     include '../check_admin.php';
@@ -73,6 +145,9 @@
             echo '게시글이 존재하지 않습니다.';
         }
         ?>
+    </div>
+
+
     </div>
     <div>
         <a href='../adminpage.php'>
