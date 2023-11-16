@@ -12,14 +12,14 @@ $sortIcon = ($sort == 'number') ? '▲' : '▼';
 $orderBy = '';
 switch ($sort) {
     case 'views':
-        $orderBy = 'ORDER BY views';
+        $orderBy = 'views';
         break;
     default:
-        $orderBy = 'ORDER BY number';
+        $orderBy = 'number';
         break;
 }
 
-$sql = "SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 $orderBy";
+$sql = "SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY important DESC, $orderBy desc";
 $result = mysqli_query($conn, $sql);
 
 ?>
