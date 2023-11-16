@@ -1,7 +1,7 @@
 <?php
 include '../../connect.php';
 
-require "./check_authority.php";
+require "../check_authority.php";
 
 
 
