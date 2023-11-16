@@ -153,21 +153,14 @@ session_start();
             color: #003d82;
         }
 
-        .freeboard {
-            color: blue;
-        }
-
-        .notification {
+        .important {
             color: red;
         }
 
-        .qanda {
-            color: green;
+        .generic {
+            color: blue;
         }
 
-        .reference {
-            color: purple;
-        }
     </style>
     <script>
         function goToLoginPage() {
@@ -306,7 +299,7 @@ session_start();
                 include './connect.php'; // 데이터베이스 연결 정보 포함
                 
                 // 최신 게시글 5개를 가져오는 쿼리
-                $sql = 'SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY created DESC LIMIT 5';
+                $sql = 'SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY important DESC, created DESC LIMIT 5';
                 $result = mysqli_query($conn, $sql); ?>
 
                 <?php
@@ -314,18 +307,12 @@ session_start();
                 while ($row = mysqli_fetch_array($result)) {
                     $boardType = '';
                     $class = '';
-                    if ($row['freeboard'] == 1) {
-                        $boardType = '자유게시판';
-                        $class = 'freeboard';
-                    } elseif ($row['notification'] == 1) {
-                        $boardType = '공지사항';
-                        $class = 'notification';
-                    } elseif ($row['QandA'] == 1) {
-                        $boardType = 'Q&A';
-                        $class = 'qanda';
-                    } elseif ($row['reference'] == 1) {
-                        $boardType = '자료실';
-                        $class = 'reference';
+                    if ($row['important'] == 1) {
+                        $boardType = '중요 공지사항';
+                        $class = 'important';
+                    } elseif ($row['important'] == 0) {
+                        $boardType = '일반 공지사항';
+                        $class = 'generic';
                     }
                     ?>
                     <td class='<?php echo $class; ?>'>
