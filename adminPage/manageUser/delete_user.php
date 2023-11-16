@@ -10,11 +10,13 @@ $result = mysqli_query($conn, $sql);
 
 ?>
 <script>
-    alert("<?php echo "$userid"?> 유저가 삭제되었습니다.");
-    location.href = 'managerUsers.php';
+    const data = confirm("로그아웃 하시겠습니까?");
+    if (data) {
+        alert("<?php echo "$userid" ?> 유저가 삭제되었습니다.");
+        location.href = 'managerUsers.php';
+    }
+    else {
+        location.href = 'managerUsers.php';
+    }
+
 </script>
-
-
-
-
-

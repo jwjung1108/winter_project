@@ -1,11 +1,3 @@
-<?php
-include '../../connect.php';  // 데이터베이스 연결 정보 포함
-include '../check_admin.php';  // 권한 확인
-
-$sql = 'SELECT * FROM users';  // users 테이블 조회
-$result = mysqli_query($conn, $sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,10 +7,10 @@ $result = mysqli_query($conn, $sql);
     <title>유저 관리</title>
     <!-- script -->
     <script>
-        function check(id) {
+        function chekc() {
             const data = confirm("삭제 하시겠습니까?");
             if (data) {
-                location.href = "delete_user.php?id=" + id;
+                location.href = "/join/logoutProcess.php";
             }
         }
     </script>
@@ -81,6 +73,13 @@ $result = mysqli_query($conn, $sql);
 <body>
     <div class="container">
         <h2>User Management</h2>
+        <?php
+        include '../../connect.php';  // 데이터베이스 연결 정보 포함
+        include '../check_admin.php';  // 권한 확인
+        
+        $sql = 'SELECT * FROM users';  // users 테이블 조회
+        $result = mysqli_query($conn, $sql);
+        ?>
 
         <table class="table">
             <thead>
@@ -113,7 +112,7 @@ $result = mysqli_query($conn, $sql);
                         <td>
                             <?php echo $row['user_rank']; ?>
                         </td>
-                        <td><button onclick="check(<?php echo $row['id']; ?>)">삭제</button></td>
+                        <td><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
