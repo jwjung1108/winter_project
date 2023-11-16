@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $sql);
                         <option value="username">글쓴이</option>
                         <option value="board">내용</option>
                     </select>
-                    <input type="text" name="search" size="40" required="required" />
+                    <input type="text" name="search" required="required" />
 
                     <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
                     <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
