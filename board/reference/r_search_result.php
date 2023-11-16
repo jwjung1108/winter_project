@@ -20,23 +20,23 @@ switch ($sort) {
 }
 
 // SQL 쿼리문 수정
-$search_con = isset($_GET['search']) ? $_GET['search'] : '';
-$category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
+// $search_con = isset($_GET['search']) ? $_GET['search'] : '';
+// $category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
 
-// 선택한 카테고리 체크박스 값 가져오기
-$selectedCategories = isset($_GET['category']) ? $_GET['category'] : array();
+// // 선택한 카테고리 체크박스 값 가져오기
+// $selectedCategories = isset($_GET['category']) ? $_GET['category'] : array();
 
-// 카테고리를 OR 연산으로 조합
-$categoryCondition = '';
-if (!empty($selectedCategories)) {
-    $categoryCondition = "AND (";
-    foreach ($selectedCategories as $selectedCategory) {
-        $categoryCondition .= "$selectedCategory = 1 OR ";
-    }
-    $categoryCondition = rtrim($categoryCondition, " OR ") . ")";
-}
+// // 카테고리를 OR 연산으로 조합
+// $categoryCondition = '';
+// if (!empty($selectedCategories)) {
+//     $categoryCondition = "AND (";
+//     foreach ($selectedCategories as $selectedCategory) {
+//         $categoryCondition .= "$selectedCategory = 1 OR ";
+//     }
+//     $categoryCondition = rtrim($categoryCondition, " OR ") . ")";
+// }
 
-$sql = "SELECT * FROM reference WHERE $category LIKE '%$search_con%' $categoryCondition AND isSecret = 0 $orderBy";
+$sql = "SELECT * FROM reference LIKE '%$search_con%' AND isSecret = 0 $orderBy";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -71,17 +71,13 @@ $result = mysqli_query($conn, $sql);
         <h1 class="text-center">노하우 전수 블로그</h1>
 
         <div id="search_box">
-            <form action="./search_result.php" method="get" onsubmit="return validateForm()">
+            <form action="./r_search_result.php" method="get">
                 <select name="catgo">
                     <option value="title">제목</option>
                     <option value="username">글쓴이</option>
                     <option value="board">내용</option>
                 </select>
                 <input type="text" name="search" size="40" required="required" />
-
-                <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
-                <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
-                <label><input type="checkbox" name="category[]" value="QandA"> Q&A</label>
 
                 <button>검색</button>
             </form>
@@ -127,29 +123,6 @@ $result = mysqli_query($conn, $sql);
         </table>
     </div>
 
-    <script>
-        function validateForm() {
-            // 체크박스들을 선택
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
-            var isChecked = false;
-
-            // 하나라도 체크되었는지 확인
-            checkboxes.forEach(function (checkbox) {
-                if (checkbox.checked) {
-                    isChecked = true;
-                }
-            });
-
-            // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
-            if (!isChecked) {
-                alert("하나 이상의 카테고리를 선택해주세요.");
-                return false;
-            }
-
-            // 체크가 되었을 때 폼 제출
-            return true;
-        }
-    </script>
 </body>
 
 </html>
