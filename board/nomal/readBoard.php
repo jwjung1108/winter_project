@@ -36,7 +36,7 @@ if ($userId == '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>게시판</title>
-    <link rel="stylesheet" type="text/css" href="/BBS/css/style.css" />
+   
     <style>
         /* 반응형 디자인 */
         @media (max-width: 768px) {
@@ -206,7 +206,6 @@ if ($userId == '') {
         <!-- 목록, 수정, 삭제 -->
         <div id="bo_ser">
             <ul>
-                <li><a href="/">[목록으로]</a></li>
                 <li><a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
                 <li><a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
                 <li><a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
@@ -267,6 +266,7 @@ if ($userId == '') {
                     ?>
                 </tbody>
             </table>
+            <p></p>
             <div class="text-center">
                 <a href="writeComment.php?number=<?php echo $board['number']; ?>">[댓글작성]</a>
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>

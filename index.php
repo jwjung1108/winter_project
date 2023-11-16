@@ -151,6 +151,21 @@ session_start();
     text-decoration: none;
     color: #003d82;
 }
+.freeboard {
+    color: blue;
+}
+
+.notification {
+    color: red;
+}
+
+.qanda {
+    color: green;
+}
+
+.reference {
+    color: purple;
+}
     </style>
     <script>
         function goToLoginPage() {
@@ -271,8 +286,58 @@ session_start();
         
         
     </div>
+    
 </div>
 
+<div class="container mt-4">
+        <h2>공지사항</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">게시판 종류</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">등록일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include './connect.php'; // 데이터베이스 연결 정보 포함
+
+                // 최신 게시글 5개를 가져오는 쿼리
+                $sql = 'SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY created DESC LIMIT 5';
+                $result = mysqli_query($conn, $sql);?>
+
+                <?php
+                $i = 1;
+                while ($row = mysqli_fetch_array($result)) {
+                          $boardType = '';
+                          $class = '';
+                      if ($row['freeboard'] == 1) {
+                          $boardType = '자유게시판';
+                          $class = 'freeboard';
+                       } elseif ($row['notification'] == 1) {
+                           $boardType = '공지사항';
+                           $class = 'notification';
+                        } elseif ($row['QandA'] == 1) {
+                           $boardType = 'Q&A';
+                           $class = 'qanda';
+                       } elseif ($row['reference'] == 1) {
+                           $boardType = '자료실';
+                           $class = 'reference';
+                }
+                ?>
+                        <td class='<?php echo $class; ?>'><?php echo $boardType; ?></td>
+                        <td><?php echo $row['title']; ?></td>
+                        <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['created']; ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 
 
