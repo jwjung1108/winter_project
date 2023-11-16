@@ -1,16 +1,18 @@
 <?php
 include '../../connect.php';
-session_start();
+include '../chekc_admin.php';
 ?>
 
 <?php
-// 사용자 권한 확인
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-
-$sql = "SELECT authority FROM users WHERE id='$userId'";
-$row = mysqli_fetch_array(mysqli_query($conn, $sql));
+$userid = $_GET['id'];
+$sql = "delete from users where id = '$userid'";
+$result = mysqli_query($conn, $sql);
 
 ?>
+<script>
+    alert("<?php echo "$userid"?> 유저가 삭제되었습니다.");
+    location.href = 'managerUsers.php';
+</script>
 
 
 
