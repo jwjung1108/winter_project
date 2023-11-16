@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $sql);
 
 <body>
     <div class="container">
-        <h1 class="text-center">자유게시판</h1>
+        <h1 class="text-center">자료실</h1>
         <div class="text-end mb-3">
             <a href="?sort=views" class="btn btn-primary <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
             <a href="?sort=likes" class="btn btn-primary <?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
@@ -75,45 +75,17 @@ $result = mysqli_query($conn, $sql);
         </div>
 
         <div id="search_box">
-            <form action="../search_result.php" method="get" onsubmit="return validateForm()">
+            <form action="../search_result.php" method="get">
                 <select name="catgo">
                     <option value="title">제목</option>
                     <option value="username">글쓴이</option>
                     <option value="board">내용</option>
                 </select>
                 <input type="text" name="search" required="required" />
-
-                <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
-                <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
-                <label><input type="checkbox" name="category[]" value="QandA"> QandA</label>
-
                 <button>검색</button>
             </form>
         </div>
 
-        <script>
-            function validateForm() {
-                // 체크박스들을 선택
-                var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
-                var isChecked = false;
-
-                // 하나라도 체크되었는지 확인
-                checkboxes.forEach(function (checkbox) {
-                    if (checkbox.checked) {
-                        isChecked = true;
-                    }
-                });
-
-                // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
-                if (!isChecked) {
-                    alert("하나 이상의 카테고리를 선택해주세요.");
-                    return false;
-                }
-
-                // 체크가 되었을 때 폼 제출
-                return true;
-            }
-        </script>
 <div class="table-responsive">
         <table class="table">
             <thead>
