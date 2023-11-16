@@ -12,7 +12,7 @@ if ($result) {
     ?>
     <script>
         alert("<?php echo "'$userid' 사용자가 삭제 되었습니다." ?>");
-        window.location.href='manageUsers.php';
+        window.location.href='managerUsers.php';
     </script>
     <?php
 }
