@@ -60,7 +60,7 @@
         <h2>User Management</h2>
         <?php
         include '../../connect.php';  // 데이터베이스 연결 정보 포함
-        include '../../board/check_authority.php';  // 권한 확인
+        include '../check_admin.php';  // 권한 확인
 
         $sql = 'SELECT * FROM users';  // users 테이블 조회
         $result = mysqli_query($conn, $sql);
