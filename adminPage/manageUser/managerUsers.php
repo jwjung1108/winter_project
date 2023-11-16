@@ -71,6 +71,7 @@
                 <tr>
                     <th scope="col">번호</th>
                     <th scope="col">이름</th>
+                    <th scope="col">아이디</th>
                     <th scope="col">이메일</th>
                     
                 </tr>
@@ -82,6 +83,7 @@
                     <tr>
                         <th scope="row"><?php echo $i++; ?></th>
                         <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['userId']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td><a href="delete_user.php?id=<?php echo $row['id']; ?>">삭제</a></td>
                     </tr>
