@@ -7,7 +7,7 @@
     <title>유저 관리</title>
     <!-- script -->
     <script>
-        function chekc() {
+        function check() {
             const data = confirm("삭제 하시겠습니까?");
             if (data) {
                 location.href = "delete_user.php?id=<?php echo $row['id']; ?>";
