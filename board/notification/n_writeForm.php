@@ -93,7 +93,7 @@ if ($row['authority'] != 2) {
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 공지사항)"></p>
         <p><textarea name="board" placeholder="본문 (경고메세지)" rows="8"></textarea></p>
-        <p>중요 공지사항<input type="checkbox" name="category" value="reference">
+        <p>중요 공지사항<input type="checkbox" name="important" value="reference">
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
     </form>
