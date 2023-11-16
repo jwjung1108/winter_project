@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판 관리</title>
     <style>
-       body {
+        /* 기본 스타일 */
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -21,14 +21,16 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center; /* 가운데 정렬 */
         }
 
-        h1 {
+        h2 {
             color: #007bff;
             font-size: 24px;
             margin-bottom: 20px;
         }
 
+        /* 테이블 스타일 */
         .table {
             width: 100%;
             border-collapse: collapse;
@@ -55,6 +57,23 @@
             background-color: #f1f1f1;
         }
 
+        /* 버튼 스타일 */
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px; /* 폰트 크기 증가 */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 링크 스타일 */
         a, .button-link {
             color: #007bff;
             text-decoration: none;
@@ -67,39 +86,24 @@
         a:hover, .button-link:hover {
             background-color: #007bff;
             color: white;
-            text-decoration: none;
         }
 
         .footer {
             margin-top: 20px;
             text-align: center;
         }
-        button {
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    }
-
-    button:hover {
-    background-color: #0056b3;
-    }   
     </style>
 </head>
-
-<body> 
-<div class="container">
-    <h2>게시판관리</h2>
-    <form action="" method="get">
-        <button type="submit" name="board_type" value="all">모든 게시판</button>
-        <button type="submit" name="board_type" value="notification">공지사항</button>
-        <button type="submit" name="board_type" value="freeboard">자유게시판</button>
-        <button type="submit" name="board_type" value="reference">자료실</button>
-        <button type="submit" name="board_type" value="qanda">Q&A</button>
-    </form>
+<body>
+    <div class="container">
+        <h2>게시판 관리</h2>
+        <form action="" method="get">
+            <button type="submit" name="board_type" value="all">모든 게시판</button>
+            <button type="submit" name="board_type" value="notification">공지사항</button>
+            <button type="submit" name="board_type" value="freeboard">자유게시판</button>
+            <button type="submit" name="board_type" value="reference">자료실</button>
+            <button type="submit" name="board_type" value="qanda">Q&A</button>
+        </form>
 
     <?php
     include '../../connect.php';
@@ -114,7 +118,7 @@
             $sql = "SELECT * FROM board WHERE freeboard = 1";
             break;
         case 'reference':
-            $sql = "SELECT * FROM reference = 1";
+            $sql = "SELECT * FROM reference";
             break;
         case 'qanda':
             $sql = "SELECT * FROM board WHERE qanda = 1";
