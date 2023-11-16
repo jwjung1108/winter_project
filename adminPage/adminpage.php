@@ -2,7 +2,7 @@ This is admin Page test!!!!
 
 <?php
 include '../connect.php';
-include 'check_authority.php';
+include 'check_admin.php';
 ?>
 
 <!doctype html>
