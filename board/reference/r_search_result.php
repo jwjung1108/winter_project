@@ -103,7 +103,9 @@ $result = mysqli_query($conn, $sql);
                         <th scope="row">
                             <?php echo $i++; ?>
                         </th>
-                        <td><a href="r_readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
+                        <td><a href="r_readBoard.php?number=<?php echo $row['number']; ?>">
+                                <?php echo $row['title']; ?>
+                            </a>
                         </td>
                         <td>
                             <?php echo $row['username']; ?>
@@ -122,7 +124,9 @@ $result = mysqli_query($conn, $sql);
             </tbody>
         </table>
     </div>
-
+    <div>
+        <a href='/'>목록으로<a>
+    </div>
 </body>
 
 </html>
