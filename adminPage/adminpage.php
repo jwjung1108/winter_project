@@ -94,7 +94,7 @@ include '../board/check_authority.php';
         function goManagerBoardPage(){
             window.location.href = "/adminPage/manageBoard/managerBoard.php";
         }
-
+        
 
         function executeCommand(buttonNumber) {
             // 여기에 버튼을 클릭했을 때 실행될 특정 명령을 넣으세요.
@@ -106,6 +106,7 @@ include '../board/check_authority.php';
                     break;
                 case 2:
                     // 버튼 2를 클릭했을 때 수행할 작업
+                    window.location.href = "/adminPage/manageUser/managerUsers.php";
                     break;
                 // 이하 버튼 3, 4, 5에 대한 작업도 추가할 수 있습니다.
                 default:
