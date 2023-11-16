@@ -151,6 +151,21 @@ session_start();
     text-decoration: none;
     color: #003d82;
 }
+.freeboard {
+    color: blue;
+}
+
+.notification {
+    color: red;
+}
+
+.qanda {
+    color: green;
+}
+
+.reference {
+    color: purple;
+}
     </style>
     <script>
         function goToLoginPage() {
@@ -297,17 +312,22 @@ session_start();
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
                           $boardType = '';
+                          $class = '';
                       if ($row['freeboard'] == 1) {
                           $boardType = '자유게시판';
+                          $class = 'freeboard';
                        } elseif ($row['notification'] == 1) {
                            $boardType = '공지사항';
+                           $class = 'notification';
                         } elseif ($row['QandA'] == 1) {
                            $boardType = 'Q&A';
+                           $class = 'qanda';
                        } elseif ($row['reference'] == 1) {
                            $boardType = '자료실';
+                           $class = 'reference';
                 }
                 ?>
-                        <td><?php echo $boardType; ?></td>
+                        <td class='{$class}'>><?php echo $boardType; ?></td>
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['created']; ?></td>
