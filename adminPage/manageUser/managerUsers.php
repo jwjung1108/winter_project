@@ -1,6 +1,13 @@
+<?php
+include '../../connect.php';  // 데이터베이스 연결 정보 포함
+include '../check_admin.php';  // 권한 확인
+
+$sql = 'SELECT * FROM users';  // users 테이블 조회
+$result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,13 +80,6 @@
 <body>
     <div class="container">
         <h2>User Management</h2>
-        <?php
-        include '../../connect.php';  // 데이터베이스 연결 정보 포함
-        include '../check_admin.php';  // 권한 확인
-        
-        $sql = 'SELECT * FROM users';  // users 테이블 조회
-        $result = mysqli_query($conn, $sql);
-        ?>
 
         <table class="table">
             <thead>
