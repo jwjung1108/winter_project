@@ -84,10 +84,10 @@
     <form action="" method="get">
         <select name="board_type">
             <option value="all">모든 게시판</option>
-            <option value="nofi">공지사항</option>
-            <option value="free">자유게시판</option>
-            <option value="refe">자료실</option>
-            <option value="qna">Q&A</option>
+            <option value="notification">공지사항</option>
+            <option value="freeboard">자유게시판</option>
+            <option value="reference">자료실</option>
+            <option value="qanda">Q&A</option>
         </select>
         <input type="submit" value="검색" />
     </form>
