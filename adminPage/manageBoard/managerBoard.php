@@ -74,7 +74,19 @@
             margin-top: 20px;
             text-align: center;
         }
+        button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    }
 
+    button:hover {
+    background-color: #0056b3;
+    }   
     </style>
 </head>
 
@@ -82,14 +94,11 @@
 <div class="container">
     <h2>게시판관리</h2>
     <form action="" method="get">
-        <select name="board_type">
-            <option value="all">모든 게시판</option>
-            <option value="notification">공지사항</option>
-            <option value="freeboard">자유게시판</option>
-            <option value="reference">자료실</option>
-            <option value="qanda">Q&A</option>
-        </select>
-        <input type="submit" value="검색" />
+        <button type="submit" name="board_type" value="all">모든 게시판</button>
+        <button type="submit" name="board_type" value="notification">공지사항</button>
+        <button type="submit" name="board_type" value="freeboard">자유게시판</button>
+        <button type="submit" name="board_type" value="reference">자료실</button>
+        <button type="submit" name="board_type" value="qanda">Q&A</button>
     </form>
 
     <?php
@@ -105,7 +114,7 @@
             $sql = "SELECT * FROM board WHERE freeboard = 1";
             break;
         case 'reference':
-            $sql = "SELECT * FROM board WHERE reference = 1";
+            $sql = "SELECT * FROM reference = 1";
             break;
         case 'qanda':
             $sql = "SELECT * FROM board WHERE qanda = 1";
