@@ -107,7 +107,9 @@ $result = mysqli_query($conn, $sql);
                         <th scope="row">
                             <?php echo $i++; ?>
                         </th>
-                        <td><a href="/nomal/readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
+                        <td><a href="/nomal/readBoard.php?number=<?php echo $row['number']; ?>">
+                                <?php echo $row['title']; ?>
+                            </a>
                         </td>
                         <td>
                             <?php echo $row['username']; ?>
@@ -127,6 +129,9 @@ $result = mysqli_query($conn, $sql);
         </table>
     </div>
 
+    <div>
+        <a href='/'>목록으로<a>
+    </div>
     <script>
         function validateForm() {
             // 체크박스들을 선택
