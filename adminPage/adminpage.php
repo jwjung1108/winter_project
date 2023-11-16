@@ -9,10 +9,76 @@ include '../board/check_authority.php';
 <html lang="ko">
 
 <head>
+<meta charset="UTF-8">
+    <title>관리자 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .button-container {
+            margin: 20px;
+        }
+
+        .custom-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
+    <div class="header">
+        <h1>This is Admin Page Test!!!!</h1>
+    </div>
+
+    <div class="button-container">
         <button class="custom-button" onclick="goManagerBoardPage()">페이지 관리</button>
         <button class="custom-button" onclick="executeCommand(2)">버튼 2</button>
         <button class="custom-button" onclick="executeCommand(3)">버튼 3</button>
