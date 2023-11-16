@@ -4,56 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Managerboard Page</title>
+    <title>게시판 관리</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
             padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
 
         .table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .table, .table th, .table td {
+            border: 1px solid #ddd;
         }
 
         .table th, .table td {
             padding: 10px;
-            border: 1px solid #ddd;
             text-align: left;
         }
 
         .table th {
-            background-color: #4CAF50;
+            background-color: #007bff;
             color: white;
         }
 
-        .table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
         a {
-            color: #333;
+            color: #007bff;
             text-decoration: none;
         }
 
         a:hover {
-            color: #017572;
-        }
-
-        .button-link {
-            display: inline-block;
-            padding: 8px 15px;
-            margin: 5px 0;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .button-link:hover {
-            background-color: #45a049;
+            text-decoration: underline;
         }
     </style>
 </head>
