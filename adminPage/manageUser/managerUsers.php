@@ -8,16 +8,17 @@ $result = mysqli_query($conn, $sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>유저 관리</title>
     <!-- script -->
     <script>
-        function check() {
+        function check(id) {
             const data = confirm("삭제 하시겠습니까?");
             if (data) {
-                location.href = "delete_user.php?id=<?php echo $row['id']; ?>";
+                location.href = "delete_user.php?id=" + id;
             }
         }
     </script>
@@ -112,7 +113,7 @@ $result = mysqli_query($conn, $sql);
                         <td>
                             <?php echo $row['user_rank']; ?>
                         </td>
-                        <td><button onclick="check()">삭제</button></td>
+                        <td><button onclick="check(<?php echo $row['id']; ?>)">삭제</button></td>
                     </tr>
                 <?php } ?>
             </tbody>
