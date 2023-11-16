@@ -88,84 +88,86 @@ session_start();
             justify-content: center;
             margin-bottom: 30px;
         }
+
         .navbar-custom {
-    background-color: #0056b3;
-    padding: 10px 0;
-    color: white;
-}
+            background-color: #0056b3;
+            padding: 10px 0;
+            color: white;
+        }
 
-.nav-link,
-.navbar-brand {
-    color: white;
-    margin-right: 15px;
-}
+        .nav-link,
+        .navbar-brand {
+            color: white;
+            margin-right: 15px;
+        }
 
-.nav-link:hover,
-.navbar-brand:hover {
-    color: #f2f2f2;
-}
+        .nav-link:hover,
+        .navbar-brand:hover {
+            color: #f2f2f2;
+        }
 
-/* 섹션 타이틀 스타일링 */
-.section-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #333;
-    text-align: left;
-    font-size: 24px;
-    font-weight: 600;
-}
+        /* 섹션 타이틀 스타일링 */
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: left;
+            font-size: 24px;
+            font-weight: 600;
+        }
 
-/* 카드 스타일링 */
-.card-custom {
-    margin: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        /* 카드 스타일링 */
+        .card-custom {
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-.card-custom img {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: calc(.25rem - 1px);
-    border-top-right-radius: calc(.25rem - 1px);
-}
+        .card-custom img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: calc(.25rem - 1px);
+            border-top-right-radius: calc(.25rem - 1px);
+        }
 
-.card-body-custom {
-    padding: 10px;
-}
+        .card-body-custom {
+            padding: 10px;
+        }
 
-.card-title {
-    margin-bottom: 10px;
-    font-weight: bold;
-}
+        .card-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
 
-.card-text {
-    font-size: 14px;
-    color: #666;
-}
+        .card-text {
+            font-size: 14px;
+            color: #666;
+        }
 
-.card-link {
-    font-size: 16px;
-    color: #0056b3;
-}
+        .card-link {
+            font-size: 16px;
+            color: #0056b3;
+        }
 
-.card-link:hover {
-    text-decoration: none;
-    color: #003d82;
-}
-.freeboard {
-    color: blue;
-}
+        .card-link:hover {
+            text-decoration: none;
+            color: #003d82;
+        }
 
-.notification {
-    color: red;
-}
+        .freeboard {
+            color: blue;
+        }
 
-.qanda {
-    color: green;
-}
+        .notification {
+            color: red;
+        }
 
-.reference {
-    color: purple;
-}
+        .qanda {
+            color: green;
+        }
+
+        .reference {
+            color: purple;
+        }
     </style>
     <script>
         function goToLoginPage() {
@@ -180,10 +182,10 @@ session_start();
         function goTonotificationBoardPage() {
             window.location.href = "/board/notification/list_nboard.php";
         }
-        function goToQandABoardPage(){
+        function goToQandABoardPage() {
             window.location.href = "/board/QandA/list_qboard.php";
         }
-        function goToReferencePage(){
+        function goToReferencePage() {
             window.location.href = "/board/reference/list_reference.php";
         }
         function logout() {
@@ -200,96 +202,95 @@ session_start();
 
 <body>
 
- <!--- GPT 코드 주석--->
+    <!--- GPT 코드 주석--->
 
-<nav class="navbar navbar-custom">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">학습  커뮤니티</a>
-        <div class="d-flex align-items-center">
-            <?php if (isset($_SESSION['userId'])) { ?>
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">학습 커뮤니티</a>
+            <div class="d-flex align-items-center">
+                <?php if (isset($_SESSION['userId'])) { ?>
                 <span class="navbar-text mr-3">
                     <?php echo $_SESSION['userId']; ?> 님 환영합니다
                 </span>
                 <button class="btn btn-outline-light" onclick="logout()">로그아웃</button>
-                <?php if($_SESSION['authority'] == 'admin'){ ?>
+                <?php if ($_SESSION['authority'] == 'admin') { ?>
                 <button class="btn btn-outline-light" onclick="goToadminPage()">관리자페이지</button>
-                <?php }?>
-            <?php } else { ?>
+                <?php } ?>
+                <?php } else { ?>
                 <button class="btn btn-outline-light" onclick="goToLoginPage()">로그인</button>
                 <button class="btn btn-outline-light" onclick="goToSignupPage()">회원가입</button>
 
-            <?php } ?>
+                <?php } ?>
+            </div>
         </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+
+        <!-- Section Title -->
+        <div class="section-title">
+            메뉴
+        </div>
+
+        <!-- Features -->
+        <div class="row">
+            <!-- 공지 사항 -->
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <img src="/image/notice.png" alt="공지 사항">
+                    <div class="card-body card-body-custom ">
+                        <h5 class="card-title">공지사항</h5>
+                        <p class="card-text">공지사항 읽어라.</p>
+                        <button onclick="goTonotificationBoardPage()">공지사항</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 자유 게시판 -->
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <img src="/image/tip.png" alt="자유게시판">
+                    <div class="card-body card-body-custom">
+                        <h5 class="card-title">자유게시판</h5>
+                        <p class="card-text">자유게시판 사용해라.</p>
+                        <button onclick="goTocommonBoardPage()">자유게시판</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 자료실 -->
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <img src="/image/resource.png" alt="resouce">
+                    <div class="card-body card-body-custom">
+                        <h5 class="card-title">자료실</h5>
+                        <p class="card-text">좋은 자료가 많다.</p>
+                        <button onclick="goToReferencePage()">자료실</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q&A -->
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <img src="/image/Q&A.png" alt="Q&A">
+                    <div class="card-body card-body-custom">
+                        <h5 class="card-title">Q&A</h5>
+                        <p class="card-text">묻고 답하라.</p>
+                        <button onclick="goToQandABoardPage()">QandA</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
     </div>
-</nav>
 
-
-<!-- Main Content -->
-<div class="container mt-4">
-
-    <!-- Section Title -->
-    <div class="section-title">
-        메뉴
-    </div>
-    
-    <!-- Features -->
-    <div class="row">
-        <!-- 공지 사항 -->
-        <div class="col-md-3">
-            <div class="card card-custom">
-                <img src="/image/notice.png" alt="공지 사항">
-                <div class="card-body card-body-custom ">
-                    <h5 class="card-title">공지사항</h5>
-                    <p class="card-text">공지사항 읽어라.</p>
-                    <button onclick="goTonotificationBoardPage()">공지사항</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 자유 게시판 -->
-        <div class="col-md-3">
-            <div class="card card-custom">
-                <img src="/image/tip.png" alt="자유게시판">
-                <div class="card-body card-body-custom">
-                    <h5 class="card-title">자유게시판</h5>
-                    <p class="card-text">자유게시판 사용해라.</p>
-                    <?php if (isset($_SESSION['userId'])) { ?>
-                <button onclick="goTocommonBoardPage()">자유게시판</button>
-            <?php } ?>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 자료실 -->
-        <div class="col-md-3">
-            <div class="card card-custom">
-                <img src="/image/resource.png" alt="resouce">
-                <div class="card-body card-body-custom">
-                    <h5 class="card-title">자료실</h5>
-                    <p class="card-text">좋은 자료가 많다.</p>
-                    <button onclick="goToReferencePage()">자료실</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Q&A -->
-        <div class="col-md-3">
-            <div class="card card-custom">
-                <img src="/image/Q&A.png" alt="Q&A">
-                <div class="card-body card-body-custom">
-                    <h5 class="card-title">Q&A</h5>
-                    <p class="card-text">묻고 답하라.</p>
-                    <button onclick="goToQandABoardPage()">QandA</button>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-    
-</div>
-
-<div class="container mt-4">
+    <div class="container mt-4">
         <h2>공지사항</h2>
         <table class="table">
             <thead>
@@ -303,36 +304,44 @@ session_start();
             <tbody>
                 <?php
                 include './connect.php'; // 데이터베이스 연결 정보 포함
-
+                
                 // 최신 게시글 5개를 가져오는 쿼리
                 $sql = 'SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY created DESC LIMIT 5';
-                $result = mysqli_query($conn, $sql);?>
+                $result = mysqli_query($conn, $sql); ?>
 
                 <?php
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
-                          $boardType = '';
-                          $class = '';
-                      if ($row['freeboard'] == 1) {
-                          $boardType = '자유게시판';
-                          $class = 'freeboard';
-                       } elseif ($row['notification'] == 1) {
-                           $boardType = '공지사항';
-                           $class = 'notification';
-                        } elseif ($row['QandA'] == 1) {
-                           $boardType = 'Q&A';
-                           $class = 'qanda';
-                       } elseif ($row['reference'] == 1) {
-                           $boardType = '자료실';
-                           $class = 'reference';
-                }
-                ?>
-                        <td class='<?php echo $class; ?>'><?php echo $boardType; ?></td>
-                        <td><?php echo $row['title']; ?></td>
-                        <td><?php echo $row['username']; ?></td>
-                        <td><?php echo $row['created']; ?></td>
+                    $boardType = '';
+                    $class = '';
+                    if ($row['freeboard'] == 1) {
+                        $boardType = '자유게시판';
+                        $class = 'freeboard';
+                    } elseif ($row['notification'] == 1) {
+                        $boardType = '공지사항';
+                        $class = 'notification';
+                    } elseif ($row['QandA'] == 1) {
+                        $boardType = 'Q&A';
+                        $class = 'qanda';
+                    } elseif ($row['reference'] == 1) {
+                        $boardType = '자료실';
+                        $class = 'reference';
+                    }
+                    ?>
+                    <td class='<?php echo $class; ?>'>
+                        <?php echo $boardType; ?>
+                    </td>
+                    <td>
+                        <?php echo $row['title']; ?>
+                    </td>
+                    <td>
+                        <?php echo $row['username']; ?>
+                    </td>
+                    <td>
+                        <?php echo $row['created']; ?>
+                    </td>
                     </tr>
-                <?php
+                    <?php
                 }
                 ?>
             </tbody>
