@@ -5,17 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>유저 관리</title>
-    <!-- script -->
-    <script>
-        function chekc() {
-            const data = confirm("삭제 하시겠습니까?");
-            if (data) {
-                location.href = "/join/logoutProcess.php";
-            }
-        }
-    </script>
-
-
     <!-- css -->
     <style>
         body {
@@ -131,11 +120,13 @@
     </div>
 
     <script>
-        const data = confirm("삭제 하시겠습니까?");
-        if (data) {
-            location.href = 'delete_user.php?id=<?php echo $row['id']; ?>'
+        function check() {
+            const data = confirm("삭제 하시겠습니까?");
+            if (data) {
+                location.href = 'delete_user.php?id=<?php echo $row['id']; ?>'
+            }
+            else location.href = 'managerUsers.php'
         }
-        else location.href = 'managerUsers.php'
     </script>
 </body>
 
