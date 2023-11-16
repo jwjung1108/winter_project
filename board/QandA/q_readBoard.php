@@ -65,7 +65,7 @@ session_start();
                 <li><a href="/">[목록으로]</a></li>
                 <li><a href="q_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
                 <numli><a href="q_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
-                    <li><a href="q_download.php?number=<?php echo $board['number']; ?>">[다운로드]</a></li>
+                    <li><a href="../download.php?number=<?php echo $board['number']; ?>">[다운로드]</a></li>
             </ul>
         </div>
     </div>

@@ -157,7 +157,7 @@ if ($userId == '') {
 <body>
     <?php
     $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
-    $board = mysqli_fetch_array(mysqli_query($conn, "select * from board where number ='" . $number . "'"));
+    $board = mysqli_fetch_array(mysqli_query($conn, "select * from reference where number ='" . $number . "'"));
 
     $check_table = (mysqli_query($conn, "select * from time where userID='" . $_SESSION['userId'] . "' and boardNumber = '$number'"));
     $row = mysqli_fetch_array($check_table);
@@ -176,7 +176,7 @@ if ($userId == '') {
     if ($result) {
         if ($current_time - strtotime($db_access['access']) > 3600) {
             $view = $view + 1;
-            if (mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'")) {
+            if (mysqli_query($conn, "update reference set views = '" . $view . "' where number = '" . $number . "'")) {
                 $current_time = date($fomater, $current_time);
                 mysqli_query($conn, "update time set access = '$current_time' where boardNumber = $number and userID = '{$_SESSION['userId']}'");
             }
@@ -185,7 +185,7 @@ if ($userId == '') {
         $view = $view + 1;
         $current_time = date($fomater, $current_time);
         mysqli_query($conn, "insert into time(userID,boardNumber, access) values('{$_SESSION['userId']}', $number, '$current_time')");
-        mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'");
+        mysqli_query($conn, "update reference set views = '" . $view . "' where number = '" . $number . "'");
     }
     ?>
     <!-- 글 불러오기 -->
@@ -207,16 +207,16 @@ if ($userId == '') {
         <div id="bo_ser">
             <ul>
                 <li><a href="/">[목록으로]</a></li>
-                <li><a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
-                <li><a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
-                <li><a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
+                <li><a href="r_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
+                <li><a href="r_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
+                <li><a href="r_boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
                 <li><a href="../download.php?number=<?php echo $board['number']; ?>">[다운로드]</a></li>
             </ul>
         </div>
 
         <!-- 댓글 -->
         <?php
-        $sql = "select * from comment where boardNumber = '$number'";
+        $sql = "select * from r_comment where boardNumber = '$number'";
         $result = mysqli_query($conn, $sql);
         ?>
         <div class="container">
@@ -258,7 +258,7 @@ if ($userId == '') {
                                 <?php echo $row['created']; ?>
                             </td>
                             <td>
-                                <a href="deleteComment.php?Number=<?php echo $row['Number'] ?>">
+                                <a href="r_deleteComment.php?Number=<?php echo $row['Number'] ?>">
                                     <?php echo "삭제"; ?>
                                 </a>
                             </td>
@@ -268,7 +268,7 @@ if ($userId == '') {
                 </tbody>
             </table>
             <div class="text-center">
-                <a href="writeComment.php?number=<?php echo $board['number']; ?>">[댓글작성]</a>
+                <a href="r_writeComment.php?number=<?php echo $board['number']; ?>">[댓글작성]</a>
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
             </div>
         </div>
