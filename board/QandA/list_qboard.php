@@ -17,11 +17,14 @@ $result = mysqli_query($conn, $sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- script -->
+    <script src='../js/chekcbox.js'></script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link href="/board/css/style.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <link href="/board/css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
@@ -76,31 +79,6 @@ $result = mysqli_query($conn, $sql);
                     <button>검색</button>
                 </form>
             </div>
-
-            <script>
-                function validateForm() {
-                    // 체크박스들을 선택
-                    var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
-                    var isChecked = false;
-
-                    // 하나라도 체크되었는지 확인
-                    checkboxes.forEach(function (checkbox) {
-                        if (checkbox.checked) {
-                            isChecked = true;
-                        }
-                    });
-
-                    // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
-                    if (!isChecked) {
-                        alert("하나 이상의 카테고리를 선택해주세요.");
-                        return false;
-                    }
-
-                    // 체크가 되었을 때 폼 제출
-                    return true;
-                }
-            </script>
-
             <tbody>
                 <?php
                 $sql_c = "select authority from users where id='$userId'";
@@ -123,14 +101,18 @@ $result = mysqli_query($conn, $sql);
                                 <?php
                             } else {
                                 ?>
-                                <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
+                                <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>">
+                                        <?php echo $row['title']; ?>
+                                    </a>
                                 </td>
                             <?php }
                         } else {
                             ?>
-                        <td class="title-cell"><a href="q_readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
-                        </td>
-                    <?php } ?>
+                            <td class="title-cell"><a href="q_readBoard.php?number=<?php echo $row['number']; ?>">
+                                    <?php echo $row['title']; ?>
+                                </a>
+                            </td>
+                        <?php } ?>
                         <td class="title-cell">
                             <?php echo $row['username']; ?>
                         </td>
@@ -144,7 +126,7 @@ $result = mysqli_query($conn, $sql);
                 <?php } ?>
             </tbody>
         </table>
-    
+
         <div class="text-center">
             <a href="q_writeForm.php" class="btn btn-primary">작성</a>
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>

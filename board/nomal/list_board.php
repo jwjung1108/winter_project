@@ -36,10 +36,13 @@ $result = mysqli_query($conn, $sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- script -->
+    <script src='../js/chekcbox.js'></script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link href="/board/css/style.css" rel="stylesheet">
+    <link href="/board/css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
@@ -90,70 +93,48 @@ $result = mysqli_query($conn, $sql);
                 <button>검색</button>
             </form>
         </div>
-
-        <script>
-            function validateForm() {
-                // 체크박스들을 선택
-                var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
-                var isChecked = false;
-
-                // 하나라도 체크되었는지 확인
-                checkboxes.forEach(function (checkbox) {
-                    if (checkbox.checked) {
-                        isChecked = true;
-                    }
-                });
-
-                // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
-                if (!isChecked) {
-                    alert("하나 이상의 카테고리를 선택해주세요.");
-                    return false;
-                }
-
-                // 체크가 되었을 때 폼 제출
-                return true;
-            }
-        </script>
-<div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">등록일</th>
-                    <th scope="col">조회수</th>
-                    <th scope="col">추천수</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 1;
-                while ($row = mysqli_fetch_array($result)) {
-                    ?>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">
-                            <?php echo $i++; ?>
-                        </th>
-                        <td class="title-cell"><a href="readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
-                        </td>
-                        <td class="title-cell">
-                            <?php echo $row['username']; ?>
-                        </td>
-                        <td class="title-cell">
-                            <?php echo $row['created']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['views']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['likes']; ?>
-                        </td>
+                        <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col">조회수</th>
+                        <th scope="col">추천수</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-                </div>
+                </thead>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $i++; ?>
+                            </th>
+                            <td class="title-cell"><a href="readBoard.php?number=<?php echo $row['number']; ?>">
+                                    <?php echo $row['title']; ?>
+                                </a>
+                            </td>
+                            <td class="title-cell">
+                                <?php echo $row['username']; ?>
+                            </td>
+                            <td class="title-cell">
+                                <?php echo $row['created']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['views']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['likes']; ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
         <div class="text-center">
             <a href="writeForm.php" class="btn btn-primary">작성</a>
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>

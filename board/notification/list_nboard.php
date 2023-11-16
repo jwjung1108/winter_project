@@ -32,11 +32,14 @@ $result = mysqli_query($conn, $sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- script -->
+    <script src='../js/checkbox.js'></script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link href="/board/css/style.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <link href="/board/css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
@@ -82,44 +85,46 @@ $result = mysqli_query($conn, $sql);
             </form>
         </div>
 
-        <script src= '/js/checkbox.js'></script>
-        
+
+
         <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">등록일</th>
-                    <th scope="col">조회수</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 1;
-                while ($row = mysqli_fetch_array($result)) {
-                    ?>
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">
-                            <?php echo $i++; ?>
-                        </th>
-                        <td class="title-cell"><a href="n_readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
-                        </td>
-                        <td class="title-cell">
-                            <?php echo $row['username']; ?>
-                        </td>
-                        <td class="title-cell">
-                            <?php echo $row['created']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['views']; ?>
-                        </td>
+                        <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col">조회수</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-                </div>
+                </thead>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $i++; ?>
+                            </th>
+                            <td class="title-cell"><a href="n_readBoard.php?number=<?php echo $row['number']; ?>">
+                                    <?php echo $row['title']; ?>
+                                </a>
+                            </td>
+                            <td class="title-cell">
+                                <?php echo $row['username']; ?>
+                            </td>
+                            <td class="title-cell">
+                                <?php echo $row['created']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['views']; ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
         <div class="text-center">
             <?php
             if ($userId != NULL) {
