@@ -245,6 +245,26 @@ if ($userId == '') {
         #commentModal input[type="submit"] {
             /* 기존 스타일 */
         }
+
+        /* 댓글 및 목록 버튼 공통 스타일 */
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            /* 링크 스타일 제거 */
+            display: inline-block;
+            /* 버튼처럼 보이게 함 */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -388,7 +408,7 @@ if ($userId == '') {
                     };
                 </script>
 
-                <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                <a href="/" class="btn-primary">목록으로 돌아가기</a>
             </div>
         </div>
     </div>
