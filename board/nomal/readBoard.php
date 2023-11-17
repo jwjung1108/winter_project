@@ -257,7 +257,8 @@ if ($userId == '') {
                                 <?php echo $row['created']; ?>
                             </td>
                             <td>
-                                <a href="deleteComment.php?Number=<?php echo $row['Number']?>&BoardNumber=<?php echo "$number"?>">
+                                <a
+                                    href="deleteComment.php?Number=<?php echo $row['Number'] ?>&BoardNumber=<?php echo "$number" ?>">
                                     <?php echo "삭제"; ?>
                                 </a>
                             </td>
@@ -271,12 +272,16 @@ if ($userId == '') {
                 <!-- 댓글 작성 버튼 -->
                 <button onclick="openCommentModal()">댓글 작성</button>
 
+
                 <!-- 댓글 작성 모달 -->
                 <div id="commentModal" style="display:none;">
-                <form action='writeCommentProcess.php?number=<?php echo $number?>' method="POST">
-                        <textarea name="comment"></textarea>
+                    <form action='writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                        <?php
+                        $number = $_GET['number'];
+                        ?>
+                        <textarea name="text"></textarea>
                         <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
-                        <input type="submit" value="댓글 제출">
+                        <input type="submit" value="작성">
                     </form>
                 </div>
 
