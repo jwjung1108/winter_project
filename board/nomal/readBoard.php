@@ -151,6 +151,56 @@ if ($userId == '') {
         .text-center .btn {
             margin-top: 10px;
         }
+
+        #commentModal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            /* 기본적으로 숨김 */
+        }
+
+        /* 모달 뒷배경 스타일 */
+        #modalBackground {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            /* 기본적으로 숨김 */
+        }
+
+        /* 텍스트 에어리어 스타일 */
+        #commentModal textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* 버튼 스타일 */
+        #commentModal input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -274,11 +324,9 @@ if ($userId == '') {
 
 
                 <!-- 댓글 작성 모달 -->
-                <div id="commentModal" style="display:none;">
+                <div id="modalBackground"></div>
+                <div id="commentModal">
                     <form action='writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
-                        <?php
-                        $number = $_GET['number'];
-                        ?>
                         <textarea name="text"></textarea>
                         <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
                         <input type="submit" value="작성">
@@ -288,7 +336,13 @@ if ($userId == '') {
                 <script>
                     function openCommentModal() {
                         document.getElementById('commentModal').style.display = 'block';
+                        document.getElementById('modalBackground').style.display = 'block';
                     }
+
+                    document.getElementById('modalBackground').onclick = function () {
+                        this.style.display = 'none';
+                        document.getElementById('commentModal').style.display = 'none';
+                    };
                 </script>
 
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
