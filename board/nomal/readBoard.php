@@ -273,7 +273,7 @@ if ($userId == '') {
 
                 <!-- 댓글 작성 모달 -->
                 <div id="commentModal" style="display:none;">
-                    <form action="submitComment.php" method="post">
+                <form action='writeCommentProcess.php?number=<?php echo $number?>' method="POST">
                         <textarea name="comment"></textarea>
                         <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
                         <input type="submit" value="댓글 제출">
