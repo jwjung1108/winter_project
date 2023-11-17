@@ -1,7 +1,7 @@
 <?php
 include '../../connect.php';
 $number = $_GET['Number'];
-$sql = "select userID from comment where Number= '$number'";
+$sql = "select userID from q_comment where Number= '$number'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 $userid = $_SESSION['userId']
     ?>
@@ -38,17 +38,17 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
     ?>
     <?php
 
-    $sql = "select visible from comment where number = '$number' and visible = 1";
+    $sql = "select visible from q_comment where number = '$number' and visible = 1";
     $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
     if ($row['visible'] == 1) {
-        $sql = "update comment set visible = 0 where number = '$number'";
+        $sql = "update q_comment set visible = 0 where number = '$number'";
         $result = mysqli_query($conn, $sql);
         if ($result === false) {
             ?>
             <script>
                 alert(""삭제에 문제가 생겼습니다.관리자에게 문의해주세요.";");
-                location.href = "list_board.php";
+                location.href = "list_qboard.php";
             </script>
             <?php
         } else {
