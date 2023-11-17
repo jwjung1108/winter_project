@@ -38,6 +38,7 @@ if (!empty($selectedCategories)) {
 
 $sql = "SELECT * FROM board WHERE $category LIKE '%$search_con%' $categoryCondition AND isSecret = 0 $orderBy";
 $result = mysqli_query($conn, $sql);
+
 ?>
 
 <!doctype html>
@@ -190,11 +191,21 @@ $result = mysqli_query($conn, $sql);
                 <?php
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
+                    $boardType = '';
+                    if ($row['freeboard'] == 1) {
+                        $boardType = '자유게시판';
+                    } elseif ($row['notification'] == 1) {
+                        $boardType = '공지사항';
+                    } elseif ($row['reference'] == 1) {
+                        $boardType = '자료실';
+                    } elseif ($row['QandA'] == 1) {
+                        $boardType = 'Q&A';
+                    }
                     ?>
                     <tr>
-                        <th scope="row">
-                            <?php echo $i++; ?>
-                        </th>
+                        <td>
+                            <?php echo htmlspecialchars($boardType); ?>
+                        </td>
                         <td><a href="/nomal/readBoard.php?number=<?php echo $row['number']; ?>">
                                 <?php echo $row['title']; ?>
                             </a>
