@@ -268,7 +268,7 @@ if ($userId == '') {
             </table>
             <p></p>
             <div class="text-center">
-                <a href="writeComment.php?number=<?php echo $board['number']; ?>">[댓글작성]</a>
+                <a href="writeComment.php?number=<?php echo $board['number'];?>&BoardNumber=<?php echo "$number"?>">[댓글작성]</a>
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
             </div>
         </div>
