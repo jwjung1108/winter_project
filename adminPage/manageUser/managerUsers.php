@@ -114,22 +114,22 @@
         }
         ?>
     </div>
+    <div class="container">
+        <div id="search_box">
+            <form action="./change_rank.php" method="get">
+                <input type="text" name="user" size="40" required="required" />
 
-    <div id="search_box">
-        <form action="./change_rank.php" method="get">
-            <input type="text" name="user" size="40" required="required" />
-
-            <select name="catgo">
-                <option value="title">Bronze</option>
-                <option value="username">글쓴이</option>
-                <option value="board">내용</option>
-            </select>
-            <button>검색</button>
-        </form>
+                <select name="rank">
+                    <option value="Bronze">Bronze</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Platinum">Platinum</option>
+                    <option value="Master">Master</option>
+                </select>
+                <button>검색</button>
+            </form>
+        </div>
     </div>
-
-
-
 
 
     <div class="container">
