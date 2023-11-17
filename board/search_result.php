@@ -192,21 +192,26 @@ $result = mysqli_query($conn, $sql);
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
                     $boardType = '';
+                    $link = '';
                     if ($row['freeboard'] == 1) {
                         $boardType = '자유게시판';
+                        $link = "board/nomal/readBoard.php?number=" . $row['number'];
                     } elseif ($row['notification'] == 1) {
                         $boardType = '공지사항';
+                        $link = "board/notification/n_readBoard.php?number=" . $row['number'];
                     } elseif ($row['reference'] == 1) {
                         $boardType = '자료실';
+                        $link = "board/reference/r_readBoard.php?number=" . $row['number'];
                     } elseif ($row['QandA'] == 1) {
                         $boardType = 'Q&A';
+                        $link = "board/QandA/q_readBoard.php?number=" . $row['number'];
                     }
                     ?>
                     <tr>
                         <td>
                             <?php echo htmlspecialchars($boardType); ?>
                         </td>
-                        <td><a href="/nomal/readBoard.php?number=<?php echo $row['number']; ?>">
+                        <td><a href="<?php echo $link; ?>">
                                 <?php echo $row['title']; ?>
                             </a>
                         </td>
