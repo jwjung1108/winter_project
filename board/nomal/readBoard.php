@@ -36,7 +36,7 @@ if ($userId == '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>게시판</title>
-   
+
     <style>
         /* 반응형 디자인 */
         @media (max-width: 768px) {
@@ -268,7 +268,24 @@ if ($userId == '') {
             </table>
             <p></p>
             <div class="text-center">
-                <a href="writeComment.php?number=<?php echo $board['number'];?>">[댓글작성]</a>
+                <!-- 댓글 작성 버튼 -->
+                <button onclick="openCommentModal()">댓글 작성</button>
+
+                <!-- 댓글 작성 모달 -->
+                <div id="commentModal" style="display:none;">
+                <form action='writeCommentProcess.php?number=<?php echo $number?>' method="POST">
+                        <textarea name="comment"></textarea>
+                        <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
+                        <input type="submit" value="댓글 제출">
+                    </form>
+                </div>
+
+                <script>
+                    function openCommentModal() {
+                        document.getElementById('commentModal').style.display = 'block';
+                    }
+                </script>
+
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
             </div>
         </div>
