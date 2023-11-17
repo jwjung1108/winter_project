@@ -246,10 +246,11 @@ if ($userId == '') {
             /* 기존 스타일 */
         }
 
-        /* 댓글 및 목록 버튼 공통 스타일 */
-        .btn-primary {
+        .btn-primary,
+        a.btn-primary {
             background-color: #007bff;
             color: #fff;
+            /* 링크의 기본 색상 재정의 */
             padding: 10px 15px;
             border-radius: 5px;
             border: none;
@@ -257,13 +258,16 @@ if ($userId == '') {
             margin-bottom: 10px;
             font-size: 16px;
             text-decoration: none;
-            /* 링크 스타일 제거 */
+            /* 링크의 밑줄 제거 */
             display: inline-block;
             /* 버튼처럼 보이게 함 */
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover,
+        a.btn-primary:hover {
             background-color: #0056b3;
+            text-decoration: none;
+            /* 호버 시 밑줄 제거 */
         }
     </style>
 </head>
