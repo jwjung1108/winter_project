@@ -1,6 +1,7 @@
 <?php
 include '../../connect.php';
 $number = $_GET['Number'];
+$BoardNumber = $_GET['$BoardNumber'];
 $sql = "select userID from comment where Number= '$number'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 $userid = $_SESSION['userId']
@@ -55,7 +56,7 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
             ?>
             <script>
                 alert("댓글이 삭제되었습니다.");
-                location.href = "readBoard.php?=<?php echo "$number" ?>";
+                location.href = "readBoard.php?=<?php echo "$BoardNumber" ?>";
             </script>
             <?php
         }
@@ -64,7 +65,7 @@ $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
         ?>
         <script>
             alert("이미 삭제된 댓글입니다.");
-            location.href = "readBoard.php?=<?php echo "$number" ?>";
+            location.href = "readBoard.php?=<?php echo "$BoardNumber" ?>";
         </script>
         <?php
     }
