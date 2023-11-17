@@ -50,7 +50,42 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-    <div class="container">
+    <!-- Navbar 시작 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">게시판</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">특징</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">가격</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            드롭다운
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">액션</a></li>
+                            <li><a class="dropdown-item" href="#">또 다른 액션</a></li>
+                            <li><a class="dropdown-item" href="#">무언가 또 다른 것</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar 끝 -->
+    <div class="container" style="margin-top: 80px;">
         <h1 class="text-center">Q&A 게시판</h1>
         <table class="table">
             <thead>
