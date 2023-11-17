@@ -320,7 +320,7 @@ if ($userId == '') {
             <p></p>
             <div class="text-center">
                 <!-- 댓글 작성 버튼 -->
-                <button onclick="openCommentModal()">댓글 작성</button>
+                <button class="btn btn-secondary" onclick="openCommentModal()">댓글 작성</button>
 
 
                 <!-- 댓글 작성 모달 -->
