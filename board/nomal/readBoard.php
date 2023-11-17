@@ -213,20 +213,7 @@ if ($userId == '') {
             }
         }
 
-        /* 댓글 작성 버튼 스타일 */
-        .btn-comment {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
 
-        .btn-comment:hover {
-            background-color: #0056b3;
-        }
 
         /* 기존 모달 스타일 */
         #commentModal {
@@ -387,7 +374,7 @@ if ($userId == '') {
             <p></p>
             <div class="text-center">
                 <!-- 댓글 작성 버튼 -->
-                <button class="btn-comment" onclick="openCommentModal()">댓글 작성</button>
+                <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
 
 
                 <!-- 댓글 작성 모달 -->
