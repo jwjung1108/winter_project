@@ -258,7 +258,7 @@ if ($userId == '') {
                             </td>
                             <td>
                                 <a
-                                    href="deleteComment.php?Number=<?php echo $row['Number'] ?>&BoardNumber=<?php echo "$number" ?>">
+                                    href="deleteComment.php?Number=<?php echo $row['Number'] ?>&Bnumber=<?php echo $number ?>">
                                     <?php echo "삭제"; ?>
                                 </a>
                             </td>
