@@ -201,6 +201,50 @@ if ($userId == '') {
             font-size: 16px;
             cursor: pointer;
         }
+
+        /* 반응형 디자인 적용 */
+        @media (max-width: 768px) {
+            /* 기존 반응형 스타일 */
+
+            /* 모달 반응형 스타일 */
+            #commentModal {
+                width: 90%;
+                /* 모바일에서는 너비를 줄임 */
+            }
+        }
+
+        /* 댓글 작성 버튼 스타일 */
+        .btn-comment {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .btn-comment:hover {
+            background-color: #0056b3;
+        }
+
+        /* 기존 모달 스타일 */
+        #commentModal {
+            /* 기존 모달 스타일 */
+            width: 50%;
+            /* 데스크탑에서의 기본 너비 */
+        }
+
+        /* 모달 뒷배경 스타일 */
+        #modalBackground {
+            /* 기존 모달 뒷배경 스타일 */
+        }
+
+        /* 텍스트 에어리어 및 버튼 스타일 */
+        #commentModal textarea,
+        #commentModal input[type="submit"] {
+            /* 기존 스타일 */
+        }
     </style>
 </head>
 
@@ -307,8 +351,7 @@ if ($userId == '') {
                                 <?php echo $row['created']; ?>
                             </td>
                             <td>
-                                <a
-                                    href="deleteComment.php?Number=<?php echo $row['Number'] ?>">
+                                <a href="deleteComment.php?Number=<?php echo $row['Number'] ?>">
                                     <?php echo "삭제"; ?>
                                 </a>
                             </td>
@@ -320,7 +363,7 @@ if ($userId == '') {
             <p></p>
             <div class="text-center">
                 <!-- 댓글 작성 버튼 -->
-                <button class="btn btn-secondary" onclick="openCommentModal()">댓글 작성</button>
+                <button class="btn-comment" onclick="openCommentModal()">댓글 작성</button>
 
 
                 <!-- 댓글 작성 모달 -->
