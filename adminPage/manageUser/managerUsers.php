@@ -101,7 +101,7 @@
                         <td>
                             <?php echo $row['user_rank']; ?>
                         </td>
-                        <td><a href='delete_user.php?id=<?php echo $row['id']?>'>삭제<a>
+                        <td><a href='delete_user.php?id=<?php echo $row['id'] ?>'>삭제<a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -114,6 +114,23 @@
         }
         ?>
     </div>
+
+    <div id="search_box">
+        <form action="./change_rank.php" method="get">
+            <input type="text" name="user" size="40" required="required" />
+
+            <select name="catgo">
+                <option value="title">Bronze</option>
+                <option value="username">글쓴이</option>
+                <option value="board">내용</option>
+            </select>
+            <button>검색</button>
+        </form>
+    </div>
+
+
+
+
 
     <div class="container">
         <a href='../adminpage.php'>이전</a>
