@@ -122,11 +122,38 @@ $result = mysqli_query($conn, $sql);
             font-size: 12px;
             margin-left: 5px;
         }
+
+        .back-to-list {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-list:hover {
+            background-color: #0056b3;
+        }
+
+        /* 검색 결과 섹션 스타일링 */
+        .search-results {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .search-results h1 {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container search-results">
         <h1 class="text-center">검색결과:
             <?php echo htmlspecialchars($search_con); ?>
         </h1>
@@ -190,8 +217,8 @@ $result = mysqli_query($conn, $sql);
         </table>
     </div>
 
-    <div>
-        <a href='/'>목록으로<a>
+    <div class="text-center">
+        <a href='/' class="back-to-list">목록으로</a>
     </div>
     <script>
         function validateForm() {
