@@ -4,7 +4,7 @@ include '../connect.php';
 // 정렬 방식 설정
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
 $sortIcon = ($sort == 'number') ? '▲' : '▼';
-
+$search_con = isset($_GET['search']) ? $_GET['search'] : '';
 // 정렬 기준 설정
 $orderBy = '';
 switch ($sort) {
@@ -55,20 +55,81 @@ $result = mysqli_query($conn, $sql);
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <title>노하우 전수 블로그</title>
+    <title>검색 결과:
+        <?php echo htmlspecialchars($search_con); ?>
+    </title>
     <style>
-        /* 추가한 스타일은 여기에 넣어주세요 */
+        /* 색상 및 폰트 */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
 
-        /* 반응형 디자인 */
+        /* 테이블 스타일링 */
+        .table thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* 버튼 및 폼 요소 */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin: 5px;
+        }
+
         @media (max-width: 768px) {
-            /* 스타일 추가 */
+            body {
+                font-size: 16px;
+            }
+
+            .table {
+                font-size: 14px;
+            }
+
+            input[type="text"],
+            button {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .table tbody tr:hover {
+                background-color: transparent;
+                /* 모바일에서는 호버 효과를 제거 */
+            }
+
+            /* 네비게이션 및 기타 요소들을 위한 추가적인 스타일링 */
+        }
+
+        /* 아이콘 사용 */
+        .sort-icon {
+            font-size: 12px;
+            margin-left: 5px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="text-center">노하우 전수 블로그</h1>
+        <h1 class="text-center">검색결과:
+            <?php echo htmlspecialchars($search_con); ?>
+        </h1>
 
         <div id="search_box">
             <form action="./search_result.php" method="get" onsubmit="return validateForm()">
