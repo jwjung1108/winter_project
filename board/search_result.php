@@ -195,16 +195,16 @@ $result = mysqli_query($conn, $sql);
                     $link = '';
                     if ($row['freeboard'] == 1) {
                         $boardType = '자유게시판';
-                        $link = "board/nomal/readBoard.php?number=" . $row['number'];
+                        $link = "nomal/readBoard.php?number=" . $row['number'];
                     } elseif ($row['notification'] == 1) {
                         $boardType = '공지사항';
-                        $link = "board/notification/n_readBoard.php?number=" . $row['number'];
+                        $link = "notification/n_readBoard.php?number=" . $row['number'];
                     } elseif ($row['reference'] == 1) {
                         $boardType = '자료실';
-                        $link = "board/reference/r_readBoard.php?number=" . $row['number'];
+                        $link = "reference/r_readBoard.php?number=" . $row['number'];
                     } elseif ($row['QandA'] == 1) {
                         $boardType = 'Q&A';
-                        $link = "board/QandA/q_readBoard.php?number=" . $row['number'];
+                        $link = "QandA/q_readBoard.php?number=" . $row['number'];
                     }
                     ?>
                     <tr>
