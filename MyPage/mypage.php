@@ -21,10 +21,17 @@ if ($userId == '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
-    <link rel="stylesheet" href="/css/mypage_style.css"> 
+    <link rel="stylesheet" href="../css/mypage_style.css"> 
 </head>
 
 <body>
+<button onclick="goBack()" class="back-button">이전 페이지로 돌아가기</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
     <h1>마이페이지에 오신 것을 환영합니다.</h1>
     <h2>어서오세요 <?php echo $userId; ?>님 </h2>
     <?php
