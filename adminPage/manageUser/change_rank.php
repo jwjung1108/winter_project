@@ -18,6 +18,8 @@ if($result['id'] === "$userid"){
 }
 else{
     echo "Hello World!";
+    echo "$userid";
+    echo "$rank";
 }
 
 
