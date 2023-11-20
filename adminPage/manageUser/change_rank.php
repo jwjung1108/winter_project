@@ -12,7 +12,7 @@ $pre_rank = $result['user_rank'];
 if ($result) {
     echo "$userid 변경\n";
     echo "$pre_rank -> ";
-    $sql = "update users set user_rank ='$rank'";
+    $sql = "update users set user_rank ='$rank' where id = '$userid'";
     mysqli_query($conn, $sql);
     echo "$rank";
 } else {
