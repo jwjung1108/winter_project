@@ -28,24 +28,12 @@ if($userId == ''){
 </html>
 
 <?php
-
-
-
-
 $sql = "select * from users where id = '$userId'";
+$result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+echo "아이디 : " + $result[''];
+echo "닉네임 : " + $result['nickname'];
+echo "이메일 : " + $result['email'];
+echo "랭크 : " + $result['user_rank'];
+echo "포인트 : " + $result['point'];
 ?>
