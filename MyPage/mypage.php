@@ -52,7 +52,7 @@ if ($userId == '') {
 
 
         if ($result['user_rank'] != 'CH') {
-            echo "<button onclick='requestRankUp()'>등급 업 신청</button>";
+            echo "<button onclick='requestRankUp()' class='rank-up-button'>등급 업 신청</button>";
         }
 
         echo "</div>";

@@ -42,3 +42,21 @@ h1, h2 {
 .back-button:hover {
     background-color: #005f73;
 }
+.rank-up-button {
+    background-color: #4CAF50; /* 녹색 배경 */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.rank-up-button:hover {
+    background-color: #45a049; /* 버튼 호버 시 색상 변경 */
+}
