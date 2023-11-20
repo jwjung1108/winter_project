@@ -16,8 +16,6 @@
         }
 
         .container {
-            max-width: 95%;
-            margin: 30px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
@@ -41,7 +39,7 @@
 
         .table th,
         .table td {
-            padding: 12px 15px;
+            padding: 10px;
             border: 1px solid #dee2e6;
             text-align: left;
         }
@@ -104,7 +102,6 @@
 
             /* 컨테이너 스타일 조정 */
             .container {
-                width: 100%;
                 padding: 10px;
             }
 
@@ -237,7 +234,7 @@
 
     </div>
     <div class="container">
-        <a href='../adminpage.php'>
+        <a class="button-link" href='../adminpage.php'>
             이전
         </a>
     </div>
