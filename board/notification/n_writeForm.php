@@ -100,7 +100,7 @@ if ($row['authority'] != 2) {
         <p><input type="submit" value="작성"></p>
        
     </form>
-    <button onclick="goBack()">이전 페이지로</button>
+    <button onclick="goBack()"style="margin-top: 20px; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">이전 페이지로</button>
         <script>
             function goBack() {
                 window.history.back();
