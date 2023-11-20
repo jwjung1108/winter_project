@@ -23,14 +23,50 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 네비게이션 및 헤더 */
-.navbar {
+/* 네비게이션 바 스타일 */
+.navbar-custom {
     background-color: var(--primary-color);
     color: white;
 }
 
-.navbar a {
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
     color: white;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .btn-outline-secondary:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: white;
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-custom {
+        text-align: center; /* 모바일 뷰에서 중앙 정렬 */
+    }
+}
+
+/* 네비게이션 바 내부 요소 간격 조정 */
+.nav-item {
+    margin-left: 10px;
+}
+
+/* 로그아웃 버튼 스타일링 */
+.btn-outline-secondary {
+    color: white;
+    border-color: white;
+}
+
+.btn-outline-secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
 }
 
 /* 테이블 스타일 */
@@ -70,11 +106,10 @@ body {
     color: white;
 }
 
-
 /* 반응형 디자인 */
 @media screen and (max-width: 768px) {
     .table .title-cell {
-        max-width: 100px; /* 모바일 화면에서 셀의 최대 너비를 부모 요소의 50%로 설정 */
+        max-width: 100px; /* 모바일 화면에서 셀의 최대 너비 */
         white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
         overflow: hidden; /* 넘치는 내용 숨김 */
         text-overflow: ellipsis; /* 넘치는 텍스트를 ...으로 표시 */
@@ -84,11 +119,10 @@ body {
         padding: 0 15px;
     }
 
-    .navbar {
-        text-align: center;
+    .navbar-custom {
+        text-align: center; /* 모바일 뷰에서 중앙 정렬 */
     }
 
-    /* 모바일 환경에서의 입력 필드 스타일 */
     .search-box input[type="text"], .search-box select {
         width: 100%; /* 너비를 화면에 맞춤 */
         margin-bottom: 10px; /* 요소들 사이의 간격 */
@@ -114,6 +148,7 @@ body {
         text-align: center;
     }
 }
+
 /* 기타 스타일 */
 .sortable:hover {
     color: var(--primary-color);
@@ -145,43 +180,4 @@ body {
     border-radius: 5px;
     border: 1px solid #ddd;
     margin-right: 10px;
-}
-
-/* 카테고리 태그 스타일 */
-.tag {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.8em;
-    margin-right: 10px;
-}
-
-.tag:hover {
-    background-color: darken(var(--primary-color), 10%);
-}
-
-
-/* 네비게이션 바 스타일 */
-.navbar-custom {
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
-}
-
-.navbar-custom .navbar-brand,
-.navbar-custom .nav-link {
-    color: white;
-}
-
-.navbar-custom .nav-link:hover {
-    background-color: darken(var(--primary-color), 10%);
-}
-
-.navbar-custom .navbar-toggler {
-    border-color: white;
-}
-
-.navbar-custom .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
