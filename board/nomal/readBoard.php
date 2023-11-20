@@ -162,6 +162,8 @@ include '../point/ReadPoint.php';
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
+            overflow-y: auto;
+            /* 스크롤 가능하도록 설정 */
         }
 
         /* 버튼 스타일 */
@@ -204,6 +206,11 @@ include '../point/ReadPoint.php';
                 font-size: 14px;
             }
 
+            .btn-primary {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
             #commentModal {
                 width: 90%;
                 padding: 10px;
@@ -223,23 +230,6 @@ include '../point/ReadPoint.php';
 
 
 
-        /* 기존 모달 스타일 */
-        #commentModal {
-            /* 기존 모달 스타일 */
-            width: 50%;
-            /* 데스크탑에서의 기본 너비 */
-        }
-
-        /* 모달 뒷배경 스타일 */
-        #modalBackground {
-            /* 기존 모달 뒷배경 스타일 */
-        }
-
-        /* 텍스트 에어리어 및 버튼 스타일 */
-        #commentModal textarea,
-        #commentModal input[type="submit"] {
-            /* 기존 스타일 */
-        }
 
         .btn-primary,
         a.btn-primary {

@@ -125,6 +125,11 @@
             .table td {
                 padding: 8px;
             }
+
+            .table td a {
+                font-size: 14px;
+                padding: 4px 8px;
+            }
         }
     </style>
 </head>
