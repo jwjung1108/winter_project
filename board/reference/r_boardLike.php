@@ -27,9 +27,9 @@ if (!$isLiked) {
     mysqli_query($conn, $sql);
 
     // 추천 받은 게시물 사용자 포인트 증가
-    $sql = "update users set point = point + 5 where id = (select username from board where number = '$postId')";
+    $sql = "update users set point = point + 13 where id = (select username from board where number = '$postId')";
     mysqli_query($conn, $sql)
-    
+
         // 추천 완료 메시지 출력
         ?>
     <script>
