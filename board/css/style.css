@@ -161,35 +161,27 @@ body {
 .tag:hover {
     background-color: darken(var(--primary-color), 10%);
 }
+
+
+/* 네비게이션 바 스타일 */
 .navbar-custom {
-    background-color: #f8f9fa; /* 네비게이션 바의 배경색 */
-    box-shadow: 0 2px 4px rgba(0,0,0,.1); /* 상단에 그림자 효과 */
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
 }
 
-.navbar-custom .navbar-brand {
-    color: #007bff; /* 브랜드 로고 색상 */
-}
-
+.navbar-custom .navbar-brand,
 .navbar-custom .nav-link {
-    color: #007bff; /* 네비게이션 링크 색상 */
+    color: white;
 }
 
 .navbar-custom .nav-link:hover {
-    color: #0056b3; /* 네비게이션 링크 호버 색상 */
+    background-color: darken(var(--primary-color), 10%);
 }
 
-.navbar-custom .btn-outline-secondary {
-    color: #007bff;
-    border-color: #007bff; /* 로그아웃 버튼 색상 및 테두리 */
+.navbar-custom .navbar-toggler {
+    border-color: white;
 }
 
-.navbar-custom .btn-outline-secondary:hover {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff; /* 로그아웃 버튼 호버 색상 및 배경 */
-}
-
-/* 모바일 뷰에서의 네비게이션 바 토글 버튼 색상 */
 .navbar-custom .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
