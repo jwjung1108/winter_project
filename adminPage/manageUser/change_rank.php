@@ -8,7 +8,7 @@ $rank = isset($_GET['rank']) ? $_GET['rank'] : '';
 $sql = 'select * from users';
 $result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-if($result['id'] != "$userid"){
+if($result['id'] === "$userid"){
     ?>
     <script>
         alert('사용자가 존재하지 않습니다.');
