@@ -15,6 +15,11 @@ if ($result) {
     $sql = "update users set user_rank ='$rank' where id = '$userid'";
     mysqli_query($conn, $sql);
     echo "$rank";
+?>
+    <div class="container">
+        <a href='managerUsers.php'>이전</a>
+    </div>
+<?php
 } else {
     ?>
     <script>
@@ -24,6 +29,4 @@ if ($result) {
     <?php
 
 }
-
-
 ?>
