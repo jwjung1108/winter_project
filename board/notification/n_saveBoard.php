@@ -6,7 +6,7 @@ include '../../connect.php';
 
 $sql = "select authority from users where id='$userId'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-if($row['authority'] != 2){
+if ($row['authority'] != 2) {
     ?>
     <script>
         alert("지정된 사용자가 아닙니다.");
@@ -69,6 +69,8 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     if ($result === false) {
         echo "저장에 문제가 생겼습니다. 관리자에게 문의해주세요.";
     } else {
+        // 글 작성시 포인트 상승
+        include '../point/WriteBoPoint.php';
         ?>
         <script>
             alert("게시글이 작성되었습니다.");
@@ -82,6 +84,6 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
         alert("파일 업로드에 실패하였습니다.");
         location.href = "list_board.php";
     </script>
-<?php
+    <?php
 }
 ?>
