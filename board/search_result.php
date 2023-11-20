@@ -150,6 +150,43 @@ $result = mysqli_query($conn, $sql);
         .search-results h1 {
             margin-bottom: 20px;
         }
+
+        @media screen and (max-width: 768px) {
+
+            /* 컨테이너 스타일 조정 */
+            .container {
+                width: 100%;
+                padding: 15px;
+                margin-top: 10px;
+            }
+
+            /* 폰트 크기 조정 */
+            h2,
+            .table th,
+            .table td {
+                font-size: 14px;
+            }
+
+            /* 버튼 크기 조정 */
+            button {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            /* 폼 요소 크기 조정 */
+            input[type="text"],
+            select {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            /* 테이블 스크롤 가능하게 설정 */
+            .table-responsive {
+                overflow-x: auto;
+            }
+
+            /* 네비게이션 및 기타 요소들을 위한 추가적인 스타일링 */
+        }
     </style>
 </head>
 
@@ -158,81 +195,81 @@ $result = mysqli_query($conn, $sql);
         <h1 class="text-center">검색결과:
             <?php echo htmlspecialchars($search_con); ?>
         </h1>
+        <div class="table-responsive">
+            <div id="search_box">
+                <form action="./search_result.php" method="get" onsubmit="return validateForm()">
+                    <select name="catgo">
+                        <option value="title">제목</option>
+                        <option value="username">글쓴이</option>
+                        <option value="board">내용</option>
+                    </select>
+                    <input type="text" name="search" required="required" />
 
-        <div id="search_box">
-            <form action="./search_result.php" method="get" onsubmit="return validateForm()">
-                <select name="catgo">
-                    <option value="title">제목</option>
-                    <option value="username">글쓴이</option>
-                    <option value="board">내용</option>
-                </select>
-                <input type="text" name="search" size="40" required="required" />
+                    <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
+                    <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
+                    <label><input type="checkbox" name="category[]" value="QandA"> Q&A</label>
 
-                <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
-                <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
-                <label><input type="checkbox" name="category[]" value="QandA"> Q&A</label>
+                    <button>검색</button>
+                </form>
+            </div>
 
-                <button>검색</button>
-            </form>
-        </div>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">등록일</th>
-                    <th scope="col">조회수</th>
-                    <th scope="col">추천수</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 1;
-                while ($row = mysqli_fetch_array($result)) {
-                    $boardType = '';
-                    $link = '';
-                    if ($row['freeboard'] == 1) {
-                        $boardType = '자유게시판';
-                        $link = "nomal/readBoard.php?number=" . $row['number'];
-                    } elseif ($row['notification'] == 1) {
-                        $boardType = '공지사항';
-                        $link = "notification/n_readBoard.php?number=" . $row['number'];
-                    } elseif ($row['reference'] == 1) {
-                        $boardType = '자료실';
-                        $link = "reference/r_readBoard.php?number=" . $row['number'];
-                    } elseif ($row['QandA'] == 1) {
-                        $boardType = 'Q&A';
-                        $link = "QandA/q_readBoard.php?number=" . $row['number'];
-                    }
-                    ?>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            <?php echo htmlspecialchars($boardType); ?>
-                        </td>
-                        <td><a href="<?php echo $link; ?>">
-                                <?php echo $row['title']; ?>
-                            </a>
-                        </td>
-                        <td>
-                            <?php echo $row['username']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['created']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['views']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['likes']; ?>
-                        </td>
+                        <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col">조회수</th>
+                        <th scope="col">추천수</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        $boardType = '';
+                        $link = '';
+                        if ($row['freeboard'] == 1) {
+                            $boardType = '자유게시판';
+                            $link = "nomal/readBoard.php?number=" . $row['number'];
+                        } elseif ($row['notification'] == 1) {
+                            $boardType = '공지사항';
+                            $link = "notification/n_readBoard.php?number=" . $row['number'];
+                        } elseif ($row['reference'] == 1) {
+                            $boardType = '자료실';
+                            $link = "reference/r_readBoard.php?number=" . $row['number'];
+                        } elseif ($row['QandA'] == 1) {
+                            $boardType = 'Q&A';
+                            $link = "QandA/q_readBoard.php?number=" . $row['number'];
+                        }
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo htmlspecialchars($boardType); ?>
+                            </td>
+                            <td><a href="<?php echo $link; ?>">
+                                    <?php echo $row['title']; ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?php echo $row['username']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['created']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['views']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['likes']; ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-
     <div class="text-center">
         <a href='/' class="back-to-list">목록으로</a>
     </div>
