@@ -24,18 +24,18 @@ if ($userId == '') {
 </head>
 
 <body>
-    <h1>마이페이지에 오신 것을 환영합니다.</br>
-        <h2>어서오세요 <?php echo $userId; ?>님 </br>
-        <?php
-            $sql = "select * from users where id = '$userId'";
-            $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+    <h1>마이페이지에 오신 것을 환영합니다.</h1>
+    <h2>어서오세요 <?php echo $userId; ?>님 </h2>
+    <?php
+        $sql = "select * from users where id = '$userId'";
+        $result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-            echo "아이디 : " + $result[''];
-            echo "닉네임 : " + $result['nickname'];
-            echo "이메일 : " + $result['email'];
-            echo "랭크 : " + $result['user_rank'];
-            echo "포인트 : " + $result['point'];
-        ?>
+        echo "아이디 : " . $result['id'] . "<br>";
+        echo "닉네임 : " . $result['nickname'] . "<br>";
+        echo "이메일 : " . $result['email'] . "<br>";
+        echo "랭크 : " . $result['user_rank'] . "<br>";
+        echo "포인트 : " . $result['point'] . "<br>";
+    ?>
 </body>
 
 </html>
