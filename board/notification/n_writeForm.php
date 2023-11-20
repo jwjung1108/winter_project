@@ -98,13 +98,14 @@ if ($row['authority'] != 2) {
         <p>중요 공지사항<input type="checkbox" name="important" value="reference">
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
-        <button onclick="goBack()">이전 페이지로</button>
+       
+    </form>
+    <button onclick="goBack()">이전 페이지로</button>
         <script>
             function goBack() {
                 window.history.back();
             }
         </script>
-    </form>
 </body>
 
 

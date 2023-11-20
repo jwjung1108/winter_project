@@ -85,13 +85,14 @@
         <p><textarea name="board" placeholder="본문 (질문해주세요.)" rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
-        <button onclick="goBack()">이전 페이지로</button>
+        
+    </form>
+    <button onclick="goBack()">이전 페이지로</button>
         <script>
             function goBack() {
                 window.history.back();
             }
         </script>
-    </form>
 </body>
 
 </html>
