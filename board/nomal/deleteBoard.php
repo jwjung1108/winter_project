@@ -28,7 +28,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
         if ($row['authority'] != 2) {
             ?>
             <script>
-                alert("'접근 권한이 없습니다.';");
+                alert("접근 권한이 없습니다.");
                 location.href = "list_board.php";
             </script>
             <?php
