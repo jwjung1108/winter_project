@@ -177,13 +177,47 @@ include '../point/ReadPoint.php';
         }
 
         /* 반응형 디자인 적용 */
-        @media (max-width: 768px) {
-            /* 기존 반응형 스타일 */
+        @media screen and (max-width: 768px) {
 
-            /* 모달 반응형 스타일 */
+            #board_read,
+            .container {
+                width: 100%;
+                padding: 10px;
+                box-shadow: none;
+                margin-top: 10px;
+            }
+
+            h2,
+            #bo_content,
+            .table td a {
+                font-size: 16px;
+            }
+
+            .table {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .table th,
+            .table td {
+                padding: 8px;
+                font-size: 14px;
+            }
+
             #commentModal {
                 width: 90%;
-                /* 모바일에서는 너비를 줄임 */
+                padding: 10px;
+            }
+
+            #commentModal textarea,
+            #commentModal input[type="submit"] {
+                font-size: 14px;
+            }
+
+            .btn-primary,
+            a.btn-primary {
+                padding: 8px 12px;
+                font-size: 14px;
             }
         }
 

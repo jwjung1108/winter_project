@@ -71,6 +71,7 @@
             cursor: pointer;
             font-size: 16px;
             /* 폰트 크기 증가 */
+            display: inline-block;
         }
 
         button:hover {
@@ -100,25 +101,29 @@
         }
 
         @media screen and (max-width: 768px) {
+
+            /* 컨테이너 스타일 조정 */
             .container {
                 width: 100%;
                 padding: 10px;
-                margin-top: 10px;
             }
 
+            /* 테이블이 너무 넓어 모바일 화면에 맞지 않을 때 스크롤 가능하게 설정 */
             .table-responsive {
                 overflow-x: auto;
             }
 
+            /* 모바일 환경에서 버튼 크기 조정 */
+            button {
+                padding: 8px 12px;
+                font-size: 14px;
+                /* 폰트 크기 줄임 */
+            }
+
+            /* 모바일 환경에서 테이블 셀 크기 조정 */
             .table th,
             .table td {
                 padding: 8px;
-                font-size: 14px;
-            }
-
-            button {
-                padding: 8px 16px;
-                font-size: 14px;
             }
         }
     </style>
