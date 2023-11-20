@@ -51,7 +51,7 @@ if ($userId == '') {
 
 
 
-        if ($result['user_rank'] != '챌린저') {
+        if ($result['user_rank'] != 'CH') {
             echo "<button onclick='requestRankUp()'>등급 업 신청</button>";
         }
 
