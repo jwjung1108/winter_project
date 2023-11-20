@@ -1,7 +1,6 @@
 <?php
-session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
 include '../../connect.php';
+include '../point/WriteCoPoint.php';
 
 $number = $_GET['number'];
 $sql = "
