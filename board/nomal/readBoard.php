@@ -1,6 +1,6 @@
 <?php
 include '../../connect.php';
-session_start();
+include '../point/ReadPoint.php';
 
 $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
 if ($userId == '') {
@@ -12,14 +12,6 @@ if ($userId == '') {
     <?php
     exit();
 }
-$sql = "select point from users where id = '$userId'";
-$result = mysqli_fetch_array(mysqli_query($conn, $sql));
-
-$point = $result['point'] + 1;
-
-$sql = "update users set point = '$point' where id = '$userId'";
-mysqli_query( $conn, $sql);
-
 ?>
 
 <!doctype html>
