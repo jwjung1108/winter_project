@@ -131,7 +131,7 @@
                     <option value="Platinum">Platinum</option>
                     <option value="Master">Master</option>
                 </select>
-                <button>검색</button>
+                <button>변경</button>
             </form>
         </div>
     </div>
