@@ -59,6 +59,12 @@
 </head>
 
 <body>
+<button onclick="goBack()">이전 페이지로</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     <form action="r_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>학업 노하우 공유하기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>

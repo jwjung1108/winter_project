@@ -89,6 +89,12 @@ if ($row['authority'] != 2) {
 </head>
 
 <body>
+<button onclick="goBack()">이전 페이지로</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     <form action="n_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 공지사항)"></p>
