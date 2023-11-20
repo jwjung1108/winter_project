@@ -1,6 +1,6 @@
 <?php
 include '../../connect.php';
-session_start();
+include '../point/ReadPoint.php';
 ?>
 
 <!doctype html>
