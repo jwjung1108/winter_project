@@ -31,6 +31,8 @@ if ($userId == '') {
     function goBack() {
         window.history.back();
     }
+</script>
+
     <div class="container">
         <h1>마이페이지에 오신 것을 환영합니다.</h1>
         <h2>어서오세요 <?php echo $userId; ?>님 </h2>
