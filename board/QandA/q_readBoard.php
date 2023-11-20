@@ -123,6 +123,111 @@ include '../point/ReadPoint.php';
         .text-center .btn {
             margin-top: 10px;
         }
+
+        #commentModal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            /* 기본적으로 숨김 */
+        }
+
+        /* 모달 뒷배경 스타일 */
+        #modalBackground {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            /* 기본적으로 숨김 */
+        }
+
+        /* 텍스트 에어리어 스타일 */
+        #commentModal textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* 버튼 스타일 */
+        #commentModal input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* 반응형 디자인 적용 */
+        @media (max-width: 768px) {
+            /* 기존 반응형 스타일 */
+
+            /* 모달 반응형 스타일 */
+            #commentModal {
+                width: 90%;
+                /* 모바일에서는 너비를 줄임 */
+            }
+        }
+
+
+
+        /* 기존 모달 스타일 */
+        #commentModal {
+            /* 기존 모달 스타일 */
+            width: 50%;
+            /* 데스크탑에서의 기본 너비 */
+        }
+
+        /* 모달 뒷배경 스타일 */
+        #modalBackground {
+            /* 기존 모달 뒷배경 스타일 */
+        }
+
+        /* 텍스트 에어리어 및 버튼 스타일 */
+        #commentModal textarea,
+        #commentModal input[type="submit"] {
+            /* 기존 스타일 */
+        }
+
+        .btn-primary,
+        a.btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            /* 링크의 기본 색상 재정의 */
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            /* 링크의 밑줄 제거 */
+            display: inline-block;
+            /* 버튼처럼 보이게 함 */
+        }
+
+        .btn-primary:hover,
+        a.btn-primary:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+            /* 호버 시 밑줄 제거 */
+        }
     </style>
 
 </head>
