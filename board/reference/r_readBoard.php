@@ -373,7 +373,16 @@ include '../point/ReadPoint.php';
 
                 <script>
                     function openCommentModal() {
-                        document.getElementById('commentModal').style.display = 'block';
+                        var modal = document.getElementById('commentModal');
+                        var windowWidth = window.innerWidth;
+
+                        if (windowWidth < 768) { // 모바일 화면의 경우
+                            modal.style.width = "95%";
+                        } else { // 데스크탑 화면의 경우
+                            modal.style.width = "80%";
+                        }
+
+                        modal.style.display = 'block';
                         document.getElementById('modalBackground').style.display = 'block';
                     }
 
@@ -382,11 +391,11 @@ include '../point/ReadPoint.php';
                         document.getElementById('commentModal').style.display = 'none';
                     };
                 </script>
-            <div class="text-center">
-                <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                <div class="text-center">
+                    <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>

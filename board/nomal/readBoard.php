@@ -138,6 +138,10 @@ include '../point/ReadPoint.php';
             z-index: 1000;
             display: none;
             /* 기본적으로 숨김 */
+            max-width: 600px;
+            /* 모달 최대 너비 설정 */
+            width: 80%;
+            /* 기본 너비를 화면의 80%로 설정 */
         }
 
         /* 모달 뒷배경 스타일 */
@@ -397,7 +401,16 @@ include '../point/ReadPoint.php';
 
                 <script>
                     function openCommentModal() {
-                        document.getElementById('commentModal').style.display = 'block';
+                        var modal = document.getElementById('commentModal');
+                        var windowWidth = window.innerWidth;
+
+                        if (windowWidth < 768) { // 모바일 화면의 경우
+                            modal.style.width = "95%";
+                        } else { // 데스크탑 화면의 경우
+                            modal.style.width = "80%";
+                        }
+
+                        modal.style.display = 'block';
                         document.getElementById('modalBackground').style.display = 'block';
                     }
 
