@@ -69,30 +69,21 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container-fluid">
+            <!-- Navbar Brand -->
             <a class="navbar-brand" href="#">자유게시판</a>
+
+            <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
-                    </li>
+                <!-- Left-aligned links -->
+                <ul class="navbar-nav me-auto">
                     <?php if (isset($_SESSION['userId'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
@@ -113,6 +104,25 @@ $result = mysqli_query($conn, $sql);
                             <a class="nav-link" href="/join/signup.php">회원가입</a>
                         </li>
                     <?php } ?>
+                </ul>
+
+                <!-- Center-aligned links -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
+                    </li>
                 </ul>
             </div>
         </div>
