@@ -10,25 +10,24 @@ $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_array($result);
 
 // 포인트에 따른 등급 결정
-$newRank = '';
-if ($user['point'] >= 800) {
-    $newRank = 'CH';
-} elseif ($user['point'] >= 700) {
-    $newRank = 'GM';
-} elseif ($user['point'] >= 500) {
-    $newRank = 'Master';
-}  elseif ($user['point'] >= 400) {
-    $newRank = 'DIA';
-} elseif ($user['point'] >= 300) {
-    $newRank = 'PLA';
-} elseif ($user['point'] >= 200) {
-    $newRank = 'GOLD';
-} elseif ($user['point'] >= 100) {
-    $newRank = 'SILVER';
+$newRank = $user['user_rank'];
+switch ($user['user_rank']) {
+    case 'bronze':
+        if ($user['point'] >= 200) $newRank = 'silver';
+        break;
+    case 'silver':
+        if ($user['point'] >= 300) $newRank = 'gold';
+        break;
+    case 'gold':
+        if ($user['point'] >= 400) $newRank = 'platinum';
+        break;
+    case 'platinum':
+        if ($user['point'] >= 500) $newRank = 'master';
+        break;
 }
 
 // 등급 업 로직
-if ($newRank !== '' && $newRank !== $user['user_rank']) {
+if ($newRank !== $user['user_rank']) {
     mysqli_query($conn, "UPDATE users SET user_rank = '$newRank' WHERE id = '$userId'");
     echo "<script>alert('등급이 업그레이드 되었습니다.'); window.location.href = 'mypage.php';</script>";
 } else {
