@@ -22,7 +22,7 @@ $fileType = $file['type'];
 
 
 // 파일 저장 경로 설정  
-$uploadDir = '/var/www/upload/list/';
+$uploadDir = '/home/upload/list/';
 
 
 // 파일 확장자 추출
