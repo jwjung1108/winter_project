@@ -288,18 +288,18 @@ include '../point/ReadPoint.php';
                 <li><a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
                 <li><a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
                 <li><a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
-                <?php $download = isset($board['filename']) ? $board['filename'] : ''; 
-                    if($download === ''){
-                        echo "다운로드 파일이 존재하지 않습니다.";
-                    }
-                    else{
-                        echo $board['filename']." "; ?>
-                        <li><a href="../download.php?number=<?php echo $board['number']; ?>">[다운로드]</a></li>
-                        <?php
-                    }
-                ?>
-                
             </ul>
+        </div>
+        <div>
+            <?php $download = isset($board['filename']) ? $board['filename'] : '';
+            if ($download === '') {
+                echo "다운로드 파일이 존재하지 않습니다.";
+            } else {
+                echo $board['filename'] . " "; ?>
+                <a href="../download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
+                <?php
+            }
+            ?>
         </div>
 
         <!-- 댓글 -->
