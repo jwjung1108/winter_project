@@ -80,7 +80,7 @@ $result = mysqli_query($conn, $sql);
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <!-- Left-aligned links -->
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['userId'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
