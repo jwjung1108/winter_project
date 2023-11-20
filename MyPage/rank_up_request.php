@@ -13,16 +13,16 @@ $user = mysqli_fetch_array($result);
 $newRank = $user['user_rank'];
 switch ($user['user_rank']) {
     case 'bronze':
-        if ($user['point'] >= 200) $newRank = 'silver';
+        if ($user['point'] >= 100) $newRank = 'silver';
         break;
     case 'silver':
         if ($user['point'] >= 300) $newRank = 'gold';
         break;
     case 'gold':
-        if ($user['point'] >= 400) $newRank = 'platinum';
+        if ($user['point'] >= 500) $newRank = 'platinum';
         break;
     case 'platinum':
-        if ($user['point'] >= 500) $newRank = 'master';
+        if ($user['point'] >= 1000) $newRank = 'master';
         break;
 }
 
