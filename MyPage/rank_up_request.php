@@ -23,8 +23,8 @@ if ($user['point'] >= 800) {
     $newRank = 'PLA';
 } elseif ($user['point'] >= 200) {
     $newRank = 'GOLD';
-} elseif ($user['SILVER'] >= 100) {
-    $newRank = '실버';
+} elseif ($user['point'] >= 100) {
+    $newRank = 'SILVER';
 }
 
 // 등급 업 로직
