@@ -27,6 +27,8 @@ body {
 .navbar-custom {
     background-color: var(--primary-color);
     color: white;
+    display: flex;
+    justify-content: center; /* 가로축 중앙 정렬 */
 }
 
 .navbar-custom .navbar-brand,
