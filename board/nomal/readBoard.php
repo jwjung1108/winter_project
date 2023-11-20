@@ -12,23 +12,16 @@ if ($userId == '') {
     <?php
     exit();
 }
+$sql = "select point from users where id = '$userId'";
+$result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-// 이메일 인증
-// $v_sql = "select verify from users where id = '$userId'";
-// $v_check = mysqli_fetch_array(mysqli_query($conn, $v_sql));
+$point = $result['point'] + 1;
 
-// if ($v_check['verify'] == 0) {
-?>
-<script>
-    //         alert("이메일인증을 진행해주세요");
-    //         location.href = "../../index.php";
-    //     </script>
-<?php
-//     exit();
-// }
-
+$sql = "update users set point = '$point' where id = '$userId'";
+mysqli_query( $conn, $sql);
 
 ?>
+
 <!doctype html>
 <html lang="ko">
 
