@@ -59,7 +59,7 @@
 </head>
 
 <body>
-
+        <div>
     <form action="saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
@@ -73,6 +73,7 @@
             window.history.back();
         }
     </script>
+    </div>
 </body>
 
 </html>
