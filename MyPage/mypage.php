@@ -31,19 +31,22 @@ if ($userId == '') {
     function goBack() {
         window.history.back();
     }
-</script>
-    <h1>마이페이지에 오신 것을 환영합니다.</h1>
-    <h2>어서오세요 <?php echo $userId; ?>님 </h2>
-    <?php
-        $sql = "select * from users where id = '$userId'";
-        $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+    <div class="container">
+        <h1>마이페이지에 오신 것을 환영합니다.</h1>
+        <h2>어서오세요 <?php echo $userId; ?>님 </h2>
+        
+        <?php
+            $sql = "select * from users where id = '$userId'";
+            $result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-        echo "아이디 : " . $result['id'] . "<br>";
-        echo "닉네임 : " . $result['nickname'] . "<br>";
-        echo "이메일 : " . $result['email'] . "<br>";
-        echo "랭크 : " . $result['user_rank'] . "<br>";
-        echo "포인트 : " . $result['point'] . "<br>";
-    ?>
+            echo "<div class='user-info'>";
+            echo "<p>아이디 : " . $result['id'] . "</p>";
+            echo "<p>닉네임 : " . $result['nickname'] . "</p>";
+            echo "<p>이메일 : " . $result['email'] . "</p>";
+            echo "<p>랭크 : " . $result['user_rank'] . "</p>";
+            echo "<p>포인트 : " . $result['point'] . "</p>";
+            echo "</div>";
+        ?>
+    </div>
 </body>
-
 </html>
