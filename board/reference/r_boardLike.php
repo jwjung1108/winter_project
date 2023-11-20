@@ -25,21 +25,26 @@ if (!$isLiked) {
     // 게시글 추천 수 업데이트
     $sql = "update reference set likes = likes + 1 where number = '$postId'";
     mysqli_query($conn, $sql);
-    // 추천 완료 메시지 출력
-    ?>
+
+    // 추천 받은 게시물 사용자 포인트 증가
+    $sql = "update users set point = point + 13 where id = (select username from reference where number = '$postId')";
+    mysqli_query($conn, $sql)
+
+        // 추천 완료 메시지 출력
+        ?>
     <script>
         alert("추천되었습니다.");
-        location.href = "r_readBoard.php?number=<?php echo $postId?>";
+        location.href = "r_readBoard.php?number=<?php echo $postId ?>";
     </script>
-<?php
+    <?php
 } else {
     // 이미 추천한 경우 메시지 출력
     ?>
     <script>
         alert("이미 추천되었습니다.");
-        location.href = "r_readBoard.php?number=<?php echo $postId?>";
+        location.href = "r_readBoard.php?number=<?php echo $postId ?>";
     </script>
-<?php
+    <?php
 }
 
 // 데이터베이스 연결 종료
