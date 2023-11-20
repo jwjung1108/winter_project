@@ -214,7 +214,7 @@
                                 <?php echo $row['visible']; ?>
                             </td>
                             <td><a href="delete.php?number=<?php echo $row['number']; ?>">
-                                    <?php echo '삭제'; ?>
+                                    <?php echo 'X'; ?>
                                 </a>
                             </td>
                         </tr>
