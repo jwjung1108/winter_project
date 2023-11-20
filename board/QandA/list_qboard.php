@@ -50,55 +50,56 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-  <!-- Navbar 시작 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">게시판</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">홈</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
-                </li>
-                <?php if (isset($_SESSION['userId'])) { ?>
+    <!-- Navbar 시작 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">게시판</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
+                        <a class="nav-link" href="/">홈</a>
                     </li>
-                    <?php if ($_SESSION['authority'] == 'admin') { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
+                    </li>
+                    <?php if (isset($_SESSION['userId'])) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/adminPage/adminpage.php">관리자페이지</a>
+                            <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
+                        </li>
+                        <?php if ($_SESSION['authority'] == 'admin') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/adminPage/adminpage.php">관리자페이지</a>
+                            </li>
+                        <?php } ?>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/join/login.php">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/join/signup.php">회원가입</a>
                         </li>
                     <?php } ?>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
-                    </li>
-                <?php } else { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/join/login.php">로그인</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/join/signup.php">회원가입</a>
-                    </li>
-                <?php } ?>
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<!-- Navbar 끝 -->
+    </nav>
+    <!-- Navbar 끝 -->
     <!-- Navbar 끝 -->
     <div class="container" style="margin-top: 80px;">
         <h1 class="text-center">Q&A 게시판</h1>
