@@ -51,7 +51,7 @@ if ($userId == '') {
 
 
 
-        if ($result['point'] >= 1000) {
+        if ($result['point'] >= 100) {
             echo "<button onclick='requestRankUp()'>등급 업 신청</button>";
         }
 
