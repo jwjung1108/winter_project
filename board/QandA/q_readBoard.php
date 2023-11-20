@@ -193,70 +193,99 @@ include '../point/ReadPoint.php';
             }
             ?>
         </div>
-    
 
-    <!-- 답변 -->
-    <?php
-    $sql = "select * from q_comment where boardNumber = '$number'";
-    $result = mysqli_query($conn, $sql);
-    ?>
-    <div class="container">
-        <h1 class="text-center">답변 게시판</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">내용</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">등록일</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <?php
-                $i = 1;
-                while ($row = mysqli_fetch_array($result)) {
-                    if ($row['visible'] == 0)
-                        continue;
-                    ?>
+
+        <!-- 답변 -->
+        <?php
+        $sql = "select * from q_comment where boardNumber = '$number'";
+        $result = mysqli_query($conn, $sql);
+        ?>
+        <div class="container">
+            <h1 class="text-center">답변 게시판</h1>
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">
-                            <?php echo $i++; ?>
-                        </th>
-                        <td>
-                            <a>
-                                <?php
-                                if ($row['visible'] == 1) {
-                                    echo $row['text'];
-                                }
-                                ?>
-                            </a>
-
-                            <!-- <a><?php echo $row['text']; ?></a> -->
-                        </td>
-                        <td>
-                            <?php echo $row['userID']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['created']; ?>
-                        </td>
-                        <td>
-                            <a href="q_deleteComment.php?Number=<?php echo $row['Number'] ?>"><?php echo "삭제"; ?></a>
-                        </td>
+                        <th scope="col">번호</th>
+                        <th scope="col">내용</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col"></th>
                     </tr>
-                <?php } ?>
+                </thead>
 
-        </table>
-        <p></p>
-        <div class="text-center">
-            <a href="q_writeComment.php?number=<?php echo $board['number']; ?>">[답변작성]</a>
-            <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
-        </div>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        if ($row['visible'] == 0)
+                            continue;
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $i++; ?>
+                            </th>
+                            <td>
+                                <a>
+                                    <?php
+                                    if ($row['visible'] == 1) {
+                                        echo $row['text'];
+                                    }
+                                    ?>
+                                </a>
+
+                                <!-- <a><?php echo $row['text']; ?></a> -->
+                            </td>
+                            <td>
+                                <?php echo $row['userID']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['created']; ?>
+                            </td>
+                            <td>
+                                <a href="q_deleteComment.php?Number=<?php echo $row['Number'] ?>">
+                                    <?php echo "삭제"; ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+            </table>
+            <p></p>
+
+            <div class="container">
+                <!-- 댓글 작성 버튼 -->
+                <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
+
+                <!-- 댓글 작성 모달 -->
+                <div id="modalBackground"></div>
+                <div id="commentModal">
+                    <form action='writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                        <textarea name="text"></textarea>
+                        <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
+                        <input type="submit" value="작성">
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                function openCommentModal() {
+                    document.getElementById('commentModal').style.display = 'block';
+                    document.getElementById('modalBackground').style.display = 'block';
+                }
+
+                document.getElementById('modalBackground').onclick = function () {
+                    this.style.display = 'none';
+                    document.getElementById('commentModal').style.display = 'none';
+                };
+            </script>
+            <div class="text-center">
+                <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+            </div>
 
 
         </div>
     </div>
+
 </body>
 
 </html>
