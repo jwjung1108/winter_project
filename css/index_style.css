@@ -144,3 +144,16 @@ h1 {
 .generic {
     color: blue;
 }
+@media screen and (max-width: 768px) {
+    .table th,
+    .table td {
+        padding: 8px;
+    }
+
+    /* 테이블에서 중요/일반 공지사항에 대한 스타일 조정 */
+    .important,
+    .generic {
+        font-size: 12px; /* 폰트 크기 줄임 */
+        padding: 2px 5px; /* 여백 조정 */
+    }
+}
