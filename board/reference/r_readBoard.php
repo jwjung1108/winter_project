@@ -251,10 +251,10 @@ include '../point/ReadPoint.php';
                 </tbody>
             </table>
             <p></p>
-
-            <div class="container">
+            <div class="text-center">
                 <!-- 댓글 작성 버튼 -->
                 <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
+
 
                 <!-- 댓글 작성 모달 -->
                 <div id="modalBackground"></div>
@@ -265,19 +265,18 @@ include '../point/ReadPoint.php';
                         <input type="submit" value="작성">
                     </form>
                 </div>
-            </div>
 
-            <script>
-                function openCommentModal() {
-                    document.getElementById('commentModal').style.display = 'block';
-                    document.getElementById('modalBackground').style.display = 'block';
-                }
+                <script>
+                    function openCommentModal() {
+                        document.getElementById('commentModal').style.display = 'block';
+                        document.getElementById('modalBackground').style.display = 'block';
+                    }
 
-                document.getElementById('modalBackground').onclick = function () {
-                    this.style.display = 'none';
-                    document.getElementById('commentModal').style.display = 'none';
-                };
-            </script>
+                    document.getElementById('modalBackground').onclick = function () {
+                        this.style.display = 'none';
+                        document.getElementById('commentModal').style.display = 'none';
+                    };
+                </script>
             <div class="text-center">
                 <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
             </div>
