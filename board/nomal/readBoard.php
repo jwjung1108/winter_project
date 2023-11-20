@@ -1,17 +1,6 @@
 <?php
 include '../../connect.php';
 include '../point/ReadPoint.php';
-
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-if ($userId == '') {
-    ?>
-    <script>
-        alert("로그인을 해주세요");
-        location.href = "../../index.php";
-    </script>
-    <?php
-    exit();
-}
 ?>
 
 <!doctype html>
