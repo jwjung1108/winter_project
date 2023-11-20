@@ -69,6 +69,8 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     if ($result === false) {
         echo "저장에 문제가 생겼습니다. 관리자에게 문의해주세요.";
     } else {
+        // 글 작성시 포인트 상승
+        include '../point/WriteBoPoint.php';
         ?>
         <script>
             alert("게시글이 작성되었습니다.");
