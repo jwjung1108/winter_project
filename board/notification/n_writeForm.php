@@ -62,7 +62,8 @@ if ($row['authority'] != 2) {
         }
 
         textarea {
-            resize: none; /* 텍스트 영역의 크기 조절 비활성화 */
+            resize: none;
+            /* 텍스트 영역의 크기 조절 비활성화 */
         }
 
         input[type="submit"] {
@@ -89,12 +90,7 @@ if ($row['authority'] != 2) {
 </head>
 
 <body>
-<button onclick="goBack()">이전 페이지로</button>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+
     <form action="n_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 공지사항)"></p>
@@ -102,6 +98,12 @@ if ($row['authority'] != 2) {
         <p>중요 공지사항<input type="checkbox" name="important" value="reference">
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
+        <button onclick="goBack()">이전 페이지로</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
     </form>
 </body>
 

@@ -59,18 +59,19 @@
 </head>
 
 <body>
-<button onclick="goBack()">이전 페이지로</button>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+
     <form action="saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
         <p><textarea name="board" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)" rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
+        <button onclick="goBack()">이전 페이지로</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     </form>
 </body>
 
