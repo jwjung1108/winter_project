@@ -58,28 +58,28 @@
         }
 
         @media screen and (max-width: 768px) {
-
-            /* 컨테이너 스타일 조정 */
             .container {
                 width: 100%;
                 padding: 10px;
+                /* 좌우 패딩 조정 */
                 margin-top: 10px;
+                box-sizing: border-box;
+                /* 패딩을 너비에 포함 */
             }
 
-            /* 테이블 스크롤 가능하게 설정 */
             .table-responsive {
                 overflow-x: auto;
+                /* 테이블이 화면을 초과할 경우 스크롤 가능하게 설정 */
             }
 
-            /* 테이블 셀과 텍스트 크기 조정 */
             .table th,
             .table td {
                 padding: 8px;
+                /* 셀의 패딩 조정 */
                 font-size: 14px;
                 /* 폰트 크기 줄임 */
             }
 
-            /* 폼 요소 크기 조정 */
             input[type="text"],
             select,
             button {
@@ -88,11 +88,18 @@
                 /* 상하 마진 추가 */
             }
 
-            /* 버튼 크기 조정 */
             button {
                 padding: 10px;
-                /* 패딩 조정 */
+                /* 버튼 패딩 조정 */
             }
+        }
+
+        body {
+            margin: 0;
+            /* 전역 마진 제거 */
+            padding: 0;
+            /* 전역 패딩 제거 */
+            /* 기타 스타일 */
         }
     </style>
 </head>
@@ -161,7 +168,7 @@
     <div class="container">
         <div id="search_box">
             <form action="./change_rank.php" method="get">
-                <input type="text" name="user"  required="required" />
+                <input type="text" name="user" required="required" />
 
                 <select name="rank">
                     <option value="Bronze">Bronze</option>
