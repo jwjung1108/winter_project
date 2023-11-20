@@ -1,6 +1,6 @@
 /* 기본 스타일 설정 */
 :root {
-    --primary-color: #0056b3;
+    --primary-color: #0056B3;
     --secondary-color: #f5f5f5; /* 보조 색상: 부드러운 회색 */
     --text-color: #333; /* 텍스트 색상: 어두운 회색 */
     --font-family: 'Noto Sans KR', sans-serif; /* 기본 폰트 */
@@ -150,6 +150,7 @@ body {
         text-align: center;
     }
 }
+
 
 /* 기타 스타일 */
 .sortable:hover {

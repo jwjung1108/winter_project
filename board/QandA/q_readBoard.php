@@ -123,6 +123,111 @@ include '../point/ReadPoint.php';
         .text-center .btn {
             margin-top: 10px;
         }
+
+        #commentModal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            /* 기본적으로 숨김 */
+        }
+
+        /* 모달 뒷배경 스타일 */
+        #modalBackground {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            /* 기본적으로 숨김 */
+        }
+
+        /* 텍스트 에어리어 스타일 */
+        #commentModal textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* 버튼 스타일 */
+        #commentModal input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* 반응형 디자인 적용 */
+        @media (max-width: 768px) {
+            /* 기존 반응형 스타일 */
+
+            /* 모달 반응형 스타일 */
+            #commentModal {
+                width: 90%;
+                /* 모바일에서는 너비를 줄임 */
+            }
+        }
+
+
+
+        /* 기존 모달 스타일 */
+        #commentModal {
+            /* 기존 모달 스타일 */
+            width: 50%;
+            /* 데스크탑에서의 기본 너비 */
+        }
+
+        /* 모달 뒷배경 스타일 */
+        #modalBackground {
+            /* 기존 모달 뒷배경 스타일 */
+        }
+
+        /* 텍스트 에어리어 및 버튼 스타일 */
+        #commentModal textarea,
+        #commentModal input[type="submit"] {
+            /* 기존 스타일 */
+        }
+
+        .btn-primary,
+        a.btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            /* 링크의 기본 색상 재정의 */
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            /* 링크의 밑줄 제거 */
+            display: inline-block;
+            /* 버튼처럼 보이게 함 */
+        }
+
+        .btn-primary:hover,
+        a.btn-primary:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+            /* 호버 시 밑줄 제거 */
+        }
     </style>
 
 </head>
@@ -193,70 +298,107 @@ include '../point/ReadPoint.php';
             }
             ?>
         </div>
-    
 
-    <!-- 답변 -->
-    <?php
-    $sql = "select * from q_comment where boardNumber = '$number'";
-    $result = mysqli_query($conn, $sql);
-    ?>
-    <div class="container">
-        <h1 class="text-center">답변 게시판</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">내용</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">등록일</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <?php
-                $i = 1;
-                while ($row = mysqli_fetch_array($result)) {
-                    if ($row['visible'] == 0)
-                        continue;
-                    ?>
+
+        <!-- 답변 -->
+        <?php
+        $sql = "select * from q_comment where boardNumber = '$number'";
+        $result = mysqli_query($conn, $sql);
+        ?>
+        <div class="container">
+            <h1 class="text-center">답변 게시판</h1>
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">
-                            <?php echo $i++; ?>
-                        </th>
-                        <td>
-                            <a>
-                                <?php
-                                if ($row['visible'] == 1) {
-                                    echo $row['text'];
-                                }
-                                ?>
-                            </a>
-
-                            <!-- <a><?php echo $row['text']; ?></a> -->
-                        </td>
-                        <td>
-                            <?php echo $row['userID']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['created']; ?>
-                        </td>
-                        <td>
-                            <a href="q_deleteComment.php?Number=<?php echo $row['Number'] ?>"><?php echo "삭제"; ?></a>
-                        </td>
+                        <th scope="col">번호</th>
+                        <th scope="col">내용</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col"></th>
                     </tr>
-                <?php } ?>
+                </thead>
 
-        </table>
-        <p></p>
-        <div class="text-center">
-            <a href="q_writeComment.php?number=<?php echo $board['number']; ?>">[답변작성]</a>
-            <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        if ($row['visible'] == 0)
+                            continue;
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $i++; ?>
+                            </th>
+                            <td>
+                                <a>
+                                    <?php
+                                    if ($row['visible'] == 1) {
+                                        echo $row['text'];
+                                    }
+                                    ?>
+                                </a>
+
+                                <!-- <a><?php echo $row['text']; ?></a> -->
+                            </td>
+                            <td>
+                                <?php echo $row['userID']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['created']; ?>
+                            </td>
+                            <td>
+                                <a href="q_deleteComment.php?Number=<?php echo $row['Number'] ?>">
+                                    <?php echo "삭제"; ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+            </table>
+            <p></p>
+            <div class="text-center">
+                <!-- 댓글 작성 버튼 -->
+                <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
+
+
+                <!-- 댓글 작성 모달 -->
+                <div id="modalBackground"></div>
+                <div id="commentModal">
+                    <form action='writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                        <textarea name="text"></textarea>
+                        <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
+                        <input type="submit" value="작성">
+                    </form>
+                </div>
+
+                <script>
+                    function openCommentModal() {
+                        var modal = document.getElementById('commentModal');
+                        var windowWidth = window.innerWidth;
+
+                        if (windowWidth < 768) { // 모바일 화면의 경우
+                            modal.style.width = "95%";
+                        } else { // 데스크탑 화면의 경우
+                            modal.style.width = "80%";
+                        }
+
+                        modal.style.display = 'block';
+                        document.getElementById('modalBackground').style.display = 'block';
+                    }
+
+                    document.getElementById('modalBackground').onclick = function () {
+                        this.style.display = 'none';
+                        document.getElementById('commentModal').style.display = 'none';
+                    };
+                </script>
+                <div class="text-center">
+                    <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                </div>
+
+
+            </div>
         </div>
 
-
-        </div>
-    </div>
 </body>
 
 </html>

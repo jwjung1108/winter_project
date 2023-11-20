@@ -32,7 +32,8 @@
         }
 
         textarea {
-            resize: none; /* 텍스트 영역의 크기 조절 비활성화 */
+            resize: none;
+            /* 텍스트 영역의 크기 조절 비활성화 */
         }
 
         input[type="submit"] {
@@ -66,9 +67,6 @@
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
     </form>
-    <div>
-        <a href = './list_board.php'>취소
-    </div>
 </body>
 
 </html>

@@ -78,13 +78,21 @@
 </head>
 
 <body>
+
     <form action="q_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
         <p><textarea name="board" placeholder="본문 (질문해주세요.)" rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
+        
     </form>
+    <button onclick="goBack()" style="margin-top: 20px; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">이전 페이지로</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
 </body>
 
 </html>

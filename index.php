@@ -103,7 +103,7 @@ session_start();
                     <img src="/image/tip.png" alt="자유게시판">
                     <div class="card-body card-body-custom">
                         <h5 class="card-title">자유게시판</h5>
-                        <p class="card-text">자유게시판 사용해라.</p>
+                        <p class="card-text">자유롭게 사용해라.</p>
                         <button onclick="goTocommonBoardPage()">자유게시판</button>
 
                     </div>

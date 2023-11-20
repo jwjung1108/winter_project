@@ -138,6 +138,10 @@ include '../point/ReadPoint.php';
             z-index: 1000;
             display: none;
             /* 기본적으로 숨김 */
+            max-width: 600px;
+            /* 모달 최대 너비 설정 */
+            width: 80%;
+            /* 기본 너비를 화면의 80%로 설정 */
         }
 
         /* 모달 뒷배경 스타일 */
@@ -162,6 +166,8 @@ include '../point/ReadPoint.php';
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
+            overflow-y: auto;
+            /* 스크롤 가능하도록 설정 */
         }
 
         /* 버튼 스타일 */
@@ -177,35 +183,57 @@ include '../point/ReadPoint.php';
         }
 
         /* 반응형 디자인 적용 */
-        @media (max-width: 768px) {
-            /* 기존 반응형 스타일 */
+        @media screen and (max-width: 768px) {
 
-            /* 모달 반응형 스타일 */
+            #board_read,
+            .container {
+                width: 100%;
+                padding: 10px;
+                box-shadow: none;
+                margin-top: 10px;
+            }
+
+            h2,
+            #bo_content,
+            .table td a {
+                font-size: 16px;
+            }
+
+            .table {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .table th,
+            .table td {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .btn-primary {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
             #commentModal {
                 width: 90%;
-                /* 모바일에서는 너비를 줄임 */
+                padding: 10px;
+            }
+
+            #commentModal textarea,
+            #commentModal input[type="submit"] {
+                font-size: 14px;
+            }
+
+            .btn-primary,
+            a.btn-primary {
+                padding: 8px 12px;
+                font-size: 14px;
             }
         }
 
 
 
-        /* 기존 모달 스타일 */
-        #commentModal {
-            /* 기존 모달 스타일 */
-            width: 50%;
-            /* 데스크탑에서의 기본 너비 */
-        }
-
-        /* 모달 뒷배경 스타일 */
-        #modalBackground {
-            /* 기존 모달 뒷배경 스타일 */
-        }
-
-        /* 텍스트 에어리어 및 버튼 스타일 */
-        #commentModal textarea,
-        #commentModal input[type="submit"] {
-            /* 기존 스타일 */
-        }
 
         .btn-primary,
         a.btn-primary {
@@ -373,7 +401,16 @@ include '../point/ReadPoint.php';
 
                 <script>
                     function openCommentModal() {
-                        document.getElementById('commentModal').style.display = 'block';
+                        var modal = document.getElementById('commentModal');
+                        var windowWidth = window.innerWidth;
+
+                        if (windowWidth < 768) { // 모바일 화면의 경우
+                            modal.style.width = "95%";
+                        } else { // 데스크탑 화면의 경우
+                            modal.style.width = "80%";
+                        }
+
+                        modal.style.display = 'block';
                         document.getElementById('modalBackground').style.display = 'block';
                     }
 
