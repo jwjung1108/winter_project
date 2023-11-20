@@ -114,6 +114,11 @@
         }
         ?>
     </div>
+    <div>
+        <h3>등급조정
+    </div>
+
+
     <div class="container">
         <div id="search_box">
             <form action="./change_rank.php" method="get">
