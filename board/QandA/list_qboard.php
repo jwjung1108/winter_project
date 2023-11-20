@@ -51,7 +51,7 @@ $result = mysqli_query($conn, $sql);
 
 <body>
     <!-- Navbar 시작 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">게시판</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -99,7 +99,7 @@ $result = mysqli_query($conn, $sql);
             </div>
         </div>
     </nav>
-    <!-- Navbar 끝 -->
+
     <!-- Navbar 끝 -->
     <div class="container" style="margin-top: 80px;">
         <h1 class="text-center">Q&A 게시판</h1>
