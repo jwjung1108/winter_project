@@ -30,11 +30,7 @@ if ($userId == '') {
         <button onclick="goBack()" class="back-button">이전</button>
     </div>
 
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+
 
     <div class="container">
         <h1>마이페이지에 오신 것을 환영합니다.</h1>
@@ -52,9 +48,28 @@ if ($userId == '') {
         echo "<p>이메일 : " . $result['email'] . "</p>";
         echo "<p>랭크 : " . $result['user_rank'] . "</p>";
         echo "<p>포인트 : " . $result['point'] . "</p>";
+
+
+
+        if ($result['point'] >= 1000) {
+            echo "<button onclick='requestRankUp()'>등급 업 신청</button>";
+        }
+
         echo "</div>";
         ?>
+
+
+
     </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+        function requestRankUp() {
+            // 등급 업 신청 처리 로직 (예: rank_up_request.php로 요청을 보냄)
+            window.location.href = 'rank_up_request.php';
+        }
+    </script>
 </body>
 
 </html>
