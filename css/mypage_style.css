@@ -2,7 +2,6 @@
 body {
     font-family: 'Nunito', sans-serif;
     background-color: #232526;
-    /* 어두운 그레이 배경 */
     color: #f0f0f0;
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ body {
 /* 헤더 스타일 */
 .header {
     background-color: #414345;
-    /* 짙은 회색 */
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -39,7 +37,6 @@ body {
     background-image: linear-gradient(135deg, #ff8a8a 0%, #ff9eb3 100%);
 }
 
-
 /* 등급 업 신청 버튼 스타일 */
 .rank-up-button {
     background-image: linear-gradient(135deg, #6be585 0%, #00bd56 100%);
@@ -49,13 +46,11 @@ body {
     background-image: linear-gradient(135deg, #70ed8a 0%, #20c567 100%);
 }
 
-
 /* 컨테이너 스타일 */
 .container {
     width: 80%;
     margin: 40px auto;
     background-color: #2F3133;
-    /* 어두운 회색 */
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -64,7 +59,6 @@ body {
 /* 사용자 정보 섹션 스타일 */
 .user-info {
     background-color: #37393A;
-    /* 매우 어두운 회색 */
     padding: 20px;
     margin-top: 20px;
     border-radius: 6px;
@@ -75,9 +69,6 @@ body {
     font-size: 18px;
     margin-bottom: 10px;
 }
-
-
-
 
 /* 캐릭터 애니메이션 */
 @keyframes jump {
@@ -101,10 +92,39 @@ body {
     justify-content: center;
     align-items: center;
     height: 200px;
-    /* 원하는 높이에 맞춰 조정하세요 */
 }
 
 .image-container img {
     max-width: 100%;
     height: auto;
+}
+
+/* 추가 스타일 */
+/* 페이지 전체에 적용할 스타일 */
+.page {
+    background-image: url('your-background-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    font-size: 20px;
+}
+
+/* 푸터 스타일 */
+.footer {
+    background-color: #232526;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 링크 스타일 */
+a {
+    color: #ff758c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff8a8a;
 }
