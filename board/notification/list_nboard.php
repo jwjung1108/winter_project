@@ -230,6 +230,7 @@ $result = mysqli_query($conn, $sql);
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
         </div>
     </div>
+    <script>function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } </script>
 </body>
 
 </html>
