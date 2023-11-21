@@ -22,19 +22,6 @@
             position: relative;
         }
 
-        /* 이전 버튼 스타일 */
-        #back-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 1;
-        }
 
         /* "X" 버튼 스타일 */
         #close-button {
@@ -91,7 +78,6 @@
         <p><input type="submit" value="작성"></p>
         <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
     </form>
-    <button id="back-button" onclick="goBack()">이전</button>
 
     <script>
         function goBack() {
