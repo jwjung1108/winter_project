@@ -71,7 +71,7 @@
 
     <form action="r_saveBoard.php" method="POST" enctype="multipart/form-data">
         <!-- "X" 버튼을 눌렀을 때 이전 페이지로 돌아가도록 JavaScript로 처리 -->
-        <button id="close-button" onclick="goBack()">X</button>
+        <button type="button" id="close-button" onclick="goBack()">X</button>
         <h2>학업 노하우 공유하기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
         <p><textarea name="board" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)" rows="8"></textarea></p>
