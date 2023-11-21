@@ -24,7 +24,7 @@
         input[type="text"],
         textarea,
         input[type="file"] {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;

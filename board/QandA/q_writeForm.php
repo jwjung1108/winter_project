@@ -1,17 +1,17 @@
 <?php
-    session_start();
-    $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-    if($userId == ''){
-        ?>
-        <script>
-            alert("로그인을 해주세요.");
-            location.href = "./list_qboard.php";
+session_start();
+$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+if ($userId == '') {
+    ?>
+    <script>
+        alert("로그인을 해주세요.");
+        location.href = "./list_qboard.php";
 
-        </script>
-        <?php
-    }
+    </script>
+    <?php
+}
 
-    
+
 
 
 
@@ -43,7 +43,7 @@
         input[type="text"],
         textarea,
         input[type="file"] {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
@@ -51,7 +51,8 @@
         }
 
         textarea {
-            resize: none; /* 텍스트 영역의 크기 조절 비활성화 */
+            resize: none;
+            /* 텍스트 영역의 크기 조절 비활성화 */
         }
 
         input[type="submit"] {
@@ -85,14 +86,16 @@
         <p><textarea name="board" placeholder="본문 (질문해주세요.)" rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
-        
+
     </form>
-    <button onclick="goBack()" style="margin-top: 20px; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">이전 페이지로</button>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
+    <button onclick="goBack()"
+        style="margin-top: 20px; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">이전
+        페이지로</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 
 </html>
