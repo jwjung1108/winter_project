@@ -87,16 +87,25 @@ body {
     animation: jump 2s infinite;
 }
 
+/* 이미지 컨테이너 스타일 */
 .image-container {
     display: flex;
     justify-content: center;
+    /* 가로 중앙 정렬 */
     align-items: center;
+    /* 세로 중앙 정렬 */
     height: 200px;
 }
 
-.image-container img {
+/* 이미지 스타일 */
+.character-image {
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
+    /* 이미지의 최대 높이를 100%로 설정하여 화면에 맞게 조절합니다. */
+    display: block;
+    /* 이미지를 가운데 정렬하기 위해 추가 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
 }
 
 /* 추가 스타일 */

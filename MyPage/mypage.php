@@ -55,7 +55,7 @@ if ($userId == '') {
             echo "</div>";
             ?>
         </div>
-        <div class="character">
+        <div class="image-container">
             <img src="/image/cha.jpg" alt="Character Image" class="character-image">
         </div>
     </div>
