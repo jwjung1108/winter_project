@@ -83,9 +83,7 @@ body {
     }
 }
 
-.character {
-    animation: jump 2s infinite;
-}
+
 
 /* 이미지 컨테이너 스타일 */
 .image-container {
@@ -106,6 +104,7 @@ body {
     /* 이미지를 가운데 정렬하기 위해 추가 */
     margin: 0 auto;
     /* 가운데 정렬 */
+    animation: jump 2s infinite;
 }
 
 /* 추가 스타일 */
