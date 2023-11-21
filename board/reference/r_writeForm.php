@@ -22,6 +22,35 @@
             position: relative;
         }
 
+        /* 이전 버튼 스타일 */
+        #back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        /* "X" 버튼 스타일 */
+        #close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            /* "X" 버튼은 이전 버튼 위에 위치하도록 z-index 조절 */
+        }
+
         input[type="text"],
         textarea,
         input[type="file"] {
@@ -49,35 +78,6 @@
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
-
-        /* 이전 버튼 스타일 */
-        #back-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        /* "X" 버튼 스타일 */
-        #close-button {
-            position: absolute;
-            top: 20px;
-            right: 60px;
-            /* 이전 버튼과 겹치지 않게 조절 */
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 1;
-        }
     </style>
 </head>
 
@@ -89,9 +89,10 @@
         <p><textarea name="board" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)" rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
+        <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
     </form>
     <button id="back-button" onclick="goBack()">이전</button>
-    <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
+
     <script>
         function goBack() {
             window.history.back();
