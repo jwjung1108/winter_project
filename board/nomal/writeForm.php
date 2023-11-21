@@ -80,6 +80,12 @@
             }
             return true; // 제출 허용
         }
+
+        document.getElementById("boardForm").addEventListener("submit", function (event) {
+            if (!validateForm()) {
+                event.preventDefault(); // 제출 방지
+            }
+        });
     </script>
 
 </body>
