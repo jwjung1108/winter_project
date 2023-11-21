@@ -85,8 +85,19 @@ if ($userId == '') {
             // 등급 업 신청 처리 로직 (예: rank_up_request.php로 요청을 보냄)
             window.location.href = 'rank_up_request.php';
         }
-        document.querySelector('.button').addEventListener('mouseover', () => {
-            document.querySelector('.character').classList.add('animate');
+        document.addEventListener("DOMContentLoaded", () => {
+            const button = document.querySelector('.button');
+            const character = document.querySelector('.character');
+
+            if (button && character) {
+                button.addEventListener('mouseover', () => {
+                    character.classList.add('animate');
+                });
+
+                button.addEventListener('mouseout', () => {
+                    character.classList.remove('animate');
+                });
+            }
         });
 
     </script>
