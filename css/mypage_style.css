@@ -98,3 +98,16 @@ body {
 .character {
     animation: jump 2s infinite;
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    /* 원하는 높이에 맞춰 조정하세요 */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
