@@ -56,6 +56,19 @@
                 max-width: 90%;
             }
         }
+
+        /* 이전 버튼 스타일 */
+        #back-button {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1;
+            /* 버튼을 화면 위로 가져옵니다. */
+        }
     </style>
 </head>
 
@@ -67,11 +80,8 @@
         <p><textarea name="board" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)" rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
-
     </form>
-    <button onclick="goBack()"
-        style="margin-top: 20px; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">이전
-        페이지로</button>
+    <button id="back-button" onclick="goBack()">이전 페이지로</button>
     <script>
         function goBack() {
             window.history.back();
