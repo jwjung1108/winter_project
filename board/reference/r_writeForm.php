@@ -20,7 +20,6 @@
             max-width: 800px;
             margin: 0 auto;
             position: relative;
-            /* 부모 요소로부터 상대 위치 설정 */
         }
 
         input[type="text"],
@@ -35,7 +34,6 @@
 
         textarea {
             resize: none;
-            /* 텍스트 영역의 크기 조절 비활성화 */
         }
 
         input[type="submit"] {
@@ -60,13 +58,20 @@
             background-color: #007bff;
             color: white;
             padding: 10px 15px;
-            /* 오른쪽 끝으로 이동하고 텍스트 내용을 'X'로 수정 */
             border: none;
             border-radius: 50%;
-            /* 원 모양 버튼을 만들기 위해 반지름 설정 */
             cursor: pointer;
             z-index: 1;
-            /* 버튼을 화면 위로 가져옵니다. */
+        }
+
+        /* 글쓰기 라인 스타일 */
+        .line {
+            position: absolute;
+            top: 0;
+            right: 50%;
+            background-color: #ddd;
+            height: 100%;
+            width: 2px;
         }
     </style>
 </head>
@@ -81,6 +86,7 @@
         <p><input type="submit" value="작성"></p>
     </form>
     <button id="back-button" onclick="goBack()">X</button>
+    <div class="line"></div>
     <script>
         function goBack() {
             window.history.back();
