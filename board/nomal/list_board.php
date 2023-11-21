@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $sql);
         function logout() {
             const data = confirm("로그아웃 하시겠습니까?");
             if (data) {
-                location.href = "/join/logoutProcess.php";
+                location.href = "../../join/logoutProcess.php";
             }
         } 
     </script>
