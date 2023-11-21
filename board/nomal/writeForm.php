@@ -58,7 +58,9 @@
         }
 
         #back-button {
-            margin-top: 20px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
             background-color: #007bff;
             color: white;
             padding: 10px;
@@ -72,6 +74,7 @@
 </head>
 
 <body>
+    <button id="back-button" onclick="goBack()">이전 페이지로</button>
     <form id="boardForm" action="saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" id="titleInput" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
@@ -98,9 +101,7 @@
                 event.preventDefault(); // 제출 방지
             }
         });
-    </script>
-    <button id="back-button" onclick="goBack()">이전 페이지로</button>
-    <script>
+
         function goBack() {
             window.history.back();
         }
