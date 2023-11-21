@@ -61,7 +61,12 @@ if ($userId == '') {
 
 
     </div>
+    <div class="character">
+        <img src="path/to/character.svg" alt="Character Image">
+    </div>
+
     <script>
+
         document.addEventListener("DOMContentLoaded", () => {
             const rankUpBtn = document.querySelector('.rank-up-button');
             rankUpBtn.addEventListener('mouseover', () => {
@@ -79,6 +84,10 @@ if ($userId == '') {
             // 등급 업 신청 처리 로직 (예: rank_up_request.php로 요청을 보냄)
             window.location.href = 'rank_up_request.php';
         }
+        document.querySelector('.button').addEventListener('mouseover', () => {
+            document.querySelector('.character').classList.add('animate');
+        });
+
     </script>
 </body>
 

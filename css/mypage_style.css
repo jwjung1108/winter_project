@@ -71,3 +71,20 @@ body {
 .rank-up-button:hover {
     background-color: #4cd137;
 }
+
+/* 캐릭터 애니메이션 */
+@keyframes jump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.character {
+    animation: jump 2s infinite;
+}
