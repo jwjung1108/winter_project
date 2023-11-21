@@ -128,3 +128,50 @@ a {
 a:hover {
     color: #ff8a8a;
 }
+
+/* 페이지 전체 스타일 */
+.page {
+    background-image: url('your-background-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    /* 전체 텍스트 가운데 정렬 */
+    padding: 40px;
+    /* 페이지 내용과 헤더 사이의 간격 조절 */
+}
+
+/* 페이지 제목 스타일 */
+.page-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* 환영 메시지 스타일 */
+.welcome-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 사용자 정보 항목 스타일 */
+.user-info-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* 등급 업 신청 버튼 스타일 (버튼 클래스에 추가) */
+.rank-up-button.button {
+    background-image: linear-gradient(135deg, #6be585 0%, #00bd56 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(107, 229, 133, 0.4);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
