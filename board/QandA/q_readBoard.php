@@ -364,7 +364,7 @@ include '../point/ReadPoint.php';
                 <!-- 댓글 작성 모달 -->
                 <div id="modalBackground"></div>
                 <div id="commentModal">
-                    <form action='writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                    <form action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
                         <textarea name="text"></textarea>
                         <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
                         <input type="submit" value="작성">
