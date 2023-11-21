@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "jiwon", "shield1496@", "coding");
+include '../connect.php';
 //아이디 비교와 비밀번호 비교가 필요한 시점이다.
 // 1차로 DB에서 비밀번호를 가져온다 
 // 평문의 비밀번호와 암호화된 비밀번호를 비교해서 검증한다.
@@ -33,7 +33,9 @@ if ($id == null) {
         session_start();
         $_SESSION['userId'] = $row['id'];
         $_SESSION['userName'] = $row['nickname'];
-
+        if($row['authority'] == 2){
+            $_SESSION['authority'] = 'admin';
+        }
         ?>
         <script>
             alert("로그인에 성공하였습니다.")

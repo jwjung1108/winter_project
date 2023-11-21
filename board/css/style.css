@@ -1,0 +1,186 @@
+/* 기본 스타일 설정 */
+:root {
+    --primary-color: #0056B3;
+    --secondary-color: #f5f5f5; /* 보조 색상: 부드러운 회색 */
+    --text-color: #333; /* 텍스트 색상: 어두운 회색 */
+    --font-family: 'Noto Sans KR', sans-serif; /* 기본 폰트 */
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    line-height: 1.6;
+    padding-top: 50px;
+}
+
+/* 컨테이너 및 레이아웃 */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 네비게이션 바 스타일 */
+.navbar-custom {
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: center; /* 가로축 중앙 정렬 */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .btn-outline-secondary:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: white;
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-custom {
+        text-align: center; /* 모바일 뷰에서 중앙 정렬 */
+    }
+}
+
+/* 네비게이션 바 내부 요소 간격 조정 */
+.nav-item {
+    margin-left: 10px;
+}
+
+/* 로그아웃 버튼 스타일링 */
+.btn-outline-secondary {
+    color: white;
+    border-color: white;
+}
+
+.btn-outline-secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* 테이블 스타일 */
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 버튼 스타일 */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #666;
+    color: white;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    .table .title-cell {
+        max-width: 100px; /* 모바일 화면에서 셀의 최대 너비 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        overflow: hidden; /* 넘치는 내용 숨김 */
+        text-overflow: ellipsis; /* 넘치는 텍스트를 ...으로 표시 */
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .navbar-custom {
+        text-align: center; /* 모바일 뷰에서 중앙 정렬 */
+    }
+
+    .search-box input[type="text"], .search-box select {
+        width: 100%; /* 너비를 화면에 맞춤 */
+        margin-bottom: 10px; /* 요소들 사이의 간격 */
+    }
+
+    .search-box button {
+        width: auto; /* 버튼 너비 조정 */
+        padding: 10px 15px; /* 패딩 조정 */
+    }
+
+    .btn {
+        width: 100%; /* 버튼 전체 너비로 확장 */
+        padding: 12px 20px; /* 패딩 증가 */
+    }
+    .text-end {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* 버튼들을 고르게 분포시키기 */
+    }
+
+    .text-end a {
+        flex-basis: 30%; /* 버튼의 기본 크기를 설정 */
+        text-align: center;
+    }
+}
+
+
+/* 기타 스타일 */
+.sortable:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input[type="text"] {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.search-box button {
+    width: 100px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-box select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}

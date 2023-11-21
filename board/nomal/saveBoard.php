@@ -1,14 +1,22 @@
 <?php
 session_start();
 $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-include '../connect.php';
+include '../../connect.php';
 
 
 $view = 0;
 $like = 0;
 
-$title = $_POST['title'];
-$board = $_POST['board'];
+$title = isset($_POST['title']) ? $_POST['title'] : '';
+$board = isset($_POST['board']) ? $_POST['board'] : '';
+
+if ($title === '' || $board === '') { ?>
+    <script>
+    alert('제목과 본문을 모두 작성해주세요.');
+    location.href = 'list_board.php';
+    </script> 
+<?php 
+}
 
 $fileDestination = '';
 
@@ -53,6 +61,8 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     if ($result === false) {
         echo "저장에 문제가 생겼습니다. 관리자에게 문의해주세요.";
     } else {
+        // 글 작성시 포인트 상승
+        include '../point/WriteBoPoint.php';
         ?>
         <script>
             alert("게시글이 작성되었습니다.");

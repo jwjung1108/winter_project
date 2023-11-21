@@ -1,0 +1,185 @@
+/* 기본 스타일 설정 */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #232526;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* 헤더 스타일 */
+.header {
+    background-color: #414345;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* 버튼 스타일 */
+.button {
+    background-image: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 118, 140, 0.4);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    box-shadow: 0 15px 25px rgba(255, 118, 140, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    background-image: linear-gradient(135deg, #ff8a8a 0%, #ff9eb3 100%);
+}
+
+/* 등급 업 신청 버튼 스타일 */
+.rank-up-button {
+    background-image: linear-gradient(135deg, #6be585 0%, #00bd56 100%);
+}
+
+.rank-up-button:hover {
+    background-image: linear-gradient(135deg, #70ed8a 0%, #20c567 100%);
+}
+
+/* 컨테이너 스타일 */
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #2F3133;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 사용자 정보 섹션 스타일 */
+.user-info {
+    background-color: #37393A;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 6px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.user-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* 캐릭터 애니메이션 */
+@keyframes jump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+
+
+/* 이미지 컨테이너 스타일 */
+.image-container {
+    display: flex;
+    justify-content: center;
+    /* 가로 중앙 정렬 */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    height: 200px;
+}
+
+/* 이미지 스타일 */
+.character-image {
+    max-width: 100%;
+    max-height: 100%;
+    /* 이미지의 최대 높이를 100%로 설정하여 화면에 맞게 조절합니다. */
+    display: block;
+    /* 이미지를 가운데 정렬하기 위해 추가 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
+    animation: jump 2s infinite;
+}
+
+/* 추가 스타일 */
+/* 페이지 전체에 적용할 스타일 */
+.page {
+    background-image: url('your-background-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    font-size: 20px;
+}
+
+/* 푸터 스타일 */
+.footer {
+    background-color: #232526;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 링크 스타일 */
+a {
+    color: #ff758c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff8a8a;
+}
+
+/* 페이지 전체 스타일 */
+.page {
+    background-image: url('your-background-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    /* 전체 텍스트 가운데 정렬 */
+    padding: 40px;
+    /* 페이지 내용과 헤더 사이의 간격 조절 */
+}
+
+/* 페이지 제목 스타일 */
+.page-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* 환영 메시지 스타일 */
+.welcome-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 사용자 정보 항목 스타일 */
+.user-info-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* 등급 업 신청 버튼 스타일 (버튼 클래스에 추가) */
+.rank-up-button.button {
+    background-image: linear-gradient(135deg, #6be585 0%, #00bd56 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(107, 229, 133, 0.4);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}

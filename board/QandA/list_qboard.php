@@ -17,9 +17,22 @@ $result = mysqli_query($conn, $sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- script -->
+    <script src='../js/checkbox.js'></script>
+
+    <script>
+        function logout() {
+            const data = confirm("로그아웃 하시겠습니까?");
+            if (data) {
+                location.href = "/join/logoutProcess.php";
+            }
+        } 
+    </script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="/board/css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
@@ -46,7 +59,69 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-    <div class="container">
+    <!-- Navbar 시작 -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container-fluid">
+            <!-- Navbar Brand -->
+            <a class="navbar-brand" href="#">Q&A</a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Center-aligned links -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
+                    </li>
+                </ul>
+
+                <!-- Right-aligned links -->
+                <ul class="navbar-nav ms-auto">
+                    <?php if (isset($_SESSION['userId'])) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
+                        </li>
+                        <?php if ($_SESSION['authority'] == 'admin') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/adminPage/adminpage.php">관리자페이지</a>
+                            </li>
+                        <?php } ?>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/join/login.php">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/join/signup.php">회원가입</a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Navbar 끝 -->
+    <div class="container" style="margin-top: 80px;">
         <h1 class="text-center">Q&A 게시판</h1>
         <table class="table">
             <thead>
@@ -66,7 +141,7 @@ $result = mysqli_query($conn, $sql);
                         <option value="username">글쓴이</option>
                         <option value="board">내용</option>
                     </select>
-                    <input type="text" name="search" size="40" required="required" />
+                    <input type="text" name="search" required="required" />
 
                     <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
                     <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
@@ -75,31 +150,6 @@ $result = mysqli_query($conn, $sql);
                     <button>검색</button>
                 </form>
             </div>
-
-            <script>
-                function validateForm() {
-                    // 체크박스들을 선택
-                    var checkboxes = document.querySelectorAll('input[type="checkbox"][name="category[]"]');
-                    var isChecked = false;
-
-                    // 하나라도 체크되었는지 확인
-                    checkboxes.forEach(function (checkbox) {
-                        if (checkbox.checked) {
-                            isChecked = true;
-                        }
-                    });
-
-                    // 체크가 되지 않았을 때 경고창 출력 후 검색 취소
-                    if (!isChecked) {
-                        alert("하나 이상의 카테고리를 선택해주세요.");
-                        return false;
-                    }
-
-                    // 체크가 되었을 때 폼 제출
-                    return true;
-                }
-            </script>
-
             <tbody>
                 <?php
                 $sql_c = "select authority from users where id='$userId'";
@@ -122,18 +172,22 @@ $result = mysqli_query($conn, $sql);
                                 <?php
                             } else {
                                 ?>
-                                <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
+                                <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>">
+                                        <?php echo $row['title']; ?>
+                                    </a>
                                 </td>
                             <?php }
                         } else {
                             ?>
-                        <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>"><?php echo $row['title']; ?></a>
-                        </td>
-                    <?php } ?>
-                        <td>
+                            <td class="title-cell"><a href="q_readBoard.php?number=<?php echo $row['number']; ?>">
+                                    <?php echo $row['title']; ?>
+                                </a>
+                            </td>
+                        <?php } ?>
+                        <td class="title-cell">
                             <?php echo $row['username']; ?>
                         </td>
-                        <td>
+                        <td class="title-cell">
                             <?php echo $row['created']; ?>
                         </td>
                         <td>
@@ -143,6 +197,7 @@ $result = mysqli_query($conn, $sql);
                 <?php } ?>
             </tbody>
         </table>
+
         <div class="text-center">
             <a href="q_writeForm.php" class="btn btn-primary">작성</a>
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>

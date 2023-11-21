@@ -1,5 +1,5 @@
 <?php
-include '../connect.php';
+include '../../connect.php';
 session_start();
 ?>
 
@@ -21,7 +21,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 <body>
     <?php
     $number = $_GET['number'];
-    $check_user = "SELECT username FROM board WHERE username = '$userId' AND number = '$number'";
+    $check_user = "SELECT username FROM reference WHERE username = '$userId' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
     if ($userId != $result['username']) {
@@ -29,17 +29,17 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
             ?>
             <script>
                 alert("'접근 권한이 없습니다.';");
-                location.href = "list_board.php";
+                location.href = "list_reference.php";
             </script>
             <?php
             exit();
         }
-        $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
+        $sql = "UPDATE reference SET visible = 0 WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
     <script>
         alert("게시글이 삭제되었습니다.");
-        location.href = "list_board.php";
+        location.href = "list_reference.php";
     </script>
     <?php
     ?>

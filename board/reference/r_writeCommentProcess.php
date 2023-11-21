@@ -1,11 +1,10 @@
 <?php
-session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-include '../connect.php';
+include '../../connect.php';
+include '../point/WriteCoPoint.php';
 
 $number = $_GET['number'];
 $sql = "
-    insert into comment
+    insert into r_comment
     (userID, boardNumber, text, created, visible)
     values('$userId','$number','{$_POST['text']}', NOW(), 1
     )";
@@ -18,7 +17,7 @@ if ($result === false) {
 ?>
     <script>
         alert("댓글이 작성되었습니다.");
-        location.href = "readBoard.php?number=<?php echo $number?>";
+        location.href = "r_readBoard.php?number=<?php echo $number?>";
     </script>
 <?php
 }

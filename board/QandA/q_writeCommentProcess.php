@@ -1,7 +1,8 @@
 <?php
-session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
 include '../../connect.php';
+include '../point/WriteCoPoint.php';
+session_start();
+$userId = $_SESSION['userId'];
 $sql = "select * from users where id = '$userId'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 

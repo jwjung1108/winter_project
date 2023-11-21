@@ -1,9 +1,9 @@
 <?php
-include '../../connect.php';
+include '../connect.php';
 
 $number = $_GET['number'];
 
-$sql = "select * from board where number = $number";
+$sql = "select * from reference where number = $number";
 $result = mysqli_fetch_array(mysqli_query($conn,$sql));
 $filepath = $result['filepath'];
 $filesize = filesize($filepath);

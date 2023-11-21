@@ -2,13 +2,14 @@
 include '../../connect.php';
 include '../point/ReadPoint.php';
 ?>
-
 <!doctype html>
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>게시판</title>
+    <link rel="stylesheet" type="text/css" href="/BBS/css/style.css" />
     <style>
         /* 반응형 디자인 */
         @media (max-width: 768px) {
@@ -187,6 +188,24 @@ include '../point/ReadPoint.php';
 
 
 
+        /* 기존 모달 스타일 */
+        #commentModal {
+            /* 기존 모달 스타일 */
+            width: 50%;
+            /* 데스크탑에서의 기본 너비 */
+        }
+
+        /* 모달 뒷배경 스타일 */
+        #modalBackground {
+            /* 기존 모달 뒷배경 스타일 */
+        }
+
+        /* 텍스트 에어리어 및 버튼 스타일 */
+        #commentModal textarea,
+        #commentModal input[type="submit"] {
+            /* 기존 스타일 */
+        }
+
         .btn-primary,
         a.btn-primary {
             background-color: #007bff;
@@ -211,13 +230,12 @@ include '../point/ReadPoint.php';
             /* 호버 시 밑줄 제거 */
         }
     </style>
-
 </head>
 
 <body>
     <?php
     $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
-    $board = mysqli_fetch_array(mysqli_query($conn, "select * from board where number ='" . $number . "'"));
+    $board = mysqli_fetch_array(mysqli_query($conn, "select * from reference where number ='" . $number . "'"));
 
     $check_table = (mysqli_query($conn, "select * from time where userID='" . $_SESSION['userId'] . "' and boardNumber = '$number'"));
     $row = mysqli_fetch_array($check_table);
@@ -236,7 +254,7 @@ include '../point/ReadPoint.php';
     if ($result) {
         if ($current_time - strtotime($db_access['access']) > 3600) {
             $view = $view + 1;
-            if (mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'")) {
+            if (mysqli_query($conn, "update reference set views = '" . $view . "' where number = '" . $number . "'")) {
                 $current_time = date($fomater, $current_time);
                 mysqli_query($conn, "update time set access = '$current_time' where boardNumber = $number and userID = '{$_SESSION['userId']}'");
             }
@@ -245,7 +263,7 @@ include '../point/ReadPoint.php';
         $view = $view + 1;
         $current_time = date($fomater, $current_time);
         mysqli_query($conn, "insert into time(userID,boardNumber, access) values('{$_SESSION['userId']}', $number, '$current_time')");
-        mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'");
+        mysqli_query($conn, "update reference set views = '" . $view . "' where number = '" . $number . "'");
     }
     ?>
     <!-- 글 불러오기 -->
@@ -256,7 +274,8 @@ include '../point/ReadPoint.php';
         <div id="user_info">
             <?php echo $board['title']; ?>
             <?php echo $board['created']; ?> 조회:
-            <?php echo $view; ?>
+            <?php echo $view; ?> 추천:
+            <?php echo $board['likes']; ?>
             <div id="bo_line"></div>
         </div>
         <div id="bo_content">
@@ -265,8 +284,10 @@ include '../point/ReadPoint.php';
         <!-- 목록, 수정, 삭제 -->
         <div id="bo_ser">
             <ul>
-                <li><a href="q_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
-                <numli><a href="q_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
+
+                <li><a href="r_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
+                <li><a href="r_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
+                <li><a href="r_boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
             </ul>
         </div>
         <div>
@@ -275,20 +296,19 @@ include '../point/ReadPoint.php';
                 echo "다운로드 파일이 존재하지 않습니다.";
             } else {
                 echo $board['filename'] . " "; ?>
-                <a href="../download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
+                <a href="../r_download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
                 <?php
             }
             ?>
         </div>
 
-
-        <!-- 답변 -->
+        <!-- 댓글 -->
         <?php
-        $sql = "select * from q_comment where boardNumber = '$number'";
+        $sql = "select * from r_comment where boardNumber = '$number'";
         $result = mysqli_query($conn, $sql);
         ?>
         <div class="container">
-            <h1 class="text-center">답변 게시판</h1>
+            <h1 class="text-center">댓글</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -299,13 +319,10 @@ include '../point/ReadPoint.php';
                         <th scope="col"></th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
-                        if ($row['visible'] == 0)
-                            continue;
                         ?>
                         <tr>
                             <th scope="row">
@@ -316,11 +333,11 @@ include '../point/ReadPoint.php';
                                     <?php
                                     if ($row['visible'] == 1) {
                                         echo $row['text'];
+                                    } else {
+                                        echo "삭제된 댓글입니다.";
                                     }
                                     ?>
                                 </a>
-
-                                <!-- <a><?php echo $row['text']; ?></a> -->
                             </td>
                             <td>
                                 <?php echo $row['userID']; ?>
@@ -329,13 +346,14 @@ include '../point/ReadPoint.php';
                                 <?php echo $row['created']; ?>
                             </td>
                             <td>
-                                <a href="q_deleteComment.php?Number=<?php echo $row['Number'] ?>">
+                                <a href="r_deleteComment.php?Number=<?php echo $row['Number'] ?>">
                                     <?php echo "삭제"; ?>
                                 </a>
                             </td>
                         </tr>
-                    <?php } ?>
-
+                    <?php }
+                    ?>
+                </tbody>
             </table>
             <p></p>
             <div class="text-center">
@@ -346,7 +364,7 @@ include '../point/ReadPoint.php';
                 <!-- 댓글 작성 모달 -->
                 <div id="modalBackground"></div>
                 <div id="commentModal">
-                    <form action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                    <form action='r_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
                         <textarea name="text"></textarea>
                         <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
                         <input type="submit" value="작성">
@@ -376,11 +394,8 @@ include '../point/ReadPoint.php';
                 <div class="text-center">
                     <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
                 </div>
-
-
             </div>
         </div>
-
 </body>
 
 </html>

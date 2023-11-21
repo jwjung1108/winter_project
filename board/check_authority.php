@@ -6,7 +6,7 @@ if($userId == ''){
     ?>
         <script>
             alert("로그인을 해주세요");
-            location.href = "../index.php";
+            location.href = "../../index.php";
         </script>
     <?php
     exit();
@@ -18,7 +18,7 @@ if($v_check['verify'] == 0){
     ?>
     <script>
         alert("이메일인증을 진행해주세요");
-        location.href = "../index.php";
+        location.href = "../../index.php";
     </script>
     <?php
     exit();

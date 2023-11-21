@@ -1,8 +1,9 @@
 <?php
-session_start();
 include '../../connect.php';
 
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+require "../check_authority.php";
+
+
 
 // 정렬 방식 설정
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
@@ -12,16 +13,19 @@ $sortIcon = ($sort == 'number') ? '▲' : '▼';
 $orderBy = '';
 switch ($sort) {
     case 'views':
-        $orderBy = 'views';
+        $orderBy = 'ORDER BY views';
+        break;
+    case 'likes':
+        $orderBy = 'ORDER BY likes';
         break;
     default:
-        $orderBy = 'number';
+        $orderBy = 'ORDER BY number';
         break;
 }
 
-$sql = "SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY important DESC, $orderBy desc";
+// SQL 쿼리문 수정
+$sql = "SELECT * FROM board WHERE visible = 1 AND notification = 0 AND QandA = 0 $orderBy";
 $result = mysqli_query($conn, $sql);
-
 ?>
 
 <!doctype html>
@@ -32,10 +36,6 @@ $result = mysqli_query($conn, $sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- script -->
-    <script src='../js/checkbox.js'></script>
-
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -44,7 +44,7 @@ $result = mysqli_query($conn, $sql);
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <title>공지사항</title>
+    <title>게시판</title>
     <style>
         body {
             padding-top: 50px;
@@ -59,29 +59,28 @@ $result = mysqli_query($conn, $sql);
             color: #212529;
         }
 
-        .important {
-            background-color: #00000026;
-            /* 중요 공지사항 배경색 */
-            color: #000;
-            /* 텍스트 색상 */
-            font-weight: bold;
-            /* 글꼴 두껍게 */
-            border: 2px solid #00000026;
-            /* 테두리 스타일과 색상 */
-            border-radius: 5px;
-            /* 둥근 테두리 */
+        .sortable {
+            cursor: pointer;
         }
-
-        .generic {}
     </style>
 </head>
 
 <body>
-    <!-- Navbar 시작 -->
+    <script src='../js/checkbox.js'></script>
+
+    <script>
+        function logout() {
+            const data = confirm("로그아웃 하시겠습니까?");
+            if (data) {
+                location.href = "../../join/logoutProcess.php";
+            }
+        } 
+    </script>
+
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container-fluid">
             <!-- Navbar Brand -->
-            <a class="navbar-brand" href="#">공지사항</a>
+            <a class="navbar-brand" href="#">자유게시판</a>
 
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -122,7 +121,7 @@ $result = mysqli_query($conn, $sql);
                             </li>
                         <?php } ?>
                         <li class="nav-item">
-                            <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
@@ -138,9 +137,10 @@ $result = mysqli_query($conn, $sql);
     </nav>
 
     <div class="container" style="margin-top: 80px;">
-        <h1 class="text-center">공지사항</h1>
+        <h1 class="text-center">자유게시판</h1>
         <div class="text-end mb-3">
             <a href="?sort=views" class="btn btn-primary <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
+            <a href="?sort=likes" class="btn btn-primary <?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
             <a href="?sort=number" class="btn btn-primary <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
         </div>
 
@@ -160,9 +160,6 @@ $result = mysqli_query($conn, $sql);
                 <button>검색</button>
             </form>
         </div>
-
-
-
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -172,24 +169,19 @@ $result = mysqli_query($conn, $sql);
                         <th scope="col">작성자</th>
                         <th scope="col">등록일</th>
                         <th scope="col">조회수</th>
+                        <th scope="col">추천수</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
-                        $class = '';
-                        if ($row['important'] == 1) {
-                            $class = 'important';
-                        } elseif ($row['important'] == 0) {
-                            $class = 'generic';
-                        }
                         ?>
-                        <tr class='<?php echo $class; ?>'>
+                        <tr>
                             <th scope="row">
                                 <?php echo $i++; ?>
                             </th>
-                            <td class="title-cell"><a href="n_readBoard.php?number=<?php echo $row['number']; ?>">
+                            <td class="title-cell"><a href="readBoard.php?number=<?php echo $row['number']; ?>">
                                     <?php echo $row['title']; ?>
                                 </a>
                             </td>
@@ -202,33 +194,21 @@ $result = mysqli_query($conn, $sql);
                             <td>
                                 <?php echo $row['views']; ?>
                             </td>
+                            <td>
+                                <?php echo $row['likes']; ?>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
         <div class="text-center">
-            <?php
-            if ($userId != NULL) {
-                $sql = "select authority from users where id='$userId'";
-                $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-                if ($row['authority'] == 2) {
-                    ?><a href="n_writeForm.php" class="btn btn-primary">작성</a>
-                    <?php
-                }
-            }
-            ?>
-
+            <a href="writeForm.php" class="btn btn-primary">작성</a>
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
         </div>
     </div>
     <script>
-        function logout() {
-            const data = confirm("로그아웃 하시겠습니까?");
-            if (data) {
-                location.href = "/join/logoutProcess.php";
-            }
-        } 
+        function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } 
     </script>
 </body>
 
