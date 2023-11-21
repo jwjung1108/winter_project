@@ -122,7 +122,7 @@ $result = mysqli_query($conn, $sql);
                             </li>
                         <?php } ?>
                         <li class="nav-item">
-                            <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
