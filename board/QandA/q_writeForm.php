@@ -75,6 +75,19 @@ if ($userId == '') {
                 max-width: 90%;
             }
         }
+
+        /* 이전 버튼 스타일 */
+        #back-button {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1;
+            /* 버튼을 화면 위로 가져옵니다. */
+        }
     </style>
 </head>
 
@@ -88,9 +101,7 @@ if ($userId == '') {
         <p><input type="submit" value="작성"></p>
 
     </form>
-    <button onclick="goBack()"
-        style="margin-top: 20px; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">이전
-        페이지로</button>
+    <button id="back-button" onclick="goBack()">이전 페이지로</button>
     <script>
         function goBack() {
             window.history.back();
