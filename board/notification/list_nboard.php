@@ -35,14 +35,6 @@ $result = mysqli_query($conn, $sql);
     <!-- script -->
     <script src='../js/checkbox.js'></script>
 
-    <script>
-        function logout() {
-            const data = confirm("로그아웃 하시겠습니까?");
-            if (data) {
-                location.href = "/join/logoutProcess.php";
-            }
-        } 
-    </script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -168,7 +160,7 @@ $result = mysqli_query($conn, $sql);
                 <button>검색</button>
             </form>
         </div>
-
+    <script>alert('Test');</script>
 
 
         <div class="table-responsive">
@@ -229,8 +221,15 @@ $result = mysqli_query($conn, $sql);
 
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
         </div>
-    </div>
-    <script>function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } </script>
+    </div>    
+    <script>
+        function logout() {
+            const data = confirm("로그아웃 하시겠습니까?");
+            if (data) {
+                location.href = "/join/logoutProcess.php";
+            }
+        } 
+    </script>
 </body>
 
 </html>
