@@ -78,9 +78,6 @@ body {
 
 
 
-.rank-up-button:hover {
-    background-color: #4cd137;
-}
 
 /* 캐릭터 애니메이션 */
 @keyframes jump {
