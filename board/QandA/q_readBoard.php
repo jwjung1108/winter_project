@@ -377,9 +377,9 @@ include '../point/ReadPoint.php';
                         var windowWidth = window.innerWidth;
 
                         if (windowWidth < 768) { // 모바일 화면의 경우
-                            modal.style.width = "95%";
+                            modal.style.width = "90%";
                         } else { // 데스크탑 화면의 경우
-                            modal.style.width = "80%";
+                            modal.style.width = "70%";
                         }
 
                         modal.style.display = 'block';

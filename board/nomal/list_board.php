@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- script -->
-    <script src='../js/chekcbox.js'></script>
+    <script src='../js/checkbox.js'></script>
 
     <script>
         function logout() {
@@ -209,8 +209,8 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
     <script>
-    function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } 
+        function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } 
     </script>
-    </body>
+</body>
 
 </html>
