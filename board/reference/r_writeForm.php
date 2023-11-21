@@ -19,6 +19,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            /* 부모 요소로부터 상대 위치 설정 */
         }
 
         input[type="text"],
@@ -50,21 +52,18 @@
             background-color: #0056b3;
         }
 
-        /* 반응형 스타일 */
-        @media (max-width: 768px) {
-            form {
-                max-width: 90%;
-            }
-        }
-
         /* 이전 버튼 스타일 */
         #back-button {
-            margin-top: 20px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
             background-color: #007bff;
             color: white;
-            padding: 10px;
+            padding: 10px 15px;
+            /* 오른쪽 끝으로 이동하고 텍스트 내용을 'X'로 수정 */
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
+            /* 원 모양 버튼을 만들기 위해 반지름 설정 */
             cursor: pointer;
             z-index: 1;
             /* 버튼을 화면 위로 가져옵니다. */
@@ -81,7 +80,7 @@
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
     </form>
-    <button id="back-button" onclick="goBack()">이전 페이지로</button>
+    <button id="back-button" onclick="goBack()">X</button>
     <script>
         function goBack() {
             window.history.back();

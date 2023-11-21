@@ -1,33 +1,3 @@
-<?php
-session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-
-include '../../connect.php';
-
-// 2. SQL Injection 방지를 위해 Prepared Statements 사용
-$stmt = mysqli_prepare($conn, "SELECT authority FROM users WHERE id = ?");
-mysqli_stmt_bind_param($stmt, "s", $userId);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-
-if (!$result) {
-    // 쿼리 실행 실패
-    exit("쿼리 실행에 실패했습니다.");
-}
-
-$row = mysqli_fetch_array($result);
-
-if ($row['authority'] != 2) {
-    ?>
-    <script>
-        alert("지정된 사용자가 아닙니다.");
-        location.href = "./list_nboard.php";
-    </script>
-    <?php
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -53,7 +23,8 @@ if ($row['authority'] != 2) {
 
         input[type="text"],
         textarea,
-        input[type="file"] {
+        input[type="file"],
+        input[type="checkbox"] {
             width: 95%;
             padding: 10px;
             margin-bottom: 20px;
@@ -89,7 +60,9 @@ if ($row['authority'] != 2) {
 
         /* 이전 버튼 스타일 */
         #back-button {
-            margin-top: 20px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
             background-color: #007bff;
             color: white;
             padding: 10px;
@@ -103,23 +76,21 @@ if ($row['authority'] != 2) {
 </head>
 
 <body>
-
+    <button id="back-button" onclick="goBack()">이전 페이지로</button>
     <form action="n_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 공지사항)"></p>
         <p><textarea name="board" placeholder="본문 (경고메세지)" rows="8"></textarea></p>
-        <p>중요 공지사항<input type="checkbox" name="important" value="reference">
+        <p>중요 공지사항<input type="checkbox" name="important" value="reference"></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
-
     </form>
-    <button id="back-button" onclick="goBack()">이전 페이지로</button>
+
     <script>
         function goBack() {
             window.history.back();
         }
     </script>
 </body>
-
 
 </html>
