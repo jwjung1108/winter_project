@@ -84,7 +84,7 @@
         <p>중요 공지사항<input type="checkbox" name="important" value="reference"></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
-        <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
+        <button type="button" id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
     </form>
 
     <script>
