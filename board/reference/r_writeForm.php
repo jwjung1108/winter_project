@@ -22,7 +22,6 @@
             position: relative;
         }
 
-
         /* "X" 버튼 스타일 */
         #close-button {
             position: absolute;
@@ -76,8 +75,10 @@
         <p><textarea name="board" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)" rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
-        <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
     </form>
+
+    <!-- "X" 버튼을 눌렀을 때 이전 페이지로 돌아가도록 JavaScript로 처리 -->
+    <button id="close-button" onclick="goBack()">X</button>
 
     <script>
         function goBack() {
