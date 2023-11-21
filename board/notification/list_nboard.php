@@ -35,6 +35,15 @@ $result = mysqli_query($conn, $sql);
     <!-- script -->
     <script src='../js/checkbox.js'></script>
 
+    <script>
+        function logout() {
+            const data = confirm("로그아웃 하시겠습니까?");
+            if (data) {
+                location.href = "/join/logoutProcess.php";
+            }
+        } 
+    </script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -42,7 +51,7 @@ $result = mysqli_query($conn, $sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
+        
     <title>공지사항</title>
     <style>
         body {
@@ -78,62 +87,63 @@ $result = mysqli_query($conn, $sql);
 <body>
     <!-- Navbar 시작 -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-    <div class="container-fluid">
-        <!-- Navbar Brand -->
-        <a class="navbar-brand" href="#">공지사항</a>
+        <div class="container-fluid">
+            <!-- Navbar Brand -->
+            <a class="navbar-brand" href="#">공지사항</a>
 
-        <!-- Toggler -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <!-- Navbar Links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Center-aligned links -->
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">홈</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
-                </li>
-            </ul>
-
-            <!-- Right-aligned links -->
-            <ul class="navbar-nav ms-auto">
-                <?php if (isset($_SESSION['userId'])) { ?>
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Center-aligned links -->
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
+                        <a class="nav-link" href="/">홈</a>
                     </li>
-                    <?php if ($_SESSION['authority'] == 'admin') { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
+                    </li>
+                </ul>
+
+                <!-- Right-aligned links -->
+                <ul class="navbar-nav ms-auto">
+                    <?php if (isset($_SESSION['userId'])) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/adminPage/adminpage.php">관리자페이지</a>
+                            <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
+                        </li>
+                        <?php if ($_SESSION['authority'] == 'admin') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/adminPage/adminpage.php">관리자페이지</a>
+                            </li>
+                        <?php } ?>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/join/login.php">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/join/signup.php">회원가입</a>
                         </li>
                     <?php } ?>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-secondary" onclick="logout()">로그아웃</button>
-                    </li>
-                <?php } else { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/join/login.php">로그인</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/join/signup.php">회원가입</a>
-                    </li>
-                <?php } ?>
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="container" style="margin-top: 80px;">
         <h1 class="text-center">공지사항</h1>
