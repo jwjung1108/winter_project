@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-        
+
     <title>공지사항</title>
     <style>
         body {
@@ -160,7 +160,7 @@ $result = mysqli_query($conn, $sql);
                 <button>검색</button>
             </form>
         </div>
-    <script>alert('Test');</script>
+
 
 
         <div class="table-responsive">
@@ -221,7 +221,7 @@ $result = mysqli_query($conn, $sql);
 
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
         </div>
-    </div>    
+    </div>
     <script>
         function logout() {
             const data = confirm("로그아웃 하시겠습니까?");
