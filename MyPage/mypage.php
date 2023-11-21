@@ -62,6 +62,16 @@ if ($userId == '') {
 
     </div>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rankUpBtn = document.querySelector('.rank-up-button');
+            rankUpBtn.addEventListener('mouseover', () => {
+                rankUpBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            });
+            rankUpBtn.addEventListener('mouseout', () => {
+                rankUpBtn.style.boxShadow = 'none';
+            });
+        });
+
         function goBack() {
             window.history.back();
         }
