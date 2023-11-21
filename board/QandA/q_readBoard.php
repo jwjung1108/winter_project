@@ -153,7 +153,7 @@ include '../point/ReadPoint.php';
 
         /* 텍스트 에어리어 스타일 */
         #commentModal textarea {
-            width: 100%;
+            width: 95%;
             height: 100px;
             margin-bottom: 10px;
             padding: 10px;
@@ -186,24 +186,6 @@ include '../point/ReadPoint.php';
         }
 
 
-
-        /* 기존 모달 스타일 */
-        #commentModal {
-            /* 기존 모달 스타일 */
-            width: 50%;
-            /* 데스크탑에서의 기본 너비 */
-        }
-
-        /* 모달 뒷배경 스타일 */
-        #modalBackground {
-            /* 기존 모달 뒷배경 스타일 */
-        }
-
-        /* 텍스트 에어리어 및 버튼 스타일 */
-        #commentModal textarea,
-        #commentModal input[type="submit"] {
-            /* 기존 스타일 */
-        }
 
         .btn-primary,
         a.btn-primary {

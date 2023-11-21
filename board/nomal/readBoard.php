@@ -159,7 +159,7 @@ include '../point/ReadPoint.php';
 
         /* 텍스트 에어리어 스타일 */
         #commentModal textarea {
-            width: 100%;
+            width: 95%;
             height: 100px;
             margin-bottom: 10px;
             padding: 10px;
