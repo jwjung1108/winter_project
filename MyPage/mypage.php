@@ -62,7 +62,7 @@ if ($userId == '') {
 
     </div>
     <div class="character">
-        <img src="path/to/character.svg" alt="Character Image">
+        <img src="/image/cha.webp" alt="Character Image">
     </div>
 
     <script>

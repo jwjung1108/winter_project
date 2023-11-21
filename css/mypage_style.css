@@ -18,22 +18,55 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
-/* 버튼 기본 스타일 */
+/* 버튼 스타일 */
 .button {
-    background-color: #6B6E70;
-    /* 중간 회색 */
+    background-image: linear-gradient(to right, #6dd5ed, #2193b0);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
+    padding: 15px 30px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+.button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
+
+.button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* 등급 업 신청 버튼 스타일 변경 */
+.rank-up-button {
+    background-image: linear-gradient(to right, #56ab2f, #a8e063);
+}
+
+/* 기존 스타일은 유지 */
+
 
 /* 컨테이너 스타일 */
 .container {
@@ -61,12 +94,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* 등급 업 신청 버튼 스타일 */
-.rank-up-button {
-    background-color: #44bd32;
-    /* 밝은 녹색 */
-    transition: background-color 0.3s;
-}
+
 
 .rank-up-button:hover {
     background-color: #4cd137;
