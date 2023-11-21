@@ -64,14 +64,19 @@
             z-index: 1;
         }
 
-        /* 글쓰기 라인 스타일 */
-        .line {
+        /* "X" 버튼 스타일 */
+        #close-button {
             position: absolute;
-            top: 0;
-            right: 50%;
-            background-color: #ddd;
-            height: 100%;
-            width: 2px;
+            top: 20px;
+            right: 60px;
+            /* 이전 버튼과 겹치지 않게 조절 */
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1;
         }
     </style>
 </head>
@@ -85,8 +90,8 @@
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
     </form>
-    <button id="back-button" onclick="goBack()">X</button>
-    <div class="line"></div>
+    <button id="back-button" onclick="goBack()">이전</button>
+    <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
     <script>
         function goBack() {
             window.history.back();
