@@ -10,6 +10,14 @@ $like = 0;
 $title = $_POST['title'];
 $board = $_POST['board'];
 
+if (empty($title) || empty($board)) { ?>
+    <script>
+    alert('제목과 본문을 모두 작성해주세요.');
+    location.href = 'list_board.php';
+    </script> 
+<?php 
+}
+
 $fileDestination = '';
 
 $file = $_FILES['file'];
