@@ -57,24 +57,25 @@
             }
         }
 
-        #back-button {
+        /* "X" 버튼 스타일 */
+        #close-button {
             position: absolute;
             top: 20px;
-            left: 20px;
+            right: 20px;
             background-color: #007bff;
             color: white;
-            padding: 10px;
+            padding: 10px 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
             cursor: pointer;
-            z-index: 1;
-            /* 버튼을 화면 위로 가져옵니다. */
+            z-index: 2;
+            /* "X" 버튼은 이전 버튼 위에 위치하도록 z-index 조절 */
         }
     </style>
 </head>
 
 <body>
-    <button id="back-button" onclick="goBack()">이전 페이지로</button>
+
     <form id="boardForm" action="saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" id="titleInput" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
@@ -82,6 +83,7 @@
                 rows="8"></textarea></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성" onclick="return validateForm()"></p>
+        <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
     </form>
 
     <script>

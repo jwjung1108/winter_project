@@ -58,25 +58,25 @@
             }
         }
 
-        /* 이전 버튼 스타일 */
-        #back-button {
+        /* "X" 버튼 스타일 */
+        #close-button {
             position: absolute;
             top: 20px;
-            left: 20px;
+            right: 20px;
             background-color: #007bff;
             color: white;
-            padding: 10px;
+            padding: 10px 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
             cursor: pointer;
-            z-index: 1;
-            /* 버튼을 화면 위로 가져옵니다. */
+            z-index: 2;
+            /* "X" 버튼은 이전 버튼 위에 위치하도록 z-index 조절 */
         }
     </style>
 </head>
 
 <body>
-    <button id="back-button" onclick="goBack()">이전 페이지로</button>
+
     <form action="n_saveBoard.php" method="POST" enctype="multipart/form-data">
         <h2>글쓰기</h2>
         <p><input type="text" name="title" placeholder="제목 (예: 공지사항)"></p>
@@ -84,6 +84,7 @@
         <p>중요 공지사항<input type="checkbox" name="important" value="reference"></p>
         <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
         <p><input type="submit" value="작성"></p>
+        <button id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
     </form>
 
     <script>
