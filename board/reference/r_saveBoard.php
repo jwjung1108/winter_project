@@ -26,21 +26,21 @@ $uploadDir = '/home/upload/list/';
 
 
 // 파일 확장자 추출
-$fileExtension = pathinfo($fileType, PATHINFO_EXTENSION);
+$fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
 // 파일 저장 이름 생성
 $fileSaveName = uniqid() . '.' . $fileExtension;
 
 // 파일을 지정된 경로로 이동
-move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName . '.' . $fileExtension);
+move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName);
 // var_dump($result);
-$fileDestination = $uploadDir . $fileSaveName . '.' . $fileExtension;
+$fileDestination = $uploadDir . $fileSaveName;
 
 if ($fileName == "")
     $fileDestination = "";
 
 // // 파일 업로드 처리
-if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName . '.' . $fileExtension)) {
+if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     // 파일 업로드 성공한 경우
     $sql = "
         INSERT INTO reference
