@@ -32,15 +32,15 @@ $fileExtension = pathinfo($fileType, PATHINFO_EXTENSION);
 $fileSaveName = uniqid() . '.' . $fileExtension;
 
 // 파일을 지정된 경로로 이동
-move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName);
+move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName . '.' . $fileExtension);
 // var_dump($result);
-$fileDestination = $uploadDir . $fileSaveName;
+$fileDestination = $uploadDir . $fileSaveName . '.' . $fileExtension;
 
 if ($fileName == "")
     $fileDestination = "";
 
 // // 파일 업로드 처리
-if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
+if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName . '.' . $fileExtension)) {
     // 파일 업로드 성공한 경우
     $sql = "
         INSERT INTO reference

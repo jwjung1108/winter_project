@@ -282,18 +282,25 @@ include '../point/ReadPoint.php';
         </div>
 
         <?php
-        $imageExtensions = array('jpg', 'jpeg', 'png'); // 이미지 확장자 목록
+        $imagePath = ''; // 이미지 파일이 아닌 경우 기본적으로 빈 문자열로 초기화
         
+        // 이미지 파일 확장자 목록
+        $imageExtensions = array('jpg', 'jpeg', 'png', 'gif');
+
         if (!empty($board['filename'])) {
             $fileExtension = strtolower(pathinfo($board['filename'], PATHINFO_EXTENSION));
 
-            // 이미지 확장자인 경우 이미지 표시
+            // 이미지 확장자인 경우 이미지 경로 설정
             if (in_array($fileExtension, $imageExtensions)) {
-                $imagePath = $board['filepath'] . $fileExtension;
-                ;
-                echo '<img src="' . $imagePath . '" alt="첨부 이미지">';
+                $imagePath = $board['filepath'];
             }
         }
+
+        // 이미지를 표시할지 여부를 검사하여 이미지를 표시
+        if (!empty($imagePath)) {
+            echo '<img src="' . $imagePath . '" alt="첨부 이미지">';
+        }
+
         ?>
 
         <!-- 목록, 수정, 삭제 -->
