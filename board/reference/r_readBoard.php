@@ -281,6 +281,20 @@ include '../point/ReadPoint.php';
         <div id="bo_content">
             <?php echo nl2br($board['board']); ?>
         </div>
+
+        <?php
+        $imageExtensions = array('jpg', 'jpeg', 'png'); // 이미지 확장자 목록
+        
+        if (!empty($board['filename'])) {
+            $fileExtension = strtolower(pathinfo($board['filename'], PATHINFO_EXTENSION));
+
+            // 이미지 확장자인 경우 이미지 표시
+            if (in_array($fileExtension, $imageExtensions)) {
+                echo '<img src="/home/upload/list/' . $board['filename'] . '" alt="첨부 이미지">';
+            }
+        }
+        ?>
+
         <!-- 목록, 수정, 삭제 -->
         <div id="bo_ser">
             <ul>
