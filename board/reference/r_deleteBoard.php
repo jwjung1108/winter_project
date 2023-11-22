@@ -45,7 +45,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
         ?>
         <?php
     } else {
-        $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
+        $sql = "UPDATE reference SET visible = 0 WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
         <script>
