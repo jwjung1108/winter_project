@@ -1,17 +1,10 @@
 <?php
-session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
 include '../../connect.php';
+session_start();
+?>
 
-$view = 0;
-$like = 0;
-$title = $_POST['title'];
-$board = $_POST['board'];
+<!doctype html>
 
-<<<<<<< HEAD
-$fileDestination = '';
-$file = $_FILES['file'];
-=======
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -132,80 +125,41 @@ $file = $_FILES['file'];
         }
     </style>
 </head>
->>>>>>> 57f5ed1964b33fd2e8f7a8ee4ca3bf0efad0a679
 
-// 파일 정보 가져오기
-$fileName = $file['name'];
-$fileTmpName = $file['tmp_name'];
-$fileSize = $file['size'];
-$fileType = $file['type'];
+<body>
+    <?php
+    $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
+    $board = mysqli_fetch_array(mysqli_query($conn, "select * from board where number ='" . $number . "'"));
 
-// 파일 저장 경로 설정  
-$uploadDir = '/home/upload/notification/';
+    $check_table = (mysqli_query($conn, "select * from time where userID='" . $_SESSION['userId'] . "' and boardNumber = '$number'"));
+    $row = mysqli_fetch_array($check_table);
 
-// 파일 확장자 추출
-$fileExtension = pathinfo($fileType, PATHINFO_EXTENSION);
+    $result = mysqli_num_rows($check_table) > 0;
 
-// 파일 저장 이름 생성
-$fileSaveName = uniqid() . '.' . $fileExtension;
+    // 현재시간
+    $current_time = time();
 
-// 파일을 지정된 경로로 이동
-move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName);
-$fileDestination = $uploadDir . $fileSaveName;
+    // time table access 시간
+    $db_access = mysqli_fetch_array(mysqli_query($conn, "select access from time where boardNumber=$number and userID='{$_SESSION['userId']}'"));
 
-if ($fileName == "") {
-    $fileDestination = "";
-}
+    $fomater = "Y-m-d H:i:s";
+    $view = $board['views'];
 
-// 파일 업로드 처리
-if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
-    // 파일 업로드 성공한 경우
-    $sql = "
-        INSERT INTO board
-        (title, board, username, views, likes, created, visible, freeboard, notification, QandA, isSecret, filepath, filename)
-        VALUES ('$title', '$board', '$userId', '$view', '$like', NOW(), 1, 0, 1, 0, 0, '$fileDestination', '$fileName')
-    ";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result === false) {
-        echo "저장에 문제가 생겼습니다. 관리자에게 문의해주세요.";
+    if ($result) {
+        if ($current_time - strtotime($db_access['access']) > 3600) {
+            $view = $view + 1;
+            if (mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'")) {
+                $current_time = date($fomater, $current_time);
+                mysqli_query($conn, "update time set access = '$current_time' where boardNumber = $number and userID = '{$_SESSION['userId']}'");
+            }
+        }
     } else {
-        // 등급 업데이트
-        $sqlUpdateGrade = "UPDATE users SET grade = CASE 
-            WHEN grade = 'white' AND (SELECT COUNT(*) FROM board WHERE username = '$userId') >= 2 THEN 'silver'
-            WHEN grade = 'silver' AND (SELECT COUNT(*) FROM board WHERE username = '$userId') >= 4 THEN 'gold'
-            ELSE grade
-            END
-            WHERE id = '$userId'";
-        mysqli_query($conn, $sqlUpdateGrade);
-
-        // 등급에 따른 표현 추가
-        $sqlSelectGrade = "SELECT grade FROM users WHERE id = '$userId'";
-        $resultGrade = mysqli_query($conn, $sqlSelectGrade);
-        $rowGrade = mysqli_fetch_assoc($resultGrade);
-        $newGrade = $rowGrade['grade'];
-
-        $userDisplayName = "$userId($newGrade)";
-
-        ?>
-        <script>
-            alert("게시글이 작성되었습니다. 사용자 등급: <?php echo $userDisplayName; ?>");
-            location.href = "./list_nboard.php";
-        </script>
-        <?php
+        $view = $view + 1;
+        $current_time = date($fomater, $current_time);
+        mysqli_query($conn, "insert into time(userID,boardNumber, access) values('{$_SESSION['userId']}', $number, '$current_time')");
+        mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'");
     }
-} else {
     ?>
-<<<<<<< HEAD
-    <script>
-        alert("파일 업로드에 실패하였습니다.");
-        location.href = "./list_board.php";
-    </script>
-<?php
-}
-?>
-=======
     <!-- 글 불러오기 -->
     <div id="board_read">
         <h2>
@@ -253,4 +207,3 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
 </body>
 
 </html>
->>>>>>> 57f5ed1964b33fd2e8f7a8ee4ca3bf0efad0a679
