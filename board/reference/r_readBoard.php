@@ -290,7 +290,8 @@ include '../point/ReadPoint.php';
 
             // 이미지 확장자인 경우 이미지 표시
             if (in_array($fileExtension, $imageExtensions)) {
-                echo '<img src="/home/upload/list/' . $board['filename'] . '" alt="첨부 이미지">';
+                $imagePath = "/home/upload/list/" . $board['filename'];
+                echo '<img src="' . $imagePath . '" alt="첨부 이미지">';
             }
         }
         ?>
