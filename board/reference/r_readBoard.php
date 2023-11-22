@@ -285,12 +285,12 @@ include '../point/ReadPoint.php';
         <?php
         $imageExtensions = array('jpg', 'jpeg', 'png'); // 이미지 확장자 목록
         
-        if (!empty($board['filename'])) {
+        if (!empty($reference['filename'])) {
             $fileExtension = strtolower(pathinfo($board['filename'], PATHINFO_EXTENSION));
 
             // 이미지 확장자인 경우 이미지 표시
             if (in_array($fileExtension, $imageExtensions)) {
-                $imagePath = "/home/upload/list/" . $board['filename'];
+                $imagePath = $reference['filepath'];
                 echo '<img src="' . $imagePath . '" alt="첨부 이미지">';
             }
         }
