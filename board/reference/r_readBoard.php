@@ -292,7 +292,13 @@ include '../point/ReadPoint.php';
 
             // 이미지 확장자인 경우 이미지 경로 설정
             if (in_array($fileExtension, $imageExtensions)) {
-                $imagePath = $board['filepath'];
+                $absoluteImagePath = $board['filepath'];
+
+                // 웹 서버 루트 디렉토리까지의 절대 경로
+                $webServerRoot = $_SERVER['DOCUMENT_ROOT'];
+
+                // 상대 경로 생성 (웹 서버 루트 디렉토리 제거)
+                $imagePath = str_replace($webServerRoot, '', $absoluteImagePath);
             }
         }
 
