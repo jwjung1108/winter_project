@@ -19,6 +19,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
         }
 
         input[type="text"],
