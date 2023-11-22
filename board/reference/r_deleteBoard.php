@@ -37,20 +37,20 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
         $sql = "UPDATE reference SET visible = 0 WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
-    <script>
-        alert("게시글이 삭제되었습니다.");
-        location.href = "list_reference.php";
-    </script>
-    <?php
-    ?>
-    <?php
+        <script>
+            alert("게시글이 삭제되었습니다.");
+            location.href = "list_reference.php";
+        </script>
+        <?php
+        ?>
+        <?php
     } else {
         $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
         <script>
             alert("게시글이 삭제되었습니다.");
-            location.href = "list_board.php";
+            location.href = "list_reference.php";
         </script>
         <?php
     }
