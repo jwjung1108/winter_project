@@ -32,9 +32,6 @@ echo $sql; // 디버그용 출력
 
 $result = mysqli_query($conn, $sql);
 
-if (!$result) {
-    die('쿼리 에러: ' . mysqli_error($conn));
-}
 ?>
 
 <!doctype html>
@@ -185,6 +182,7 @@ if (!$result) {
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
+                        print_r($row);
                         $authorRank = $row['user_rank'];
 
                         // Determine color based on rank
