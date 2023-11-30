@@ -24,10 +24,7 @@ switch ($sort) {
 }
 
 // SQL 쿼리문 수정
-$sql = "SELECT board.*, user.user_rank 
-        FROM board 
-        LEFT JOIN user ON board.username = user.nickname
-        WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 0 $orderBy";
+$sql = "SELECT board.*, user.user_rank FROM board    LEFT JOIN user ON board.username = user.nickname  WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 0 $orderBy";
 $result = mysqli_query($conn, $sql);
 ?>
 
