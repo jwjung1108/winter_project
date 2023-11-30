@@ -3,8 +3,6 @@ include '../../connect.php';
 
 require "../check_authority.php";
 
-
-
 // 정렬 방식 설정
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
 $sortIcon = ($sort == 'number') ? '▲' : '▼';
@@ -178,25 +176,29 @@ $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($result)) {
                         // 현재 행의 작성자의 등급을 가져오기
                         $username = $row['username'];
-                        $sql_c = "SELECT user_rank FROM user WHERE nickname='$username'";
-                        $authorInfo = mysqli_fetch_array(mysqli_query($conn, $sql_c));
+                        $sql_c = "SELECT user_rank FROM user WHERE nickname=?";
+                        $stmt = mysqli_prepare($conn, $sql_c);
+                        mysqli_stmt_bind_param($stmt, "s", $username);
+                        mysqli_stmt_execute($stmt);
+                        $authorInfo = mysqli_fetch_array(mysqli_stmt_get_result($stmt));
+
                         $authorRank = $authorInfo['user_rank'];
                         // 등급에 따라 색상 설정
                         $color = '';
                         switch ($authorRank) {
-                            case '브론즈':
+                            case 'bronze':
                                 $color = 'color: #cd7f32;'; // 브론즈 색상 (예: 갈색)
                                 break;
-                            case '실버':
+                            case 'silver':
                                 $color = 'color: #c0c0c0;'; // 실버 색상 (예: 은색)
                                 break;
-                            case '골드':
+                            case 'gold':
                                 $color = 'color: #ffd700;'; // 골드 색상 (예: 금색)
                                 break;
-                            case '플레':
+                            case 'platinum':
                                 $color = 'color: #ff4500;'; // 플레 색상 (예: 주황색)
                                 break;
-                            case '마스터':
+                            case 'master':
                                 $color = 'color: #ff8c00;'; // 마스터 색상 (예: 주황색)
                                 break;
                             // 다른 등급에 대한 경우가 필요하면 추가하세요.
@@ -235,9 +237,15 @@ $result = mysqli_query($conn, $sql);
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
         </div>
     </div>
+
     <script>
-        function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } 
+        function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "../../join/logoutProcess.php"; } } 
     </script>
+
+    <?php
+    // 데이터베이스 연결 해제
+    mysqli_close($conn);
+    ?>
 </body>
 
 </html>
