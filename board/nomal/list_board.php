@@ -4,6 +4,14 @@ include '../../connect.php';
 require "../check_authority.php";
 
 
+$tierIcons = [
+    'Bronze' => '/icon/bronze.png',
+    'Silver' => '/icon/silver.png',
+    'Gold' => '/icon/gold.png',
+    'Platinum' => '/icon/platinum.png',
+    'Master' => '/icon/master.png',
+    'Default' => '', // 기본 아이콘 경로
+];
 
 // 정렬 방식 설정
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
@@ -196,6 +204,7 @@ $result = mysqli_query($conn, $sql);
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
                         $authorRank = $row['user_rank'];
+                        $tierIconPath = isset($tierIcons[$authorRank]) ? $tierIcons[$authorRank] : $tierIcons['Default'];
 
                         // Determine color based on rank
                         switch ($authorRank) {
@@ -229,7 +238,7 @@ $result = mysqli_query($conn, $sql);
                                 </a>
                             </td>
                             <td class="title-cell" style="<?php echo $color; ?>">
-
+                                <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
                                 <?php echo $row['username']; ?>
                             </td>
 
