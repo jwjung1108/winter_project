@@ -23,12 +23,12 @@ switch ($sort) {
         break;
 }
 
-$sql = "SELECT board.*, user.user_rank 
+$sql = "SELECT board.*, users.user_rank 
         FROM board 
-        LEFT JOIN user ON board.username = user.nickname  
+        LEFT JOIN user ON board.username = users.nickname  
         WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 0 $orderBy";
 
-echo $sql; // 디버그용 출력
+
 
 $result = mysqli_query($conn, $sql);
 
@@ -182,8 +182,6 @@ $result = mysqli_query($conn, $sql);
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
-                        print_r($row);
-                        $authorRank = $row['user_rank'];
 
                         // Determine color based on rank
                         switch ($authorRank) {
