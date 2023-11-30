@@ -340,7 +340,19 @@ include '../point/ReadPoint.php';
             <p></p>
             <div class="text-center">
                 <!-- 댓글 작성 버튼 -->
-                <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
+                <?php
+                session_start();
+                $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+                if ($userId != NULL) {
+                    $sql = "select authority from users where id='$userId'";
+                    $row = mysqli_fetch_array(mysqli_query($conn, $sql));
+                    if ($row['authority'] == 2) {
+                        ?>
+                        <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
+                        <?php
+                    }
+                }
+                ?>
 
 
                 <!-- 댓글 작성 모달 -->
