@@ -183,6 +183,7 @@ $result = mysqli_query($conn, $sql);
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
                         $authorRank = $row['user_rank'];
+                        print($authorRank);
                         // Determine color based on rank
                         switch ($authorRank) {
                             case 'bronze':
