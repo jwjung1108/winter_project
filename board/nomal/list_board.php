@@ -183,23 +183,22 @@ $result = mysqli_query($conn, $sql);
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
                         $authorRank = $row['user_rank'];
-                        print($authorRank);
 
                         // Determine color based on rank
                         switch ($authorRank) {
-                            case 'bronze':
+                            case 'Bronze':
                                 $color = 'color: #cd7f32;'; // Bronze color (e.g., brown)
                                 break;
-                            case 'silver':
+                            case 'Silver':
                                 $color = 'color: #c0c0c0;'; // Silver color (e.g., silver)
                                 break;
-                            case 'gold':
+                            case 'Gold':
                                 $color = 'color: #ffd700;'; // Gold color (e.g., gold)
                                 break;
-                            case 'platinum':
+                            case 'Platinum':
                                 $color = 'color: #ff4500;'; // Platinum color (e.g., orange)
                                 break;
-                            case 'master':
+                            case 'Master':
                                 $color = 'color: #ff8c00;'; // Master color (e.g., orange)
                                 break;
                             default:
