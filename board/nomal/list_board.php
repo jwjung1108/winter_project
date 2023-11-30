@@ -25,7 +25,7 @@ switch ($sort) {
 
 $sql = "SELECT board.*, users.user_rank 
         FROM board 
-        LEFT JOIN users ON board.username = users.nickname  
+        LEFT JOIN users ON board.username = users.id  
         WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 0 $orderBy";
 
 
