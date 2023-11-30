@@ -87,15 +87,15 @@ $result = mysqli_query($conn, $sql);
 
             switch ($tier) {
                 case 'Bronze':
-                    return $iconPath. 'bronze.png';
+                    return $iconPath . 'bronze.png';
                 case 'Silver':
-                    return $iconPath. 'silver.png';
+                    return $iconPath . 'silver.png';
                 case 'Gold':
-                    return $iconPath. 'gold.png';
+                    return $iconPath . 'gold.png';
                 case 'Platinum':
-                    return $iconPath. 'platinum.png';
+                    return $iconPath . 'platinum.png';
                 case 'Master':
-                    return $iconPath. 'master.png';
+                    return $iconPath . 'master.png';
                 default:
                     return '';  // 티어가 정의되지 않은 경우 빈 문자열 반환
             }
