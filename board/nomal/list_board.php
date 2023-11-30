@@ -23,9 +23,18 @@ switch ($sort) {
         break;
 }
 
-// SQL 쿼리문 수정
-$sql = "SELECT board.*, user.user_rank FROM board    LEFT JOIN user ON board.username = user.nickname  WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 0 $orderBy";
+$sql = "SELECT board.*, user.user_rank 
+        FROM board 
+        LEFT JOIN user ON board.username = user.nickname  
+        WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 0 $orderBy";
+
+echo $sql; // 디버그용 출력
+
 $result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die('쿼리 에러: ' . mysqli_error($conn));
+}
 ?>
 
 <!doctype html>
