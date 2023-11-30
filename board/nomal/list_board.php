@@ -256,6 +256,7 @@ $result = mysqli_query($conn, $sql);
                                 ?>
                                 <?php echo $row['username']; ?>
                             </td>
+
                             <td class="title-cell">
                                 <?php echo $row['created']; ?>
                             </td>
