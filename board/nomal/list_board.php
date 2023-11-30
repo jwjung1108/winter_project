@@ -178,9 +178,9 @@ $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($result)) {
                         // 현재 행의 작성자의 등급을 가져오기
                         $username = $row['username'];
-                        $sql_c = "SELECT user_rank FROM user WHERE username='$username'";
-                        $authorRank = mysqli_fetch_array(mysqli_query($conn, $sql_c))['user_rank'];
-
+                        $sql_c = "SELECT user_rank FROM user WHERE nickname='$username'";
+                        $authorInfo = mysqli_fetch_array(mysqli_query($conn, $sql_c));
+                        $authorRank = $authorInfo['user_rank'];
                         // 등급에 따라 색상 설정
                         $color = '';
                         switch ($authorRank) {
