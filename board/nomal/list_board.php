@@ -176,8 +176,36 @@ $result = mysqli_query($conn, $sql);
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
+                        // 현재 행의 작성자의 등급을 가져오기
+                        $username = $row['username'];
+                        $sql_c = "SELECT user_rank FROM user WHERE username='$username'";
+                        $authorRank = mysqli_fetch_array(mysqli_query($conn, $sql_c))['user_rank'];
+
+                        // 등급에 따라 색상 설정
+                        $color = '';
+                        switch ($authorRank) {
+                            case 'bronze':
+                                $color = 'color: #cd7f32;'; // 브론즈 색상 (예: 갈색)
+                                break;
+                            case 'silver':
+                                $color = 'color: #c0c0c0;'; // 실버 색상 (예: 은색)
+                                break;
+                            case 'gold':
+                                $color = 'color: #ffd700;'; // 골드 색상 (예: 금색)
+                                break;
+                            case 'platinum':
+                                $color = 'color: #ff4500;'; // 플레 색상 (예: 주황색)
+                                break;
+                            case 'master':
+                                $color = 'color: #ff8c00;'; // 마스터 색상 (예: 주황색)
+                                break;
+                            // 다른 등급에 대한 경우가 필요하면 추가하세요.
+                            default:
+                                $color = ''; // 기본 색상 (예: 검정)
+                                break;
+                        }
                         ?>
-                        <tr>
+                        <tr style="<?php echo $color; ?>">
                             <th scope="row">
                                 <?php echo $i++; ?>
                             </th>
