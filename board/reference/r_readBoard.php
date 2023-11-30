@@ -228,6 +228,21 @@ include '../point/ReadPoint.php';
             text-decoration: none;
             /* 호버 시 밑줄 제거 */
         }
+
+        /* 이미지 컨테이너 스타일 */
+        #image_container {
+            max-width: 100%;
+            text-align: center;
+            /* 이미지 중앙 정렬 */
+        }
+
+        /* 이미지 스타일 */
+        #image {
+            max-width: 100%;
+            /* 이미지 너비 최대 100%로 유지 */
+            height: auto;
+            /* 세로 비율 유지 */
+        }
     </style>
 </head>
 
@@ -281,27 +296,35 @@ include '../point/ReadPoint.php';
             <?php echo nl2br($board['board']); ?>
         </div>
 
-        <?php
-        $imagePath = ''; // 이미지 파일이 아닌 경우 기본적으로 빈 문자열로 초기화
-        
-        // 이미지 파일 확장자 목록
-        $imageExtensions = array('jpg', 'jpeg', 'png', 'gif');
+        <div id="image_container">
+            <?php
+            $imagePath = ''; // 이미지 파일이 아닌 경우 기본적으로 빈 문자열로 초기화
+            
+            // 이미지 파일 확장자 목록
+            $imageExtensions = array('jpg', 'jpeg', 'png', 'gif');
 
-        if (!empty($board['filename'])) {
-            $fileExtension = strtolower(pathinfo($board['filename'], PATHINFO_EXTENSION));
+            if (!empty($board['filename'])) {
+                $fileExtension = strtolower(pathinfo($board['filename'], PATHINFO_EXTENSION));
 
-            // 이미지 확장자인 경우 이미지 경로 설정
-            if (in_array($fileExtension, $imageExtensions)) {
-                $imagePath = $board['filepath'];
+                // 이미지 확장자인 경우 이미지 경로 설정
+                if (in_array($fileExtension, $imageExtensions)) {
+                    $absoluteImagePath = $board['filepath'];
+
+                    // 웹 서버 루트 디렉토리까지의 절대 경로
+                    $webServerRoot = $_SERVER['DOCUMENT_ROOT'];
+
+                    // 상대 경로 생성 (웹 서버 루트 디렉토리 제거)
+                    $imagePath = str_replace($webServerRoot, '', $absoluteImagePath);
+                }
             }
-        }
 
-        // 이미지를 표시할지 여부를 검사하여 이미지를 표시
-        if (!empty($imagePath)) {
-            echo '<img src="' . $imagePath . '" alt="첨부 이미지">';
-        }
+            // 이미지를 표시할지 여부를 검사하여 이미지를 표시
+            if (!empty($imagePath)) {
+                echo '<img src="' . $imagePath . '" alt="첨부 이미지" id="image">';
+            }
 
-        ?>
+            ?>
+        </div>
 
         <!-- 목록, 수정, 삭제 -->
         <div id="bo_ser">
