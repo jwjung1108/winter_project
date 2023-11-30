@@ -83,7 +83,7 @@ $result = mysqli_query($conn, $sql);
             // 각 티어에 대한 아이콘 이미지 경로를 반환하는 함수
             // 예를 들어, Bronze 티어는 bronze.png와 같은 이미지 파일이 있어야 합니다.
             // 각 티어에 맞게 경로를 수정해주세요.
-            $iconPath = "../../icon/";
+            $iconPath = "/icon/";
 
             switch ($tier) {
                 case 'Bronze':
