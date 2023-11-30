@@ -129,6 +129,7 @@ $result = mysqli_query($conn, $sql);
                             <a class="nav-link" href="/join/signup.php">회원가입</a>
                         </li>
                     <?php } ?>
+
                 </ul>
             </div>
         </div>
@@ -229,6 +230,9 @@ $result = mysqli_query($conn, $sql);
                             </td>
                         </tr>
                     <?php } ?>
+                    if (!$result) {
+                    die('쿼리 실행 에러: ' . mysqli_error($conn));
+                    }
                 </tbody>
             </table>
         </div>
