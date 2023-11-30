@@ -78,6 +78,30 @@ $result = mysqli_query($conn, $sql);
             /* 티어 아이콘 간의 간격 조절 */
         }
     </style>
+    <script>
+        function getTierIconPath($tier) {
+            // 각 티어에 대한 아이콘 이미지 경로를 반환하는 함수
+            // 예를 들어, Bronze 티어는 bronze.png와 같은 이미지 파일이 있어야 합니다.
+            // 각 티어에 맞게 경로를 수정해주세요.
+            $iconPath = "../../icon";
+
+            switch ($tier) {
+                case 'Bronze':
+                    return $iconPath. 'bronze.png';
+                case 'Silver':
+                    return $iconPath. 'silver.png';
+                case 'Gold':
+                    return $iconPath. 'gold.png';
+                case 'Platinum':
+                    return $iconPath. 'platinum.png';
+                case 'Master':
+                    return $iconPath. 'master.png';
+                default:
+                    return '';  // 티어가 정의되지 않은 경우 빈 문자열 반환
+            }
+        }
+        function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } 
+    </script>
 </head>
 
 <body>
@@ -249,30 +273,7 @@ $result = mysqli_query($conn, $sql);
             <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
         </div>
     </div>
-    <script>
-        function getTierIconPath($tier) {
-            // 각 티어에 대한 아이콘 이미지 경로를 반환하는 함수
-            // 예를 들어, Bronze 티어는 bronze.png와 같은 이미지 파일이 있어야 합니다.
-            // 각 티어에 맞게 경로를 수정해주세요.
-            $iconPath = "../../icon";
 
-            switch ($tier) {
-                case 'Bronze':
-                    return $iconPath. 'bronze.png';
-                case 'Silver':
-                    return $iconPath. 'silver.png';
-                case 'Gold':
-                    return $iconPath. 'gold.png';
-                case 'Platinum':
-                    return $iconPath. 'platinum.png';
-                case 'Master':
-                    return $iconPath. 'master.png';
-                default:
-                    return '';  // 티어가 정의되지 않은 경우 빈 문자열 반환
-            }
-        }
-        function logout() { const data = confirm("로그아웃 하시겠습니까?"); if (data) { location.href = "/join/logoutProcess.php"; } } 
-    </script>
 </body>
 
 </html>
