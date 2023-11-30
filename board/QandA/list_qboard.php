@@ -68,6 +68,14 @@ $result = mysqli_query($conn, $sql);
         .sortable {
             cursor: pointer;
         }
+        .tier-icon {
+            width: 20px;
+            /* 이미지의 크기 조절 */
+            height: 20px;
+            display: inline-block;
+            margin-right: 5px;
+            /* 티어 아이콘 간의 간격 조절 */
+        }
     </style>
 </head>
 
