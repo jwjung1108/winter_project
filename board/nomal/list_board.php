@@ -206,7 +206,7 @@ $result = mysqli_query($conn, $sql);
                         }
 
                         ?>
-                        <tr style="<?php echo $color; ?>">
+                        <tr>
                             <th scope="row">
                                 <?php echo $i++; ?>
                             </th>
@@ -214,7 +214,7 @@ $result = mysqli_query($conn, $sql);
                                     <?php echo $row['title']; ?>
                                 </a>
                             </td>
-                            <td class="title-cell">
+                            <td class="title-cell" style="<?php echo $color; ?>">
                                 <?php echo $row['username']; ?>
                             </td>
                             <td class="title-cell">
