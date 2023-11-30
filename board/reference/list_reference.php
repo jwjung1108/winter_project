@@ -3,6 +3,14 @@ include '../../connect.php';
 
 require "../check_authority.php";
 
+$tierIcons = [
+    'Bronze' => '/icon/bronze.png',
+    'Silver' => '/icon/silver.png',
+    'Gold' => '/icon/gold.png',
+    'Platinum' => '/icon/platinum.png',
+    'Master' => '/icon/master.png',
+    'Default' => '', // 기본 아이콘 경로
+];
 
 
 // 정렬 방식 설정
@@ -24,7 +32,11 @@ switch ($sort) {
 }
 
 // SQL 쿼리문 수정
-$sql = "SELECT * FROM reference WHERE visible = 1 $orderBy";
+$sql = "SELECT reference.*, users.user_rank
+        FROM reference
+        JOIN users ON reference.username = users.id
+        WHERE reference.visible = 1 $orderBy";
+
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -171,6 +183,31 @@ $result = mysqli_query($conn, $sql);
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
+                        $authorRank = $row['user_rank'];
+                        $tierIconPath = isset($tierIcons[$authorRank]) ? $tierIcons[$authorRank] : $tierIcons['Default'];
+
+                        // Determine color based on rank
+                        switch ($authorRank) {
+                            case 'Bronze':
+                                $color = 'color: #cd7f32;'; // Bronze color (e.g., brown)
+                                break;
+                            case 'Silver':
+                                $color = 'color: #c0c0c0;'; // Silver color (e.g., silver)
+                                break;
+                            case 'Gold':
+                                $color = 'color: #ffd700;'; // Gold color (e.g., gold)
+                                break;
+                            case 'Platinum':
+                                $color = 'color: #ff4500;'; // Platinum color (e.g., orange)
+                                break;
+                            case 'Master':
+                                $color = 'color: #ff8c00;'; // Master color (e.g., orange)
+                                break;
+                            default:
+                                $color = 'color: black;'; // Default color (e.g., black)
+                                break;
+                        }
+
                         ?>
                         <tr>
                             <th scope="row">
@@ -180,7 +217,8 @@ $result = mysqli_query($conn, $sql);
                                     <?php echo $row['title']; ?>
                                 </a>
                             </td>
-                            <td class="title-cell">
+                            <td class="title-cell" style="<?php echo $color; ?>">
+                                <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
                                 <?php echo $row['username']; ?>
                             </td>
                             <td class="title-cell">
