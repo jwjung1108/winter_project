@@ -201,7 +201,7 @@ $result = mysqli_query($conn, $sql);
                                 $color = 'color: #ff8c00;'; // Master color (e.g., orange)
                                 break;
                             default:
-                                $color = ''; // Default color (e.g., black)
+                                $color = 'color: black;'; // Default color (e.g., black)
                                 break;
                         }
 
