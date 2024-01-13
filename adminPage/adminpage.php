@@ -112,7 +112,7 @@ include 'check_admin.php';
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-
+    <link href="../css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -404,15 +404,6 @@ include 'check_admin.php';
         integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG"
         crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
-</body>
-
-</html>
-
-
-
-
-
-
 </body>
 
 </html>
